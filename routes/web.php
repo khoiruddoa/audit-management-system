@@ -2,12 +2,15 @@
 
 use App\Http\Controllers\AuditeeController;
 use App\Http\Controllers\AuditorController;
+use App\Http\Controllers\DocumentAuditeeController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KertasKerjaAuditController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PelaksanaanAuditController;
 use App\Http\Controllers\PerencanaanAuditController;
 use App\Http\Controllers\ProgramKerjaAuditController;
+use App\Http\Controllers\ProgramKerjaAuditeeController;
 use App\Http\Controllers\PustakaAuditController;
 use App\Http\Controllers\ReferensiAuditController;
 use App\Http\Controllers\RegisterController;
@@ -16,6 +19,7 @@ use App\Http\Controllers\SusunanTimController;
 use App\Http\Controllers\TanggapanAuditController;
 use App\Http\Controllers\TemuanAuditController;
 use App\Http\Controllers\TindakLanjutAuditController;
+use App\Models\Document;
 use App\Models\PerencanaanAudit;
 use App\Models\ProgramKerjaAudit;
 use App\Models\PustakaAudit;
@@ -85,7 +89,18 @@ Route::post('pelaksanaan_audit/program_kerja_audit/store', [ProgramKerjaAuditCon
 Route::post('pelaksanaan_audit/program_kerja_audit/update/{id}', [ProgramKerjaAuditController::class, 'update'])->name('program_kerja_audit_update');
 Route::get('/pelaksanaan_audit/program_kerja_audit/edit/{id}', [ProgramKerjaAuditController::class, 'edit'])->name('program_kerja_audit_edit');
 Route::get('/pelaksanaan_audit/program_kerja_audit/delete/{id}', [ProgramKerjaAuditController::class, 'delete'])->name('program_kerja_audit_delete');
+Route::post('/pustaka_audit/pustaka_program_audit/out_store', [PustakaAuditController::class, 'out_store'])->name('pustaka_program_audit_out_store');
 
+Route::get('/pelaksanaan_audit/program_kerja_audit/document/{id}', [DocumentController::class, 'index'])->name('program_kerja_audit_document');
+Route::post('pelaksanaan_audit/program_kerja_audit/document/store', [DocumentController::class, 'store'])->name('program_kerja_audit_document_store');
+Route::post('pelaksanaan_audit/program_kerja_audit/document/update/{id}', [DocumentController::class, 'update'])->name('program_kerja_audit_document_update');
+Route::get('/pelaksanaan_audit/program_kerja_audit/document/delete/{id}', [DocumentController::class, 'delete'])->name('program_kerja_audit_document_delete');
+Route::post('/pustaka_audit/pustaka_program_audit/document/out_store', [DocumentController::class, 'out_store'])->name('pustaka_program_audit_out_store');
+
+
+Route::get('program_kerja_auditee', [ProgramKerjaAuditeeController::class, 'index'])->name('program_kerja_audit_document_auditee');
+Route::get('document_auditee/{id}', [DocumentAuditeeController::class, 'index'])->name('kelengkapan_document_auditee');
+Route::post('document_upload/{id}', [DocumentAuditeeController::class, 'update'])->name('upload_link_document');
 
 
 Route::get('/pelaksanaan_audit/kertas_kerja_audit/{id}',[KertasKerjaAuditController::class, 'index'])->name('kertas_kerja_audit');
@@ -120,10 +135,10 @@ Route::get('/pelaksanaan_audit/status/{id}', [PelaksanaanAuditController::class,
 
 
 
-Route::get('/pelaksanaan_audit/susunan_tim/{id}', [SusunanTimController::class, 'index'])->name('susunan_tim');
-Route::get('/pelaksanaan_audit/susunan_tim/delete/{id}', [SusunanTimController::class, 'destroy'])->name('susunan_tim_delete');
-Route::get('/pelaksanaan_audit/susunan_tim/create/{id}', [SusunanTimController::class, 'create'])->name('susunan_tim_create');
-Route::post('/pelaksanaan_audit/susunan_tim/store', [SusunanTimController::class, 'store'])->name('susunan_tim_store');
+Route::get('perencanaan_audit/susunan_tim/{id}', [SusunanTimController::class, 'index'])->name('susunan_tim');
+Route::get('perencanaan_audit/susunan_tim/delete/{id}', [SusunanTimController::class, 'destroy'])->name('susunan_tim_delete');
+Route::get('perencanaan_audit/susunan_tim/create/{id}', [SusunanTimController::class, 'create'])->name('susunan_tim_create');
+Route::post('perencanaan_audit/susunan_tim/store', [SusunanTimController::class, 'store'])->name('susunan_tim_store');
 
 
 Route::get('/pelaksanaan_audit/tanggapan_auditee', [TanggapanAuditController::class, 'index'])->name('tanggapan_auditee_auditor');
@@ -139,6 +154,7 @@ Route::post('/kegiatan_audit/store', [KegiatanController::class, 'store'])->name
 
 Route::post('/kegiatan_audit/update/{id}', [KegiatanController::class, 'update'])->name('kegiatan_audit_update');
 Route::get('/kegiatan_audit/delete/{id}', [KegiatanController::class, 'destroy'])->name('kegiatan_audit_delete');
+Route::get('/kegiatan_audit/finish/{id}', [KegiatanController::class, 'finish'])->name('kegiatan_audit_finish');
 
 
 

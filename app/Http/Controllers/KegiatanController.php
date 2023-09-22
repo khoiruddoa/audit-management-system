@@ -37,6 +37,8 @@ class KegiatanController extends Controller
           
             'kegiatan' => 'required|string'
         ]);
+
+        $validatedData['status'] = 0;
         Kegiatan::create($validatedData);
 
         return redirect('/kegiatan_audit')->with('success', 'Kegiatan Ditambahkan');
@@ -53,7 +55,7 @@ class KegiatanController extends Controller
         $data = Kegiatan::findOrFail($id);
         $data->update($validatedData);
 
-        return redirect('/kegiatan_audit')->with('success', 'Auditee Diperbarui');
+        return redirect('/kegiatan_audit')->with('success', 'Kegiatan Audit Diperbarui');
     }
 
     public function destroy($id)
@@ -71,5 +73,17 @@ class KegiatanController extends Controller
         $data->delete();
 
         return redirect('/kegiatan_audit')->with('success', 'Kegiatan Dihapus');
+    }
+
+    public function finish(Request $request, $id)
+    {
+       
+
+        $data = Kegiatan::findOrFail($id);
+        $data->status = 1;
+        $data->save(); 
+    
+
+        return redirect('/kegiatan_audit')->with('success', 'Kegiatan Audit selesai');
     }
 }

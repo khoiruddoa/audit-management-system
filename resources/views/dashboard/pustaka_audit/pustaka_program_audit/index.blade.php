@@ -47,7 +47,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
-                                        <th scope="col">Kegiatan</th>
+                                        <th scope="col">Divisi</th>
                                         <th scope="col">Judul Program</th>
                                         <th scope="col">Tahapan</th>
                                         <th scope="col">Lampiran</th>
@@ -59,7 +59,7 @@
                                     <tr>
                                         
                                         <th scope="row">{{$loop->iteration}}</th>
-                                        <td>{{ $item->kegiatan->kegiatan }}</td>
+                                        <td>{{ $item->auditee->auditee }}</td>
                                         <td>{{ $item->judul }}</td>
                                         <td>{!! $item->tahapan !!}</td>
                                         <td><a href="{{ $item->lampiran}}">download</a></td>

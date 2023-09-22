@@ -63,10 +63,7 @@
                                         <div class="col-lg-3 col-md-4 label">Dasar Audit</div>
                                         <div class="col-lg-9 col-md-8">{!! $audit->dasar_audit !!}</div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-4 label">Anggaran</div>
-                                        <div class="col-lg-9 col-md-8">{{ $audit->anggaran }}</div>
-                                    </div>
+                                 
                                     @if($audit->file)
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Lampiran</div>
@@ -84,6 +81,19 @@
                                         <div class="col-lg-9 col-md-8">{{ $audit->firstdate }} s/d {{ $audit->enddate }}
                                         </div>
                                     </div>
+
+                                    
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Tim Auditor</div>
+                                    <div class="col-lg-9 col-md-8">
+                                        @foreach($audit->susunanTim as $tim)
+                                        <div>
+                                            {{$tim->auditor->user->name}}
+                                        </div>
+                                        @endforeach
+                                    </div>
+
+                                </div>
 
 
 

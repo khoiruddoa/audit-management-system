@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('file')->nullable();
             $table->timestamps();
             $table->string('dasar_audit')->nullable(); 
-            $table->string('anggaran')->nullable(); 
+            // $table->string('anggaran')->nullable(); 
         });
     }
 

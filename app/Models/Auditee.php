@@ -19,7 +19,14 @@ class Auditee extends Model
     {
         return $this->hasMany(PerencanaanAudit::class);
     }
+ public function programKerjaAudit()
+    {
+        return $this->hasMany(ProgramKerjaAudit::class);
+    }
 
-
+    public function pustakaAudit()
+    {
+        return $this->hasMany(PustakaAudit::class);
+    }
 
 }

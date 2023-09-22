@@ -14,7 +14,7 @@ class SusunanTimController extends Controller
 
     public function index($id)
     {
-        return view('dashboard.pelaksanaan_audit.susunan_tim.index', [
+        return view('dashboard.perencanaan_audit.susunan_tim.index', [
             'audit' => PerencanaanAudit::find($id),
             
         ]);
@@ -24,7 +24,7 @@ class SusunanTimController extends Controller
     {
         $audit = PerencanaanAudit::find($id);
         $auditor = Auditor::all();
-        return view('dashboard.pelaksanaan_audit.susunan_tim.create', ['auditors' => $auditor,
+        return view('dashboard.perencanaan_audit.susunan_tim.create', ['auditors' => $auditor,
     'audit' => $audit]);
     }
     
@@ -40,7 +40,7 @@ class SusunanTimController extends Controller
         
         SusunanTim::create($validatedData);
 
-        return redirect('/pelaksanaan_audit/susunan_tim/' . $id)->with('success', 'Tim Ditambahkan');
+        return redirect('/perencanaan_audit/susunan_tim/' . $id)->with('success', 'Tim Ditambahkan');
 
     }
     public function destroy($id)

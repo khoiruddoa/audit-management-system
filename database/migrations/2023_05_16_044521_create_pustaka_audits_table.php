@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pustaka_audits', function (Blueprint $table) {
-            $table->foreignId('kegiatan_id');
+            $table->foreignId('auditee_id');
             $table->id();
             $table->string('judul');
             $table->longText('tahapan');

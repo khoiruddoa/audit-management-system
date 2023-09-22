@@ -27,16 +27,16 @@
                 <form action="{{route('pustaka_program_audit_store')}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Jenis Kegiatan Audit</label>
+                    <label class="col-sm-2 col-form-label">Divisi</label>
                     <div class="col-sm-10">
-                        <select class="form-select @error('kegiatan_id') is-invalid @enderror"
-                            name="kegiatan_id" aria-label="Default select example">
+                        <select class="form-select @error('auditee_id') is-invalid @enderror"
+                            name="auditee_id" aria-label="Default select example">
                             <option selected disabled>=== Pilih Satu ===</option>
-                            @foreach ($kegiatan as $item)
-                                <option value="{{ $item->id }}">{{ $item->kegiatan }}</option>
+                            @foreach ($divisi as $item)
+                                <option value="{{ $item->id }}">{{ $item->auditee }}</option>
                             @endforeach
                         </select>
-                        @error('kegiatan_id')
+                        @error('auditee_id')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>

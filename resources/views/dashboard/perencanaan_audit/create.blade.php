@@ -165,7 +165,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
+                                <!-- <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">Anggaran</label>
                                     <div class="col-sm-10">
                                         <input type="number" name="anggaran"
@@ -175,7 +175,7 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> -->
 
 
 

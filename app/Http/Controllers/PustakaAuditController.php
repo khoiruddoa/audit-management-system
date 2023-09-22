@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auditee;
 use App\Models\Kegiatan;
 use App\Models\PustakaAudit;
 use Illuminate\Http\Request;
@@ -17,22 +18,22 @@ class PustakaAuditController extends Controller
 
     public function create()
     {
-        $kegiatan = Kegiatan::all();
-        return view('dashboard.pustaka_audit.pustaka_program_audit.create', ['kegiatan' => $kegiatan]);
+        $divisi = Auditee::all();
+        return view('dashboard.pustaka_audit.pustaka_program_audit.create', ['divisi' => $divisi]);
     }
 
     public function edit($id)
     {
         $pustaka = PustakaAudit::find($id);
-        $kegiatan = Kegiatan::all();
-        return view('dashboard.pustaka_audit.pustaka_program_audit.edit', ['kegiatan' => $kegiatan, 'pustaka' => $pustaka]);
+        $divisi = Auditee::all();
+        return view('dashboard.pustaka_audit.pustaka_program_audit.edit', ['divisi' => $divisi, 'pustaka' => $pustaka]);
     }
 
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'kegiatan_id' => 'required|string|max:255',
+            'auditee_id' => 'required|string|max:255',
             'judul' => 'required|string|max:255',
             'tahapan' => 'required|string'
         ]);
@@ -53,12 +54,30 @@ class PustakaAuditController extends Controller
         return redirect('pustaka_audit/pustaka_program_audit/')->with('success', 'Program Ditambahkan');
     }
 
+    public function out_store(Request $request)
+    {
 
+     
+       $validatedData = $request->validate([
+            'auditee_id' => 'required|string|max:255',
+            'judul' => 'required|string|max:255',
+            'tahapan' => 'required|string'
+        ]);
+                                                                                                                                              
+        PustakaAudit::create($validatedData);
+
+        return back()->with('success', 'Program Kerja Ditambahkan');
+
+    }
+
+
+
+  
     public function update(Request $request, $id)
     {
         $data = PustakaAudit::find($id);
         $validatedData = $request->validate([
-            'kegiatan_id' => 'required|string|max:255',
+            'auditee_id' => 'required|string|max:255',
             'judul' => 'required|string|max:255',
             'tahapan' => 'required|string'
         ]);

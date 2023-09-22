@@ -19,6 +19,7 @@ class ProgramKerjaAudit extends Model
     {
         return $this->belongsTo(SusunanTim::class);
     }
+   
     public function pustakaAudit()
     {
         return $this->belongsTo(PustakaAudit::class);
@@ -28,7 +29,10 @@ class ProgramKerjaAudit extends Model
     {
         return $this->hasMany(KertasKerjaAudit::class);
     }
-
+    public function document()
+    {
+        return $this->hasMany(Document::class);
+    }
     
 
 

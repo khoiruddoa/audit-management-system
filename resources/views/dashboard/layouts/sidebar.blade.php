@@ -9,7 +9,7 @@
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
-@if(auth()->user()->role_id == 1 || auth()->user()->role_id == 2)
+<!-- @if(auth()->user()->role_id == 1 || auth()->user()->role_id == 2) -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Manajemen Audit</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -28,6 +28,11 @@
           <li>
             <a href="{{route('pelaksanaan_audit')}}">
               <i class="bi bi-circle"></i><span>Pelaksanaan Audit</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('program_kerja_audit_document_auditee')}}">
+              <i class="bi bi-circle"></i><span>Kelengkapan Dokumen</span>
             </a>
           </li>
           
@@ -49,9 +54,9 @@
          
         </ul>
       </li><!-- End Components Nav -->
-      @endif
+      <!-- @endif
 
-      @if(auth()->user()->role_id == 1)
+      @if(auth()->user()->role_id == 1) -->
        <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('manajemen_pegawai')}}">
           <i class="bi bi-person"></i>
@@ -103,10 +108,10 @@
           
         </ul>
       </li><!-- End Icons Nav -->
-      @endif
+      <!-- @endif
 
       
-      @if(auth()->user()->role_id == 3)
+      @if(auth()->user()->role_id == 3) -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('temuan_audit')}}">
           <i class="bi bi-person"></i>
@@ -126,7 +131,7 @@
           <span>Tindak lanjut</span>
         </a>
       </li>
-      @endif
+      <!-- @endif -->
 
       
       

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auditee;
 use App\Models\KertasKerjaAudit;
 use App\Models\PerencanaanAudit;
 use App\Models\ProgramKerjaAudit;
@@ -23,12 +24,14 @@ class ProgramKerjaAuditController extends Controller
     public function create($id)
     {
         $audit = PerencanaanAudit::find($id);
+        
 
-        $program_kerja = PustakaAudit::where('kegiatan_id', $audit->kegiatan_id)->get();
+        $program_kerja = PustakaAudit::where('auditee_id', $audit->auditee_id)->get();
         return view('dashboard.pelaksanaan_audit.program_kerja_audit.create', [
             'audit' => $audit,
             'susunan_tims' => SusunanTim::where('perencanaan_audit_id', $id)->get(),
-            'program_kerja' => $program_kerja
+            'program_kerja' => $program_kerja,
+            
            
         ]);
     }
@@ -44,7 +47,7 @@ class ProgramKerjaAuditController extends Controller
     {
         $id = $request->perencanaan_audit_id;
 
-        $kegiatan = PerencanaanAudit::find($id);
+
 
         $validatedData = $request->validate([
             'perencanaan_audit_id' => 'required|string|max:255',
@@ -55,24 +58,15 @@ class ProgramKerjaAuditController extends Controller
             
         ]);
 
-        if(isset($request->judul)){
-
-           $data = PustakaAudit::create([
-                'kegiatan_id' => $kegiatan->kegiatan_id,
-                'judul' => $request->judul,
-                'tahapan' => $request->tahapan
-
-            ]);
-            
-
-            $validatedData['pustaka_audit_id'] = $data->id;
-            $validatedData['tahapan'] = $data->tahapan;
-        }
+      
         ProgramKerjaAudit::create($validatedData);
 
         return redirect('/pelaksanaan_audit/program_kerja_audit/'.$id)->with('success', 'Program Kerja Ditambahkan');
 
     }
+
+
+    
 
     public function edit($id){
 

@@ -9,7 +9,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Kegiatan Audit</li>
+          <li class="breadcrumb-item"><a href="{{ route('kegiatan_audit') }}">Kegiatan Audit</a></li>
           <li class="breadcrumb-item active">Data Baru</li>
         </ol>
       </nav>

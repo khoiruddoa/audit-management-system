@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kegiatan extends Model
+class Document extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-
-
-    public function perencanaanAudit()
+    public function programKerjaAudit()
     {
-        return $this->hasMany(PerencanaanAudit::class);
+        return $this->belongsTo(ProgramKerjaAudit::class);
     }
 
-    
 }

@@ -26,10 +26,7 @@ class PerencanaanAudit extends Model
     {
         return $this->hasMany(SusunanTim::class);
     }
-    public function programKerjaAudit()
-    {
-        return $this->hasMany(ProgramKerjaAudit::class);
-    }
+   
 
 
 }

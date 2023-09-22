@@ -34,7 +34,7 @@ class PerencanaanAuditController extends Controller
     {
         $auditee = Auditee::all();
         $jenis = PustakaAudit::all();
-        $kegiatan = Kegiatan::all();
+        $kegiatan = Kegiatan::where('status','0')->get();
         return view('dashboard.perencanaan_audit.create', ['auditees' => $auditee, 'jenis' => $jenis, 'kegiatan' => $kegiatan]);
     }
 
@@ -57,7 +57,7 @@ class PerencanaanAuditController extends Controller
         'enddate' => 'required|date',
         'file' => 'nullable',
         'dasar_audit' => 'required',
-        'anggaran' =>'required'
+        // 'anggaran' =>'required'
     ]);
     
     if ($request->hasFile('file')) {

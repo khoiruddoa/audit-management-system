@@ -13,8 +13,8 @@ class PustakaAudit extends Model
     {
         return $this->hasMany(ProgramKerjaAudit::class);
     }
-    public function kegiatan()
+    public function auditee()
     {
-        return $this->belongsTo(Kegiatan::class);
+        return $this->belongsTo(Auditee::class);
     }
 }

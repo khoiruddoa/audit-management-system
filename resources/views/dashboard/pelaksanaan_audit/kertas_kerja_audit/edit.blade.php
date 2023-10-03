@@ -66,18 +66,7 @@
                                 </div>
 
 
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Data Umum</label>
-                                    <div class="col-sm-10">
-
-                                        <input id="x" type="hidden" name="data_umum">
-                                        <trix-editor input="x">{!!$kertas->data_umum!!}</trix-editor>
-                                       
-                                        @error('data_umum')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
+                               
 
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">Kondisi</label>
@@ -170,6 +159,18 @@
                                         @error('sebab')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputText" class="col-sm-2 col-form-label">Akibat</label>
+                                    <div class="col-sm-10">
+
+                                        <input id="x" type="hidden" name="akibat">
+                                        <trix-editor input="x">{!!$kertas->akibat!!}</trix-editor>
+                                       
+                                        @error('akibat')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
 

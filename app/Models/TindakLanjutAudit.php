@@ -9,8 +9,8 @@ class TindakLanjutAudit extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    public function kertasKerjaAudit()
+    public function tanggapanAudit()
     {
-        return $this->belongsTo(KertasKerjaAudit::class);
+        return $this->belongsTo(TanggapanAudit::class);
     }
 }

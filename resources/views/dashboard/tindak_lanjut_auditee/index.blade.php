@@ -35,7 +35,7 @@
                     <th scope="col">No</th>
               
                     <th scope="col">Program Audit</th>
-                    <th scope="col">Tanggal Kegiatan</th>
+                    
                     <th scope="col">Temuan Audit</th>
                     <th scope="col">Status</th>
                     <th scope="col">Tindak Lanjut Auditee</th>
@@ -43,12 +43,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($kertaskerja as $item)
+                  @foreach($tanggapan as $item)
                   <tr>
                   <th scope="row">{{$loop->iteration}}</th>
-                  <td>{{$item->programKerjaAudit->pustakaAudit->judul}}</td>
-                  <td>{{$item->programKerjaAudit->perencanaanAudit->firstdate}} - {{$item->programKerjaAudit->perencanaanAudit->enddate}}</td>
-                  <td>{{$item->temuan}}</td>
+                  <td>{{$item->kertasKerjaAudit->programKerjaAudit->pustakaAudit->judul}}</td>
+                 
+                  <td>{{$item->kertasKerjaAudit->temuan}}</td>
                   <td>Mohon ditindak lanjuti</td>
                     <td>
                       <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -64,13 +64,13 @@
                                   <button type="button" class="btn-close"
                                       data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
-                              <form action="{{route('tindak_lanjut_audit_store')}}" method="post" enctype="multipart/form-data">
+                              <form action="{{route('tindak_lanjut_auditee_store')}}" method="post" enctype="multipart/form-data">
                                   @csrf
                               <div class="modal-body">
                                   <trix-editor input="a{{ $item->id }}" required>
                                   </trix-editor>
 
-                                  <input type="hidden" name="kertas_kerja_audit_id"
+                                  <input type="hidden" name="tanggapan_audit_id"
                                       value="{{ $item->id }}">
                                   <input id="a{{ $item->id }}" type="hidden"
                                       name="tindakan">

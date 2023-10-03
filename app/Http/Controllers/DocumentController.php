@@ -9,7 +9,7 @@ class DocumentController extends Controller
 {
     public function index($id)
     {
-        return view('dashboard.pelaksanaan_audit.program_kerja_audit.document.index', [
+        return view('dashboard.perencanaan_audit.program_kerja_audit.document.index', [
      
             'dokumen' => Document::where('program_kerja_audit_id', $id)->get(),
             'id' => $id

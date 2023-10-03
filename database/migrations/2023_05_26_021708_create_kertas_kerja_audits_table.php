@@ -16,10 +16,10 @@ return new class extends Migration
             $table->foreignId('program_kerja_audit_id');
             $table->string('temuan');
             $table->date('tanggal');
-            $table->text('data_umum');
             $table->text('kondisi');
             $table->text('kriteria');
             $table->text('sebab');
+            $table->text('akibat');
             $table->text('rekomendasi');
             $table->date('batas_waktu')->nullable();
             $table->string('status')->nullable();

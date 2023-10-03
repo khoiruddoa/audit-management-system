@@ -4,12 +4,12 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Kertas Kerja Audit</h1>
+            <h1>Program Kerja Audit</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('pelaksanaan_audit') }}">Program Kerja Audit</a></li>
-                    <li class="breadcrumb-item active">Kertas Kerja Audit</li>
+                    <li class="breadcrumb-item"><a href="{{ route('pelaksanaan_audit') }}">Pelaksanaan Audit</a></li>
+                    <li class="breadcrumb-item active">Program Kerja</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -36,54 +36,38 @@
 
                                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
 
-                                    <h5 class="card-title">Detail Kertas Kerja</h5>
+                                    <h5 class="card-title">Detail Program Kerja</h5>
 
                                     <div class="row">
-                                        <div class="col-lg-3 col-md-4 label ">Tanggal</div>
-                                        <div class="col-lg-9 col-md-8">{{$kertas->tanggal}}</div>
+                                        <div class="col-lg-3 col-md-4 label ">Objek Audit</div>
+                                        <div class="col-lg-9 col-md-8">{{ $program->perencanaanAudit->auditee->auditee}}</div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-lg-3 col-md-4 label ">Aktivitas Audit</div>
-                                        <div class="col-lg-9 col-md-8">{{$kertas->programKerjaAudit->pustakaAudit->judul}}</div>
+                                        <div class="col-lg-3 col-md-4 label ">Kegiatan Audit</div>
+                                        <div class="col-lg-9 col-md-8">{{ $program->perencanaanAudit->kegiatan->kegiatan}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label">Program Kerja</div>
+                                        <div class="col-lg-9 col-md-8">{{ $program->pustakaAudit->judul }}</div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-lg-3 col-md-4 label ">Temuan</div>
-                                        <div class="col-lg-9 col-md-8">{{$kertas->temuan}}</div>
-                                    </div>
-                                   
-
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-4 label">Kondisi</div>
-                                        <div class="col-lg-9 col-md-8">{!!$kertas->kondisi!!}</div>
+                                        <div class="col-lg-3 col-md-4 label">PIC</div>
+                                        <div class="col-lg-9 col-md-8">{{ $program->susunanTim->auditor->user->name}}</div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-lg-3 col-md-4 label">Kriteria</div>
-                                        <div class="col-lg-9 col-md-8">{!!$kertas->kondisi!!}</div>
+                                        <div class="col-lg-3 col-md-4 label">Tahapan</div>
+                                        <div class="col-lg-9 col-md-8">{!! $program->tahapan !!}</div>
                                     </div>
 
                                     
 
                                     <div class="row">
-                                        <div class="col-lg-3 col-md-4 label">Sebab</div>
-                                        <div class="col-lg-9 col-md-8">{!!$kertas->sebab!!}</div>
+                                        <div class="col-lg-3 col-md-4 label">Waktu</div>
+                                        <div class="col-lg-9 col-md-8">{{ $program->waktu }}</div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-4 label">Akibat</div>
-                                        <div class="col-lg-9 col-md-8">{!!$kertas->akibat!!}</div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-4 label">Rekomendasi</div>
-                                        <div class="col-lg-9 col-md-8">{!!$kertas->rekomendasi!!}</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-4 label">Batas Waktu</div>
-                                        <div class="col-lg-9 col-md-8">{{$kertas->batas_waktu}}</div>
-                                    </div>
-
 
 
                                 </div>

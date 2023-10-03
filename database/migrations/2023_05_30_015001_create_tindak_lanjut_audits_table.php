@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tindak_lanjut_audits', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kertas_kerja_audit_id');
+            $table->foreignId('tanggapan_audit_id');
             $table->string('tindakan');
             $table->string('lampiran')->nullable();
             $table->string('status')->nullable();

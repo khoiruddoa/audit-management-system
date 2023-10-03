@@ -61,26 +61,20 @@
                                     <td>@if ($item->status == 0) On progress @else Finish @endif</td>
                                     <td>
 
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Pilih Satu
+                                            </button>
+                                            <ul class="dropdown-menu">
 
-                                        <div class="col-sm-10">
-                                            <select class="form-select" aria-label="Default select example" onchange="redirectToLink(this.value)">
-                                                <option selected disabled>-- Pilih Satu --</option>
-                                                <option value="{{ route('kegiatan_audit_edit', ['id' => $item->id]) }}">
-                                                    Edit</option>
-                                                <option value="{{ route('kegiatan_audit_delete', ['id' => $item->id]) }}">
-                                                    Hapus</option>
-                                                <option value="{{ route('kegiatan_audit_finish', ['id' => $item->id]) }}">
-                                                    Selesai</option>
-                                            </select>
+                                                
+                                                <li><a class="dropdown-item" href="{{ route('kegiatan_audit_edit', ['id' => $item->id]) }}">Edit</a></li>
+
+                                                <li><a class="dropdown-item" href="{{ route('kegiatan_audit_delete', ['id' => $item->id]) }}">Hapus</a></li>
+                                                <li><a class="dropdown-item" href="{{ route('kegiatan_audit_finish', ['id' => $item->id]) }}">Selesai</a></li>
+                                            </ul>
+
                                         </div>
-
-                                        <script>
-                                            function redirectToLink(value) {
-                                                if (value) {
-                                                    window.location.href = value;
-                                                }
-                                            }
-                                        </script>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -178,15 +178,13 @@
                                 </div> -->
 
 
-
                                 <div class="row mb-3">
-                                    <label for="inputNumber" class="col-sm-2 col-form-label">Lampiran Perencanaan</label>
+                                    <label for="inputText" class="col-sm-2 col-form-label">Lampiran</label>
                                     <div class="col-sm-10">
-                                        <input name="file" type="file" id="formFile"
-                                            class="form-control 
-                      @error('file') is-invalid @enderror"
-                                            id="file" value="{{ old('file') }}" autofocus>
-                                        @error('file')
+                                        <input type="text" name="lampiran"
+                                            class="form-control @error('lampiran') is-invalid @enderror" id="lampiran"
+                                            value="{{ old('lampiran') }}" autofocus>
+                                        @error('lampiran')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>

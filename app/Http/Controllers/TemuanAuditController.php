@@ -25,26 +25,30 @@ class TemuanAuditController extends Controller
         ]);
     }
 
+    public function detail_temuan($id){
+
+        return view('dashboard.temuan.detail_temuan', [
+            'kertasKerja' => KertasKerjaAudit::find($id)
+        ]);
+    }
+
+
+
     public function store(Request $request)
     {
-        $data = new TanggapanAudit();
-        $data->kertas_kerja_audit_id = $request->input('kertas_kerja_audit_id');
-        $data->tanggapan = $request->input('tanggapan');
-        $data->lampiran = $request->file('lampiran');
-        // ...
-        // Anda dapat menambahkan kolom-kolom lain yang perlu disimpan
-    
-        $data->save();
-    
-        // Jika Anda memiliki file lampiran yang diunggah
-        // if ($request->hasFile('lampiran')) {
-        //     $lampiran = $request->file('lampiran');
-        //     // Lakukan logika untuk menyimpan file lampiran sesuai kebutuhan
-        // }
-    
-        // Lakukan redirect atau tindakan lainnya setelah penyimpanan berhasil
+        
 
-        return redirect('/temuan')->with('success', 'Program Ditambahkan');
+       
+        $validatedData = $request->validate([
+            'kertas_kerja_audit_id' => 'required|string|max:255',
+            'tanggapan' => 'required|string|max:255',
+            'lampiran' => 'string|max:255'
+        ]);
+    
+            
+            TanggapanAudit::create($validatedData);
+
+        return redirect('/temuan')->with('success', 'Tanggapan diisi');
     }
 
     public function tanggapan(){

@@ -105,30 +105,22 @@
                                         <td>{{$item->temuan}}</td>
                                         <td>test</td>
                                         <td>
-
-                                            <div class="col-sm-10">
-                                                <select class="form-select" aria-label="Default select example"
-                                                    onchange="redirectToLink(this.value)">
-                                                    <option selected disabled>-- Pilih Satu --</option>
-                                                    <option value="{{route('kertas_kerja_audit_detail', ['id' => $item->id])}}">Detail</option>
-                                                    <option value="{{route('kertas_kerja_audit_edit', ['id' => $item->id])}}">Edit</option>
-                                                   
-                                                    <option
-                                                        value="{{route('kertas_kerja_audit_delete', ['id' => $item->id])}}">
-                                                        Hapus</option>
-                                                       
-                                                </select>
-                                            </div>
-                        
-                                            <script>
-                                                function redirectToLink(value) {
-                                                    if (value) {
-                                                        window.location.href = value;
-                                                    }
-                                                }
-                                            </script>
+                                            
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Pilih Satu
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="{{route('kertas_kerja_audit_detail', ['id' => $item->id])}}">Detail</a></li>
 
 
+                                                <li><a class="dropdown-item" href="{{route('kertas_kerja_audit_edit', ['id' => $item->id])}}">Edit</a></li>
+
+                                                <li><a class="dropdown-item" href="{{route('kertas_kerja_audit_delete', ['id' => $item->id])}}">Hapus</a></li>
+
+                                            </ul>
+
+                                        </div>
                                         </td>
 
                                     </tr>

@@ -35,7 +35,7 @@
                     <th scope="col">No</th>
               
                     <th scope="col">Program Audit</th>
-                    <th scope="col">Tanggal Kegiatan</th>
+                   
                     <th scope="col">Temuan Audit</th>
                     <th scope="col">Tindak Lanjut Audit</th>
                     
@@ -47,9 +47,9 @@
                   @foreach($tindakLanjut as $item)
                   <tr>
                   <th scope="row">{{$loop->iteration}}</th>
-                  <td>{{$item->kertasKerjaAudit->programKerjaAudit->pustakaAudit->judul}}</td>
-                  <td>{{$item->kertasKerjaAudit->programKerjaAudit->perencanaanAudit->firstdate}} - {{$item->kertasKerjaAudit->programKerjaAudit->perencanaanAudit->enddate}}</td>
-                  <td>{{$item->kertasKerjaAudit->temuan}}</td>
+                  <td>{{$item->tanggapanAudit->kertasKerjaAudit->programKerjaAudit->pustakaAudit->judul}}</td>
+                  
+                  <td>{{$item->tanggapanAudit->kertasKerjaAudit->temuan}}</td>
                   <td>{!!$item->tindakan!!}</td>
                   <td><div class="col-sm-10">
                     <select class="form-select" aria-label="Default select example"

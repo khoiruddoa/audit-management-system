@@ -14,4 +14,9 @@ class TanggapanAudit extends Model
     {
         return $this->belongsTo(KertasKerjaAudit::class);
     }
+
+    public function tindakLanjutAudit()
+    {
+        return $this->hasMany(TindakLanjutAudit::class);
+    }
 }

@@ -54,7 +54,7 @@
                    
                     <td>{{$item->kertasKerjaAudit->count()}}</td>
                     
-                    <td> <a href="{{route('temuan_audit_detail', ['id' => $item->id])}}" class="btn btn-primary">Tanggapan</a></td>
+                    <td> <a href="{{route('temuan_audit_detail', ['id' => $item->id])}}" class="btn btn-primary">Detail</a></td>
                    
                   </tr>
                   @endforeach

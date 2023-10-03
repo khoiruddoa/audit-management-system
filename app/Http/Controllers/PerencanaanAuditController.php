@@ -59,14 +59,6 @@ class PerencanaanAuditController extends Controller
         'dasar_audit' => 'required',
         // 'anggaran' =>'required'
     ]);
-    
-    if ($request->hasFile('file')) {
-        $file = $request->file('file');
-        $filename = time() . '_' . $file->getClientOriginalName();
-        $file->move(public_path('file'), $filename);
-
-        $validatedData['file'] = url('/') . '/file/' . $filename;
-    }
 
         
         PerencanaanAudit::create($validatedData);
@@ -105,13 +97,7 @@ class PerencanaanAuditController extends Controller
         'anggaran' =>'required'
     ]);
     
-    if ($request->hasFile('file')) {
-        $file = $request->file('file');
-        $filename = time() . '_' . $file->getClientOriginalName();
-        $file->move(public_path('file'), $filename);
-
-        $validatedData['file'] = url('/') . '/file/' . $filename;
-    }
+    
 
         
         $data->update($validatedData);

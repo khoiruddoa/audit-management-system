@@ -151,7 +151,7 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Aktivitas Audit</th>
                                     <th scope="col">PIC</th>
-                                    <th scope="col">Kertas Kerja Audit</th>
+                                    <th scope="col">Kelengkapan Dokumen</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
@@ -162,12 +162,12 @@
                                     <td>{{$item->pustakaAudit->judul}}</td>
 
                                     <td>{{$item->susunanTim->auditor->user->name}}</td>
+                                    <td><a href="{{route('program_kerja_audit_document',['id' => $item->id])}}" class="btn btn-secondary"><i class="bi bi-collection"></i></a></td>
 
 
-                                    <td><a href="{{route('kertas_kerja_audit',['id' => $item->id])}}" class="btn btn-secondary"><i class="bi bi-collection"></i></a></td>
+
                                     </td>
                                     <td>
-
                                         <div class="dropdown">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 Pilih Satu
@@ -183,8 +183,6 @@
                                             </ul>
 
                                         </div>
-
-
                                     </td>
 
                                 </tr>

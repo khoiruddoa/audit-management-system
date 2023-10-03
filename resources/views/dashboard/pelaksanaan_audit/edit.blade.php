@@ -176,17 +176,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Anggaran</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" name="anggaran"
-                                            class="form-control   @error('anggaran') is-invalid @enderror" id="anggaran"
-                                            value="{{ old('anggaran', $pelaksanaan->anggaran) }}" autofocus>
-                                        @error('anggar')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
+                                
 
 
 

@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Auditee;
+
+
 use App\Models\KertasKerjaAudit;
 use App\Models\PerencanaanAudit;
 use App\Models\ProgramKerjaAudit;
@@ -10,11 +11,11 @@ use App\Models\PustakaAudit;
 use App\Models\SusunanTim;
 use Illuminate\Http\Request;
 
-class ProgramKerjaAuditController extends Controller
+class PelaksanaanProgramKerjaAuditController extends Controller
 {
     public function index($id)
     {
-        return view('dashboard.perencanaan_audit.program_kerja_audit.index', [
+        return view('dashboard.pelaksanaan_audit.program_kerja_audit.index', [
             'audit' => PerencanaanAudit::find($id),
             'susunan_tims' => SusunanTim::where('perencanaan_audit_id', $id)->get(),
             'program_kerja' => ProgramKerjaAudit::where('perencanaan_audit_id', $id)->get()
@@ -27,7 +28,7 @@ class ProgramKerjaAuditController extends Controller
         
 
         $program_kerja = PustakaAudit::where('auditee_id', $audit->auditee_id)->get();
-        return view('dashboard.perencanaan_audit.program_kerja_audit.create', [
+        return view('dashboard.pelaksanaan_audit.program_kerja_audit.create', [
             'audit' => $audit,
             'susunan_tims' => SusunanTim::where('perencanaan_audit_id', $id)->get(),
             'program_kerja' => $program_kerja,
@@ -39,7 +40,7 @@ class ProgramKerjaAuditController extends Controller
 
     public function detail($id)
     {
-        return view('dashboard.perencanaan_audit.program_kerja_audit.detail', [
+        return view('dashboard.pelaksanaan_audit.program_kerja_audit.detail', [
             'program' => ProgramKerjaAudit::find($id)
         ]);
     }
@@ -75,7 +76,7 @@ class ProgramKerjaAuditController extends Controller
         $audit = PerencanaanAudit::find($program->perencanaan_audit_id);
 
         $program_kerja = PustakaAudit::where('kegiatan_id', $audit->kegiatan_id)->get();
-        return view('dashboard.perencanaan_audit.program_kerja_audit.edit', [
+        return view('dashboard.pelaksanaan_audit.program_kerja_audit.edit', [
             'audit' => $audit,
             'susunan_tims' => SusunanTim::where('perencanaan_audit_id', $audit->id)->get(),
             'program_kerja' => $program_kerja,
@@ -119,7 +120,7 @@ class ProgramKerjaAuditController extends Controller
        
         $data->update($validatedData);
 
-        return redirect('/perencanaan_audit/program_kerja_audit/'.$id)->with('success', 'Program Kerja Diupdate');
+        return redirect('/pelaksanaan_audit/program_kerja_audit/'.$id)->with('success', 'Program Kerja Diupdate');
 
     }
 }

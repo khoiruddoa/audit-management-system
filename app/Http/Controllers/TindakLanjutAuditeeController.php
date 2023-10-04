@@ -8,29 +8,34 @@ use Illuminate\Http\Request;
 
 class TindakLanjutAuditeeController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
-    return view('dashboard.tindak_lanjut_auditee.index', [
-
-
-        'tanggapan' => TanggapanAudit::where('status', '2')->get()
-    ]);
-}
-
-public function store(Request $request)
-{
-    $data = new TindakLanjutAudit();
-    $data->tanggapan_audit_id = $request->input('tanggapan_audit_id');
-    $data->tindakan = $request->input('tindakan');
-    $data->lampiran = $request->file('lampiran');
-    // ...
-    // Anda dapat menambahkan kolom-kolom lain yang perlu disimpan
-
-    $data->save();
-
-  
-    return back()->with('success', 'tindak lanjut sukses');
-}
+        return view('dashboard.tindak_lanjut_auditee.index', [
 
 
+            'tindaklanjut' => TindakLanjutAudit::all()
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+
+
+        $tindaklanjut = TindakLanjutAudit::find($request->id);
+
+        $validatedData = $request->validate([
+
+            'tindakan' => 'nullable|string|max:255',
+            'lampiran' => 'nullable|string|max:255'
+        ]);
+
+
+        $validatedData['status'] = '1';
+        $tindaklanjut->update($validatedData);
+
+
+
+        return back()->with('success', 'tindak lanjut sukses');
+    }
 }

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('tanggapan');
             $table->string('lampiran')->nullable();
             $table->string('status')->nullable();
+            $table->string('komentar_auditor')->nullable();
+            $table->string('komentar_auditee')->nullable();
             $table->timestamps();
         });
     }

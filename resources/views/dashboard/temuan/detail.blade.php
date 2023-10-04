@@ -52,20 +52,21 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $item->programKerjaAudit->pustakaAudit->judul }}</td>
                                     <td>{!! $item->temuan !!}</td>
-                                    <!-- <td>{!! $item->data_umum !!}</td>
-                                            <td>{!! $item->kondisi !!}</td>
-                                            <td>{!! $item->kriteria !!}</td>
-                                            <td>{!! $item->sebab !!}</td>
-                                            <td>{!! $item->rekomendasi !!}</td> -->
-
 
                                     <td>
-
-
-
+                                        @php
+                                        $tanggapanAudit = $item->tanggapanAudit->first();
+                                        @endphp
+                                        @if($tanggapanAudit && in_array($tanggapanAudit->status, [1, 2]))
+                                        <button type="button" class="btn btn-success" disabled>
+                                            Sudah Ditanggapi
+                                        </button>
+                                        @else
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#disablebackdrop{{ $item->id }}">
                                             Tanggapi
                                         </button>
+                                        @endif
+
                                         <div class="modal fade" id="disablebackdrop{{ $item->id }}" tabindex="-1" data-bs-backdrop="false">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -73,48 +74,48 @@
                                                         <h5 class="modal-title">Tanggapan Audit</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <form action="{{route('tanggapan_audit_store')}}" method="post" enctype="multipart/form-data">
+                                                    <form action="{{route('tanggapan_audit_store')}}" method="post">
                                                         @csrf
                                                         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function() {
-    $("input[name='option']").change(function() {
-        if ($("#option2").is(":checked")) {
-            $("#optional").show();
-        } else {
-            $("#optional").hide();
-        }
-    });
-});
-</script>
+                                                        <script>
+                                                            $(document).ready(function() {
+                                                                $("input[name='option']").change(function() {
+                                                                    if ($("#option2").is(":checked")) {
+                                                                        $("#optional").show();
+                                                                    } else {
+                                                                        $("#optional").hide();
+                                                                    }
+                                                                });
+                                                            });
+                                                        </script>
 
-<div class="modal-body">
-    <legend class="col-form-label col-sm-4 pt-0">Tanggapan Auditee</legend>
-    <fieldset class="row mb-3">
-        <div class="col-sm-10">
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="option" id="option1" value="1">
-                <label class="form-check-label" for="option1">
-                    Setuju dengan pendapat Auditor
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="option" id="option2" value="2">
-                <label class="form-check-label" for="option2">
-                    Sanggah
-                </label>
-            </div>
-        </div>
-    </fieldset>
+                                                        <div class="modal-body">
+                                                            <legend class="col-form-label col-sm-4 pt-0">Tanggapan Auditee</legend>
+                                                            <fieldset class="row mb-3">
+                                                                <div class="col-sm-10">
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="option" id="option1" value="1">
+                                                                        <label class="form-check-label" for="option1">
+                                                                            Setuju dengan pendapat Auditor
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="option" id="option2" value="2">
+                                                                        <label class="form-check-label" for="option2">
+                                                                            Sanggah
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
 
-    <div id="optional" style="display: none;">
-        <trix-editor input="{{ $item->id }}"></trix-editor>
-        <input type="hidden" name="kertas_kerja_audit_id" value="{{ $item->id }}">
-        <input id="{{ $item->id }}" type="hidden" name="tanggapan">
-        <label for="inputText" class="col-sm-2 col-form-label">Lampiran</label>
-        <input type="text" name="lampiran" class="form-controll mb-2">
-    </div>
-</div>
+                                                            <div id="optional" style="display: none;">
+                                                                <trix-editor input="{{ $item->id }}"></trix-editor>
+                                                                <input type="hidden" name="kertas_kerja_audit_id" value="{{ $item->id }}">
+                                                                <input id="{{ $item->id }}" type="hidden" name="tanggapan">
+                                                                <label for="inputText" class="col-sm-2 col-form-label">Lampiran</label>
+                                                                <input type="text" name="lampiran" class="form-controll mb-2">
+                                                            </div>
+                                                        </div>
 
 
                                                         <div class="modal-footer">

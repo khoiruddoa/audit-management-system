@@ -50,10 +50,6 @@ Route::get('/login',[LoginController::class, 'index'])->name('login');
 
 Route::post('/login',[LoginController::class, 'authenticate'])->name('authenticate');
 
-Route::get('/tanggapan-auditee', function () {
-    return view('dashboard.tanggapan_auditee.index');
-})->name('tanggapan_auditee');
-
 
 
 Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
@@ -71,11 +67,11 @@ Route::get('/tanggapan', [TemuanAuditController::class, 'tanggapan'])->name('tan
 Route::get('/tindaklanjut', [TindakLanjutAuditController::class, 'index'])->name('tindaklanjut_audit');
 Route::get('/tindaklanjut/auditor', [TindakLanjutAuditController::class, 'index_auditor'])->name('tindaklanjut_audit_auditor');
 Route::get('/tindaklanjut/detail/{id}', [TindakLanjutAuditController::class, 'detail'])->name('tindaklanjut_audit_detail');
-Route::post('/tindaklanjut/store', [TindakLanjutAuditController::class, 'store'])->name('tindak_lanjut_audit_store');
+Route::get('/tindaklanjut/store/{id}', [TindakLanjutAuditController::class, 'store'])->name('tindak_lanjut_audit_store');
 
 
 Route::get('/tindak_lanjut_auditee', [TindakLanjutAuditeeController::class, 'index'])->name('tindaklanjut_auditee');
-Route::post('/tindak_lanjut_auditee/store', [TindakLanjutAuditeeController::class, 'store'])->name('tindak_lanjut_auditee_store');
+Route::post('/tindak_lanjut_auditee/store', [TindakLanjutAuditeeController::class, 'update'])->name('tindak_lanjut_auditee_store');
 
 // Route::get('/pelaksanaan_audit/susunan_tim', function () {
 //     return view('dashboard.pelaksanaan_audit.susunan_tim.index');
@@ -156,6 +152,8 @@ Route::post('perencanaan_audit/susunan_tim/store', [SusunanTimController::class,
 
 
 Route::get('/pelaksanaan_audit/tanggapan_auditee', [TanggapanAuditController::class, 'index'])->name('tanggapan_auditee_auditor');
+Route::get('/pelaksanaan_audit/tanggapan_auditee/{id}', [TanggapanAuditController::class, 'detail'])->name('tanggapan_auditee_auditor_detail');
+
 // Route::get('/pelaksanaan_audit/tanggapan_auditee/delete/{id}', [SusunanTimController::class, 'destroy'])->name('tanggapan_auditee_delete');
 // Route::get('/pelaksanaan_audit/tanggapan_auditee/create/{id}', [SusunanTimController::class, 'create'])->name('tanggapan_auditee_create');
 // Route::post('/pelaksanaan_audit/tanggapan_auditee/store', [SusunanTimController::class, 'store'])->name('susunan_tim_store');

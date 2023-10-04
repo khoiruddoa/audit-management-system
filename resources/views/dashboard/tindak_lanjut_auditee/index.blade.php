@@ -43,13 +43,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($tanggapan as $item)
+                  @foreach($tindaklanjut as $item)
                   <tr>
                   <th scope="row">{{$loop->iteration}}</th>
-                  <td>{{$item->kertasKerjaAudit->programKerjaAudit->pustakaAudit->judul}}</td>
+                  <td>{{$item->tanggapanAudit->kertasKerjaAudit->programKerjaAudit->pustakaAudit->judul}}</td>
                  
-                  <td>{{$item->kertasKerjaAudit->temuan}}</td>
-                  <td>Mohon ditindak lanjuti</td>
+                  <td>{{$item->tanggapanAudit->kertasKerjaAudit->temuan}}</td>
+                  <td>@if($item->status == null) Mohon ditindak lanjut @else Sudah di tindak lanjut @endif</td>
                     <td>
                       <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                       data-bs-target="#disablebackdrop{{ $item->id }}">
@@ -70,14 +70,14 @@
                                   <trix-editor input="a{{ $item->id }}" required>
                                   </trix-editor>
 
-                                  <input type="hidden" name="tanggapan_audit_id"
+                                  <input type="hidden" name="id"
                                       value="{{ $item->id }}">
                                   <input id="a{{ $item->id }}" type="hidden"
                                       name="tindakan">
                                   <label for="inputText"
                                       class="col-sm-2 col-form-label">Lampiran</label>
 
-                                  <input type="file" name="lampiran"
+                                  <input type="text" name="lampiran"
                                       class="form-controll mb-2" required>
 
                               </div>

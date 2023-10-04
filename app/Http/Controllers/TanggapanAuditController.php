@@ -13,4 +13,11 @@ class TanggapanAuditController extends Controller
             'tanggapan' => TanggapanAudit::all()
         ]);
     }
+
+    public function detail($id){
+
+        return view('dashboard.pelaksanaan_audit.tanggapan_auditee.detail', [
+            'tanggapan' => TanggapanAudit::find($id)
+        ]);
+    }
 }

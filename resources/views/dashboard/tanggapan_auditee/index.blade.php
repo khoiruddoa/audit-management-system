@@ -23,7 +23,7 @@
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <h5 class="card-title">Data Tanggapan Audite</h5>
+                    <h5 class="card-title">Datah Tanggapan Audite</h5>
                 </div>
                
             </div>

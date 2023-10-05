@@ -38,6 +38,7 @@
                   <th scope="col">Temuan Audit</th>
                   <th scope="col">Status</th>
                   <th scope="col">Tindak Lanjut Auditee</th>
+                  <th scope="col"></th>
 
                 </tr>
               </thead>
@@ -82,6 +83,7 @@
                       </div>
                     </div>
                   </td>
+                  <td><a href="{{route('tindak_lanjut_auditee_detail',['id'=> $item->id])}}" class="btn btn-primary">Simpan</button></td>
                 </tr>
                 @endforeach
               </tbody>

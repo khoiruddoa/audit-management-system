@@ -18,6 +18,16 @@ class TindakLanjutAuditeeController extends Controller
         ]);
     }
 
+    public function detail($id)
+    {
+$tindaklanjut = TindakLanjutAudit::find($id);
+        return view('dashboard.tindak_lanjut_auditee.detail', [
+
+
+            'tindakLanjut' => $tindaklanjut
+        ]);
+    }
+
     public function update(Request $request)
     {
 

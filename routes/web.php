@@ -74,6 +74,7 @@ Route::get('/tindaklanjut/store/{id}', [TindakLanjutAuditController::class, 'sto
 
 Route::get('/tindak_lanjut_auditee', [TindakLanjutAuditeeController::class, 'index'])->name('tindaklanjut_auditee');
 Route::post('/tindak_lanjut_auditee/store', [TindakLanjutAuditeeController::class, 'update'])->name('tindak_lanjut_auditee_store');
+Route::get('/tindak_lanjut_auditee/detail/{id}', [TindakLanjutAuditeeController::class, 'detail'])->name('tindaklanjut_auditee_detail');
 
 // Route::get('/pelaksanaan_audit/susunan_tim', function () {
 //     return view('dashboard.pelaksanaan_audit.susunan_tim.index');

@@ -9,8 +9,10 @@ class TanggapanAuditController extends Controller
 {
     public function index(){
 
+        $tanggapanBelumTindaklanjut = TanggapanAudit::whereDoesntHave('tindakLanjutAudit')->get();
+
         return view('dashboard.pelaksanaan_audit.tanggapan_auditee.index', [
-            'tanggapan' => TanggapanAudit::all()
+            'tanggapan' => $tanggapanBelumTindaklanjut
         ]);
     }
 
@@ -20,4 +22,23 @@ class TanggapanAuditController extends Controller
             'tanggapan' => TanggapanAudit::find($id)
         ]);
     }
+
+    public function sanggah(Request $request)
+    {
+
+
+        $tanggapan = TanggapanAudit::find($request->id);
+
+        $validatedData = $request->validate([
+
+           
+            'komentar_auditor' => 'nullable|string|max:255'
+        ]);
+
+        $validatedData['status'] = '0';
+        $tanggapan->update($validatedData);
+
+        return back()->with('success', 'sukses');
+    }
+    
 }

@@ -29,55 +29,54 @@
                             </li>
 
 
-
                         </ul>
                         <div class="tab-content pt-2">
 
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
 
-                                <h5 class="card-title">Detail Tanggapan Audit</h5>
+                                <h5 class="card-title">Detail Tindak Lanjut Audit</h5>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label ">Program Kerja Audit</div>
-                                    <div class="col-lg-9 col-md-8">{{ $tanggapan->kertasKerjaAudit->programKerjaAudit->pustakaAudit->judul }}</div>
+                                    <div class="col-lg-9 col-md-8">{{ $tindakLanjut->tanggapanAudit->kertasKerjaAudit->programKerjaAudit->pustakaAudit->judul }}</div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label ">Tanggal</div>
-                                    <div class="col-lg-9 col-md-8">{{ $tanggapan->kertasKerjaAudit->tanggal }}</div>
+                                    <div class="col-lg-9 col-md-8">{{ $tindakLanjut->tanggapanAudit->kertasKerjaAudit->tanggal }}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label ">Temuan</div>
-                                    <div class="col-lg-9 col-md-8">{!! $tanggapan->kertasKerjaAudit->temuan !!}</div>
+                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tanggapanAudit->kertasKerjaAudit->temuan !!}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label ">Kondisi</div>
-                                    <div class="col-lg-9 col-md-8">{!! $tanggapan->kertasKerjaAudit->kondisi !!}</div>
+                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tanggapanAudit->kertasKerjaAudit->kondisi !!}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label ">Kriteria</div>
-                                    <div class="col-lg-9 col-md-8">{!! $tanggapan->kertasKerjaAudit->kriteria !!}</div>
+                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tanggapanAudit->kertasKerjaAudit->kriteria !!}</div>
                                 </div>
                                 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Sebab</div>
-                                    <div class="col-lg-9 col-md-8">{!!  $tanggapan->kertasKerjaAudit->sebab !!}</div>
+                                    <div class="col-lg-9 col-md-8">{!!  $tindakLanjut->tanggapanAudit->kertasKerjaAudit->sebab !!}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Akibat</div>
-                                    <div class="col-lg-9 col-md-8">{!! $tanggapan->kertasKerjaAudit->akibat !!}</div>
+                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tanggapanAudit->kertasKerjaAudit->akibat !!}</div>
                                 </div>
                                
                                
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Rekomendasi</div>
-                                    <div class="col-lg-9 col-md-8">{!! $tanggapan->kertasKerjaAudit->rekomendasi !!}</div>
+                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tanggapanAudit->kertasKerjaAudit->rekomendasi !!}</div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Batas Waktu</div>
-                                    <div class="col-lg-9 col-md-8">{{ $tanggapan->kertasKerjaAudit->batas_waktu }} 
+                                    <div class="col-lg-9 col-md-8">{{ $tindakLanjut->tanggapanAudit->kertasKerjaAudit->batas_waktu }} 
                                     </div>
                                 </div>
 
@@ -86,7 +85,7 @@
                                     <div class="col-lg-9 col-md-8">
                                        
                                         <div>
-                                            {{$tanggapan->kertasKerjaAudit->programKerjaAudit->susunanTim->auditor->user->name}}
+                                            {{$tindakLanjut->tanggapanAudit->kertasKerjaAudit->programKerjaAudit->susunanTim->auditor->user->name}}
                                         </div>
                                       
                                     </div>
@@ -94,12 +93,22 @@
                                 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Tanggapan Auditee</div>
-                                    <div class="col-lg-9 col-md-8">{!! $tanggapan->tanggapan !!} 
+                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tanggapanAudit->tanggapan !!} 
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Lampiran</div>
-                                    <div class="col-lg-9 col-md-8">{!! $tanggapan->lampiran !!} 
+                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tanggapanAudit->lampiran !!} 
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Tindak Lanjut</div>
+                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tindakan !!} 
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Lampiran Tindak Lanjut</div>
+                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->lampiran !!} 
                                     </div>
                                 </div>
                                 

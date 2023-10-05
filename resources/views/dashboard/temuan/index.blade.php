@@ -24,6 +24,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                     <h5 class="card-title">Data Temuan Audit</h5>
+                  
                 </div>
                
             </div>
@@ -38,6 +39,11 @@
                     <th scope="col">Program Audit</th>
                     <th scope="col">Tanggal Kegiatan</th>
                     <th scope="col">Temuan Audit</th>
+                    <th scope="col">Sudah ditanggapi</th>
+                    <th scope="col">Tinjau Ulang</th>
+                     <th scope="col">Tindak Lanjut</th>
+
+                    
                     <th scope="col">Aksi</th>
                     
                   </tr>
@@ -46,13 +52,31 @@
                   @foreach($audits as $item)
                   <tr>
                     <th scope="row">{{$loop->iteration}}</th>
-                    <td>{{$item->perencanaanAudit->rencana}}</td>
+                    <td>{{$item->perencanaanAudit->kegiatan->kegiatan}}</td>
                     <td>{{$item->perencanaanAudit->auditee->auditee}}</td>
                     <td>{{$item->pustakaAudit->judul}}</td>
                     <td>{{$item->perencanaanAudit->firstdate}} - {{$item->perencanaanAudit->enddate}}</td>
                     
                    
                     <td>{{$item->kertasKerjaAudit->count()}}</td>
+                  <td>@php
+                $tanggapanAudit = $item->kertasKerjaAudit->filter(function($tanggapan) {
+                    return $tanggapan->tanggapanAudit->count() > 0;
+                });
+                echo $tanggapanAudit->count();
+                @endphp</td>
+                <td>@php
+                $tanggapanAudit = $item->kertasKerjaAudit->filter(function($tanggapan) {
+                    return $tanggapan->tanggapanAudit->where('status','0')->count() > 0;
+                });
+                echo $tanggapanAudit->count();
+                @endphp</td>
+                <td>@php
+                $tanggapanAudit = $item->kertasKerjaAudit->filter(function($tanggapan) {
+                    return $tanggapan->tanggapanAudit->where('status','1')->count() > 0;
+                });
+                echo $tanggapanAudit->count();
+                @endphp</td>
                     
                     <td> <a href="{{route('temuan_audit_detail', ['id' => $item->id])}}" class="btn btn-primary">Detail</a></td>
                    

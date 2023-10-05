@@ -61,6 +61,10 @@
                                         <button type="button" class="btn btn-success" disabled>
                                             Sudah Ditanggapi
                                         </button>
+                                        @elseif($tanggapanAudit && in_array($tanggapanAudit->status, [0]))
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#obackdrop{{ $item->id }}">
+                                            Tinjau Ulang
+                                        </button>
                                         @else
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#disablebackdrop{{ $item->id }}">
                                             Tanggapi
@@ -76,31 +80,20 @@
                                                     </div>
                                                     <form action="{{route('tanggapan_audit_store')}}" method="post">
                                                         @csrf
-                                                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                                                        <script>
-                                                            $(document).ready(function() {
-                                                                $("input[name='option']").change(function() {
-                                                                    if ($("#option2").is(":checked")) {
-                                                                        $("#optional").show();
-                                                                    } else {
-                                                                        $("#optional").hide();
-                                                                    }
-                                                                });
-                                                            });
-                                                        </script>
 
-                                                        <div class="modal-body">
+
+                                                        <div class="modal-body" x-data="{ showOptional: false }">
                                                             <legend class="col-form-label col-sm-4 pt-0">Tanggapan Auditee</legend>
                                                             <fieldset class="row mb-3">
                                                                 <div class="col-sm-10">
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="option" id="option1" value="1">
+                                                                        <input class="form-check-input" type="radio" name="option" id="option1" value="1" x-on:click="showOptional = false" checked="false">
                                                                         <label class="form-check-label" for="option1">
                                                                             Setuju dengan pendapat Auditor
                                                                         </label>
                                                                     </div>
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="option" id="option2" value="2">
+                                                                        <input class="form-check-input" type="radio" name="option" id="option2" value="2" x-on:click="showOptional = true" checked="false">
                                                                         <label class="form-check-label" for="option2">
                                                                             Sanggah
                                                                         </label>
@@ -108,9 +101,59 @@
                                                                 </div>
                                                             </fieldset>
 
+                                                            <div id="optional" x-show="showOptional">
+                                                                <trix-editor input="{{ $item->id }}" required></trix-editor>
+                                                                <input type="hidden" name="kertas_kerja_audit_id" value="{{ $item->id }}">
+                                                                <input id="{{ $item->id }}" type="hidden" name="tanggapan">
+                                                                <label for="inputText" class="col-sm-2 col-form-label">Lampiran</label>
+                                                                <input type="text" name="lampiran" class="form-controll mb-2" required>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- modal 2 -->
+                                        <div class="modal fade" id="obackdrop{{ $item->id }}" tabindex="-1" data-bs-backdrop="false">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Tinjau</h5>
+
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <form action="{{route('tanggapan_audit_restore')}}" method="post">
+                                                        @csrf
+
+
+                                                        <div class="modal-body">
+                                                            <h5>Tanggapan Auditor :</h5>
+                                                            <p>
+                                                                {!! $item->tanggapanAudit->first()->komentar_auditor !!}
+                                                            </p>
+                                                            <legend class="col-form-label col-sm-4 pt-0">Tanggapan Auditee</legend>
+                                                            <fieldset class="row mb-3">
+                                                                <div class="col-sm-10">
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="option" id="option1" value="1" required>
+                                                                        <label class="form-check-label" for="option1">
+                                                                            Setuju dengan pendapat Auditor
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </fieldset>
+
                                                             <div id="optional" style="display: none;">
                                                                 <trix-editor input="{{ $item->id }}"></trix-editor>
-                                                                <input type="hidden" name="kertas_kerja_audit_id" value="{{ $item->id }}">
+                                                                <input type="hidden" name="id" value="{{ $item->tanggapanAudit->first()->id }}">
                                                                 <input id="{{ $item->id }}" type="hidden" name="tanggapan">
                                                                 <label for="inputText" class="col-sm-2 col-form-label">Lampiran</label>
                                                                 <input type="text" name="lampiran" class="form-controll mb-2">
@@ -134,6 +177,8 @@
 
                                 </tr>
                                 @endforeach
+
+
                             </tbody>
                         </table>
                         <!-- End Table with stripped rows -->

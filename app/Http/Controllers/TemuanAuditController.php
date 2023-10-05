@@ -66,6 +66,25 @@ class TemuanAuditController extends Controller
         }
     }
 
+    public function restore(Request $request)
+    {
+    
+        if ($request->option == '1') {
+
+            $tanggapan = TanggapanAudit::find($request->id);
+
+           
+            $validatedData['status'] = '1';
+            $validatedData['tanggapan'] = 'Setuju dengan pendapat auditor';
+            $validatedData['komentar_auditee'] = $tanggapan->tanggapan;
+
+            $tanggapan->update($validatedData);
+
+            return back()->with('success', 'Sukses');
+        } 
+    }
+
+
     public function tanggapan()
     {
 

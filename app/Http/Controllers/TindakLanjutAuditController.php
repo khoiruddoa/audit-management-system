@@ -13,7 +13,7 @@ class TindakLanjutAuditController extends Controller
 
 
 
-    public function index_auditor()
+    public function index()
     {
 
         return view('dashboard.pelaksanaan_audit.tindak_lanjut_auditee.index', [
@@ -30,5 +30,16 @@ class TindakLanjutAuditController extends Controller
 
         $data->save();
         return back()->with('success', 'Sukses');
+    }
+
+    public function detail($id)
+    {
+
+        $tindaklanjut = TindakLanjutAudit::find($id);
+        return view('dashboard.pelaksanaan_audit.tindak_lanjut_auditee.detail', [
+
+
+            'tindakLanjut' => $tindaklanjut
+        ]);
     }
 }

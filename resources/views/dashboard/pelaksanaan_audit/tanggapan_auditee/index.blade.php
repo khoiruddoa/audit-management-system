@@ -50,9 +50,9 @@
                   <td>{{$item->kertasKerjaAudit->programKerjaAudit->perencanaanAudit->firstdate}} - {{$item->kertasKerjaAudit->programKerjaAudit->perencanaanAudit->enddate}}</td>
                   <td>{{$item->kertasKerjaAudit->temuan}}</td>
                   <td>
-                    <span class="badge {{ $item->status == 1 ? 'bg-primary' : ($item->status == 2 ? 'bg-warning' : 'bg-light') }}">...</span>
-                      {!!$item->tanggapan!!}
-                   
+                    <span class="badge {{ $item->status == 1 ? 'bg-success' : ($item->status == 2 ? 'bg-warning' : 'bg-primary') }}">...</span>
+                    {!!$item->tanggapan!!}
+
                   </td>
                   <td>
                     <div class="dropdown">
@@ -63,7 +63,9 @@
                         <li><a class="dropdown-item" href="{{route('tanggapan_auditee_auditor_detail',['id'=> $item->id])}}">Detail</a></li>
                         @if($item->status == '2')
                         <li><a class="dropdown-item" href="">Terima Tanggapan</a></li>
-                        <li><a class="dropdown-item" href="">Sanggah</a></li>
+                        <li> <button type="button"  class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#disablebackdrop{{ $item->id }}">
+                            Sanggah
+                          </button></li>
                         @endif
                         @if($item->status == '1')
                         <li><a class="dropdown-item" href="{{route('tindak_lanjut_audit_store',['id' => $item->id])}}">Tindak Lanjut</a></li>
@@ -72,6 +74,37 @@
                     </div>
                   </td>
                 </tr>
+                <div class="modal fade" id="disablebackdrop{{ $item->id }}" tabindex="-1" data-bs-backdrop="false">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <form action="{{route('sanggah_tanggapan')}}" method="post">
+                        @csrf
+                        
+                        <div class="modal-body">
+                          <legend class="col-form-label col-sm-4 pt-0">Sanggahan Auditor</legend>
+                          
+
+                         
+                            <trix-editor input="{{ $item->id }}"></trix-editor>
+                            <input type="hidden" name="id" value="{{ $item->id }}">
+                            <input id="{{ $item->id }}" type="hidden" name="komentar_auditor">
+
+                          
+                        </div>
+
+
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
                 @endforeach
 
               </tbody>

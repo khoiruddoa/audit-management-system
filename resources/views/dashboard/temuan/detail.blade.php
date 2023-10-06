@@ -119,7 +119,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
+@if($item->tanggapanAudit)
                                         <!-- modal 2 -->
                                         <div class="modal fade" id="obackdrop{{ $item->id }}" tabindex="-1" data-bs-backdrop="false">
                                             <div class="modal-dialog">
@@ -169,6 +169,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endif
                                     </td>
                                     <td> <a href="{{route('temuan_audit_detail_temuan',['id' => $item->id])}}" class="btn btn-primary">
                                             Detail

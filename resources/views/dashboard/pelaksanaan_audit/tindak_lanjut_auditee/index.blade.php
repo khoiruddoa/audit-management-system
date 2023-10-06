@@ -59,6 +59,7 @@
                   <td>
                     <a href="{{route('tindak_lanjut_audit_detail', ['id' => $item->id])}}" class="btn btn-primary">Detail</a>
                   </td>
+                  
                 </tr>
                 @endforeach
 

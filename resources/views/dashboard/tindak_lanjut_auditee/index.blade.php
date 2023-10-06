@@ -37,8 +37,8 @@
 
                   <th scope="col">Temuan Audit</th>
                   <th scope="col">Status</th>
-                  <th scope="col">Tindak Lanjut Auditee</th>
                   <th scope="col"></th>
+                
 
                 </tr>
               </thead>
@@ -50,40 +50,52 @@
 
                   <td>{{$item->tanggapanAudit->kertasKerjaAudit->temuan}}</td>
                   <td>@if($item->status == null)<div class="p-3 mb-2 bg-danger text-white">Mohon ditindak lanjut</div> @else <div class="p-3 mb-2 bg-success text-white">Sudah di tindak lanjut</div> @endif</td>
-                  <td>@if($item->status == null) <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#disablebackdrop{{ $item->id }}">
-                      Tindak
-                    </button>  @else
-                    @endif
-                    <div class="modal fade" id="disablebackdrop{{ $item->id }}" tabindex="-1" data-bs-backdrop="false">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title">Tindak Lanjut Audit</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <form action="{{route('tindak_lanjut_auditee_store')}}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <div class="modal-body">
-                              <trix-editor input="a{{ $item->id }}" required>
-                              </trix-editor>
+                  <td>
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Pilih Satu
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{route('tindak_lanjut_auditee_detail',['id'=> $item->id])}}">Detail</a></li>
 
-                              <input type="hidden" name="id" value="{{ $item->id }}">
-                              <input id="a{{ $item->id }}" type="hidden" name="tindakan">
-                              <label for="inputText" class="col-sm-2 col-form-label">Lampiran</label>
+                        @if($item->status == null)<li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#disablebackdrop{{ $item->id }}">
+                            Tindak
+                          </button></li> @endif
+                      </ul>
 
-                              <input type="text" name="lampiran" class="form-controll mb-2" required>
-
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="submit" class="btn btn-primary">Simpan</button>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
                     </div>
                   </td>
-                  <td><a href="{{route('tindak_lanjut_auditee_detail',['id'=> $item->id])}}" class="btn btn-primary">Simpan</button></td>
+
+                  <div class="modal fade" id="disablebackdrop{{ $item->id }}" tabindex="-1" data-bs-backdrop="false">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Tindak Lanjut Audit</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="{{route('tindak_lanjut_auditee_store')}}" method="post" enctype="multipart/form-data">
+                          @csrf
+                          <div class="modal-body">
+                            <trix-editor input="a{{ $item->id }}" required>
+                            </trix-editor>
+
+                            <input type="hidden" name="id" value="{{ $item->id }}">
+                            <input id="a{{ $item->id }}" type="hidden" name="tindakan">
+                            <label for="inputText" class="col-sm-2 col-form-label">Lampiran</label>
+
+                            <input type="text" name="lampiran" class="form-controll mb-2" required>
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+
                 </tr>
                 @endforeach
               </tbody>

@@ -171,6 +171,8 @@ Route::post('/kegiatan_audit/store', [KegiatanController::class, 'store'])->name
 Route::post('/kegiatan_audit/update/{id}', [KegiatanController::class, 'update'])->name('kegiatan_audit_update');
 Route::get('/kegiatan_audit/delete/{id}', [KegiatanController::class, 'destroy'])->name('kegiatan_audit_delete');
 Route::get('/kegiatan_audit/finish/{id}', [KegiatanController::class, 'finish'])->name('kegiatan_audit_finish');
+Route::get('/kegiatan_audit/on_progress/{id}', [KegiatanController::class, 'onProgress'])->name('kegiatan_audit_onProgress');
+Route::get('/kegiatan_audit/cancel/{id}', [KegiatanController::class, 'cancel'])->name('kegiatan_audit_cancel');
 
 
 

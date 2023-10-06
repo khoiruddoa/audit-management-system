@@ -7,9 +7,9 @@
         <h1>Kegiatan Audit</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item">Kegiatan Audit</li>
-                <li class="breadcrumb-item active">Tabel</li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('kegiatan_audit')}}">Kegiatan Audit</a></li>
+                
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -49,6 +49,7 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Nama Kegiatan</th>
+                                    <th scope="col">Anggaran</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
@@ -58,7 +59,8 @@
                                     @foreach ($kegiatan as $item)
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $item->kegiatan }}</td>
-                                    <td>@if ($item->status == 0) On progress @else Finish @endif</td>
+                                    <td>@currency($item->anggaran)</td>
+                                    <td>@if($item->status == '0')<div class="p-3 mb-2 bg-warning text-black">Open</div> @elseif($item->status == '1')<div class="p-3 mb-2 bg-primary text-black">On Progres</div> @else <div class="p-3 mb-2 bg-success text-black">Finish</div> @endif</td>
                                     <td>
 
                                         <div class="dropdown">
@@ -70,8 +72,16 @@
                                                 
                                                 <li><a class="dropdown-item" href="{{ route('kegiatan_audit_edit', ['id' => $item->id]) }}">Edit</a></li>
 
+                                               
+                                                @if($item->status == '0')
                                                 <li><a class="dropdown-item" href="{{ route('kegiatan_audit_delete', ['id' => $item->id]) }}">Hapus</a></li>
-                                                <li><a class="dropdown-item" href="{{ route('kegiatan_audit_finish', ['id' => $item->id]) }}">Selesai</a></li>
+                                                <li><a class="dropdown-item" href="{{ route('kegiatan_audit_onProgress', ['id' => $item->id]) }}">On Progress</a></li>@endif
+                                                @if($item->status == '1')
+                                                <li><a class="dropdown-item" href="{{ route('kegiatan_audit_finish', ['id' => $item->id]) }}">Finish</a></li>
+                                                <li><a class="dropdown-item" href="{{ route('kegiatan_audit_cancel', ['id' => $item->id]) }}">Cancel</a></li>
+                                                @endif
+                                                @if($item->status == '2')
+                                                <li><a class="dropdown-item" href="{{ route('kegiatan_audit_onProgress', ['id' => $item->id]) }}">On Progresss</a></li>@endif
                                             </ul>
 
                                         </div>

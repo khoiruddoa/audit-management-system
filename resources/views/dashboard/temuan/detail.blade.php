@@ -118,58 +118,56 @@
                                                     </form>
                                                 </div>
                                             </div>
-                                        </div>
-@if($item->tanggapanAudit)
-                                        <!-- modal 2 -->
-                                        <div class="modal fade" id="obackdrop{{ $item->id }}" tabindex="-1" data-bs-backdrop="false">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">Tinjau</h5>
+                                         
+                                            <!-- modal 2 -->
+                                            <div class="modal fade" id="obackdrop{{ $item->id }}" tabindex="-1" data-bs-backdrop="false">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Tinjau</h5>
 
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <form action="{{route('tanggapan_audit_restore')}}" method="post">
-                                                        @csrf
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <form action="{{route('tanggapan_audit_restore')}}" method="post">
+                                                            @csrf
 
 
-                                                        <div class="modal-body">
-                                                            <h5>Tanggapan Auditor :</h5>
-                                                            <p>
-                                                                {!! $item->tanggapanAudit->first()->komentar_auditor !!}
-                                                            </p>
-                                                            <legend class="col-form-label col-sm-4 pt-0">Tanggapan Auditee</legend>
-                                                            <fieldset class="row mb-3">
-                                                                <div class="col-sm-10">
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="option" id="option1" value="1" required>
-                                                                        <label class="form-check-label" for="option1">
-                                                                            Setuju dengan pendapat Auditor
-                                                                        </label>
+                                                            <div class="modal-body">
+                                                                <h5>Tanggapan Auditor :</h5>
+                                                                <p>
+                                                                    {!! $item->tanggapanAudit->first()->komentar_auditor !!}
+                                                                </p>
+                                                                <legend class="col-form-label col-sm-4 pt-0">Tanggapan Auditee</legend>
+                                                                <fieldset class="row mb-3">
+                                                                    <div class="col-sm-10">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="option" id="option1" value="1" required>
+                                                                            <label class="form-check-label" for="option1">
+                                                                                Setuju dengan pendapat Auditor
+                                                                            </label>
+                                                                        </div>
+
                                                                     </div>
+                                                                </fieldset>
 
+                                                                <div id="optional" style="display: none;">
+                                                                    <trix-editor input="{{ $item->id }}"></trix-editor>
+                                                                    <input type="hidden" name="id" value="{{ $item->tanggapanAudit->first()->id }}">
+                                                                    <input id="{{ $item->id }}" type="hidden" name="tanggapan">
+                                                                    <label for="inputText" class="col-sm-2 col-form-label">Lampiran</label>
+                                                                    <input type="text" name="lampiran" class="form-controll mb-2">
                                                                 </div>
-                                                            </fieldset>
-
-                                                            <div id="optional" style="display: none;">
-                                                                <trix-editor input="{{ $item->id }}"></trix-editor>
-                                                                <input type="hidden" name="id" value="{{ $item->tanggapanAudit->first()->id }}">
-                                                                <input id="{{ $item->id }}" type="hidden" name="tanggapan">
-                                                                <label for="inputText" class="col-sm-2 col-form-label">Lampiran</label>
-                                                                <input type="text" name="lampiran" class="form-controll mb-2">
                                                             </div>
-                                                        </div>
 
 
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Simpan</button>
-                                                        </div>
-                                                    </form>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        @endif
                                     </td>
                                     <td> <a href="{{route('temuan_audit_detail_temuan',['id' => $item->id])}}" class="btn btn-primary">
                                             Detail

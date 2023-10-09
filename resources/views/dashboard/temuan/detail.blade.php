@@ -118,9 +118,17 @@
                                                     </form>
                                                 </div>
                                             </div>
-                                         
-                                            <!-- modal 2 -->
-                                            <div class="modal fade" id="obackdrop{{ $item->id }}" tabindex="-1" data-bs-backdrop="false">
+                                    </td>
+                                    <td> <a href="{{route('temuan_audit_detail_temuan',['id' => $item->id])}}" class="btn btn-primary">
+                                            Detail
+                                        </a></td>
+
+
+                                </tr>
+                                @if($tanggapanAudit)
+     <!-- Button trigger modal -->
+                             <!-- modal 2 -->
+                             <div class="modal fade" id="obackdrop{{ $item->id }}" tabindex="-1" data-bs-backdrop="false">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -168,13 +176,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                    </td>
-                                    <td> <a href="{{route('temuan_audit_detail_temuan',['id' => $item->id])}}" class="btn btn-primary">
-                                            Detail
-                                        </a></td>
-
-
-                                </tr>
+                                @endif
+               
                                 @endforeach
 
 

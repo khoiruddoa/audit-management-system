@@ -62,6 +62,7 @@
             <p>
                 Judul Audit : {{$audit->kegiatan->kegiatan}}<br>
                 Tanggal Pelaksanaan : {{$audit->firstdate}} s/d {{$audit->enddate}}<br>
+                Divisi : {{$audit->auditee->auditee}}<br>
                 Jenis Audit : {{$audit->jenis_audit}}<br>
                 Jenis Program Audit : {{$audit->jenis_program_audit}}<br>
                 Tingkat Risiko : {{$audit->tingkat_resiko}}<br>

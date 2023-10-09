@@ -52,9 +52,12 @@
                   <td>{!!$item->tindakan!!}</td>
                   <td>
                     @if($item->status == 1)
-                    <div class="p-3 mb-2 bg-success text-white">Sudah di tindak lanjut</div>
+                    <div class="p-3 mb-2 bg-primary text-white">Sudah di tindak lanjut</div>
+                    @elseif($item->status == 2)
+                    <div class="p-3 mb-2 bg-success text-white">Sudah Terkonfirmasi</div> 
                     @else
-                    <div class="p-3 mb-2 bg-danger text-white">Belum di tindak lanjut</div>                    @endif
+                    <div class="p-3 mb-2 bg-danger text-white">Belum di tindak lanjut</div>                      
+                    @endif
                   </td>
                   <td>
                     <a href="{{route('tindak_lanjut_audit_detail', ['id' => $item->id])}}" class="btn btn-primary">Detail</a>

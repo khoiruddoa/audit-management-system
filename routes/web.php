@@ -70,6 +70,7 @@ Route::get('/tindaklanjut/auditor', [TindakLanjutAuditController::class, 'index'
 Route::get('/tindaklanjut/auditor/detail/{id}', [TindakLanjutAuditController::class, 'detail'])->name('tindak_lanjut_audit_detail');
 
 Route::get('/tindaklanjut/store/{id}', [TindakLanjutAuditController::class, 'store'])->name('tindak_lanjut_audit_store');
+Route::get('/tindaklanjut/confirm/{id}', [TindakLanjutAuditController::class, 'confirm'])->name('tindak_lanjut_audit_confirm');
 
 
 Route::get('/tindak_lanjut_auditee', [TindakLanjutAuditeeController::class, 'index'])->name('tindaklanjut_auditee');

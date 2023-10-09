@@ -57,17 +57,17 @@
                                     <div class="col-lg-3 col-md-4 label ">Kriteria</div>
                                     <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tanggapanAudit->kertasKerjaAudit->kriteria !!}</div>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Sebab</div>
-                                    <div class="col-lg-9 col-md-8">{!!  $tindakLanjut->tanggapanAudit->kertasKerjaAudit->sebab !!}</div>
+                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tanggapanAudit->kertasKerjaAudit->sebab !!}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Akibat</div>
                                     <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tanggapanAudit->kertasKerjaAudit->akibat !!}</div>
                                 </div>
-                               
-                               
+
+
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Rekomendasi</div>
@@ -76,48 +76,55 @@
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Batas Waktu</div>
-                                    <div class="col-lg-9 col-md-8">{{ $tindakLanjut->tanggapanAudit->kertasKerjaAudit->batas_waktu }} 
+                                    <div class="col-lg-9 col-md-8">{{ $tindakLanjut->tanggapanAudit->kertasKerjaAudit->batas_waktu }}
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Tim Auditor</div>
                                     <div class="col-lg-9 col-md-8">
-                                       
+
                                         <div>
                                             {{$tindakLanjut->tanggapanAudit->kertasKerjaAudit->programKerjaAudit->susunanTim->auditor->user->name}}
                                         </div>
-                                      
+
                                     </div>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Tanggapan Auditee</div>
-                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tanggapanAudit->tanggapan !!} 
+                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tanggapanAudit->tanggapan !!}
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Lampiran</div>
-                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tanggapanAudit->lampiran !!} 
+                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tanggapanAudit->lampiran !!}
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Tindak Lanjut</div>
-                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tindakan !!} 
+                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->tindakan !!}
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Lampiran Tindak Lanjut</div>
-                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->lampiran !!} 
+                                    <div class="col-lg-9 col-md-8">{!! $tindakLanjut->lampiran !!}
                                     </div>
                                 </div>
-                                
-                                
-                                
-                                
+
+
+
+
                                 <!-- End Bordered Tabs -->
 
                             </div>
+                            @if($tindakLanjut->status !== '2')
+                            <div class="d-flex justify-content-end">
+                                <a href="{{route('tindak_lanjut_audit_confirm',['id'=> $tindakLanjut->id]) }}" type="button" class="btn btn-info text-white">Konfirmasi Tindak Lanjut</a>
+                            </div>
+                            @endif
+
+
                         </div>
 
                     </div>

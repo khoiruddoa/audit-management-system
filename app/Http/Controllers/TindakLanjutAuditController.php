@@ -42,4 +42,18 @@ class TindakLanjutAuditController extends Controller
             'tindakLanjut' => $tindaklanjut
         ]);
     }
+
+    public function confirm(Request $request)
+    {
+
+        $tindaklanjut = TindakLanjutAudit::find($request->id);
+
+       
+        $validatedData['status'] = '2';
+        $tindaklanjut->update($validatedData);
+
+
+
+        return redirect(route('tindaklanjut_audit_auditor'))->with('success', 'tindak lanjut dikonfirmasi');
+    }
 }

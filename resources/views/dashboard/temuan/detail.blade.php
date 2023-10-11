@@ -106,7 +106,7 @@
                                                                 <input type="hidden" name="kertas_kerja_audit_id" value="{{ $item->id }}">
                                                                 <input id="{{ $item->id }}" type="hidden" name="tanggapan">
                                                                 <label for="inputText" class="col-sm-2 col-form-label">Lampiran</label>
-                                                                <input type="text" name="lampiran" class="form-controll mb-2" required>
+                                                                <input type="text" name="lampiran" class="form-controll mb-2">
                                                             </div>
                                                         </div>
 

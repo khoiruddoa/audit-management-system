@@ -16,6 +16,45 @@
 
     <section class="section">
       <div class="d-flex flex-row flex-wrap gap-2">
+
+
+      <div class="col-lg-5">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Kegiatan Audit Chart</h5>
+
+            <!-- Pie Chart -->
+            <div id="pieChart"></div>
+
+           <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const open = {{ $open }};
+        const onProgress = {{ $onProgress }};
+        const finish = {{ $finish }};
+
+        new ApexCharts(document.querySelector("#pieChart"), {
+            series: [finish, onProgress, open],
+            chart: {
+                height: 350,
+                type: 'pie',
+                toolbar: {
+                    show: true
+                }
+            },
+            labels: ['Finish', 'On Progress', 'Open']
+        }).render();
+    });
+</script>
+            <!-- End Pie Chart -->
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
       <div class="col-lg-5">
         <div class="card">
           <div class="card-body">
@@ -123,13 +162,13 @@
           </div>
         </div>
       </div>
-
+<!-- 
       <div class="col-lg-5">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Pie Chart</h5>
 
-            <!-- Pie Chart -->
+           
             <div id="pieChart"></div>
 
             <script>
@@ -147,11 +186,12 @@
                 }).render();
               });
             </script>
-            <!-- End Pie Chart -->
+          
 
           </div>
         </div>
-      </div>
+      </div> -->
+
     </div>
 
     </section>

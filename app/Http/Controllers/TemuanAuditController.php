@@ -29,6 +29,34 @@ class TemuanAuditController extends Controller
         ]);
     }
 
+    public function sudahDitanggapi($id)
+    {
+
+        return view('dashboard.temuan.detail', [
+            'kertaskerja' => KertasKerjaAudit::where('program_kerja_audit_id', $id)->whereHas('tanggapanAudit')->get()
+        ]);
+    }
+
+   
+    public function tinjauUlang($id)
+    {
+
+        return view('dashboard.temuan.detail', [
+            'kertaskerja' => KertasKerjaAudit::where('program_kerja_audit_id', $id)->whereHas('tanggapanAudit', function ($query) {
+                $query->where('status', 0);
+            })->get()
+        ]);
+    }
+
+    public function tindakLanjut($id)
+    {
+
+        return view('dashboard.temuan.detail', [
+            'kertaskerja' => KertasKerjaAudit::where('program_kerja_audit_id', $id)->whereHas('tanggapanAudit', function ($query) {
+                $query->where('status', '1');
+            })->get()
+        ]);
+    }
     public function detail_temuan($id)
     {
 

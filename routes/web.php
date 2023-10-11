@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuditeeController;
 use App\Http\Controllers\AuditorController;
+use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\DocumentAuditeeController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\KegiatanController;
@@ -39,10 +40,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.dashboard');
-})->name('dashboard')->middleware('auth');
 
+Route::get('/',[dashboardController::class, 'index'])->name('dashboard');
 
 
 
@@ -59,6 +58,11 @@ Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
 Route::get('/temuan', [TemuanAuditController::class, 'index'])->name('temuan_audit');
 Route::get('/temuan/detail/{id}', [TemuanAuditController::class, 'detail'])->name('temuan_audit_detail');
+Route::get('/temuan/detail-sudah-ditanggapi/{id}', [TemuanAuditController::class, 'sudahDitanggapi'])->name('temuan_audit_detail_sudah_ditanggapi');
+Route::get('/temuan/detail-tinjau-ulang/{id}', [TemuanAuditController::class, 'tinjauUlang'])->name('temuan_audit_detail_tinjau_ulang');
+Route::get('/temuan/detail_tindak_lanjut/{id}', [TemuanAuditController::class, 'tindakLanjut'])->name('temuan_audit_detail_tindak_lanjut');
+
+
 Route::get('/temuan/detail-temuan/{id}', [TemuanAuditController::class, 'detail_temuan'])->name('temuan_audit_detail_temuan');
 Route::post('/temuan/store', [TemuanAuditController::class, 'store'])->name('tanggapan_audit_store');
 Route::post('/temuan/restore', [TemuanAuditController::class, 'restore'])->name('tanggapan_audit_restore');

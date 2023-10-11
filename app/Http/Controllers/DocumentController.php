@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Document;
+use App\Models\ProgramKerjaAudit;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
 {
     public function index($id)
     {
-        return view('dashboard.perencanaan_audit.program_kerja_audit.document.index', [
-     
+        return view('dashboard.perencanaan_audit.document.index', [
+            'audit' => ProgramKerjaAudit::find($id),
             'dokumen' => Document::where('program_kerja_audit_id', $id)->get(),
             'id' => $id
         ]);
@@ -78,6 +79,7 @@ class DocumentController extends Controller
 
         $validatedData = $request->validate([
             'link' => 'required|string',
+            'nama_dokumen' => 'required|string',
                 
         ]);
 

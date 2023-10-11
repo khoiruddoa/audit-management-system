@@ -41,7 +41,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/',[dashboardController::class, 'index'])->name('dashboard');
+Route::get('/',[dashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 
 
 

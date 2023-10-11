@@ -8,8 +8,9 @@
       <h1>Tambah Susunan Tim</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Pelaksanaan audit</li>
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{ route('perencanaan_audit')}}">Perencanaan Audit</a></li>
+          <li class="breadcrumb-item"> <a href="{{ route('susunan_tim',['id' => $audit->id])}}">Susunan Tim </a></li>
           <li class="breadcrumb-item active">Tambah susunan tim</li>
         </ol>
       </nav>

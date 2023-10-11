@@ -7,9 +7,9 @@
         <h1>Pemenuhan Dokumen</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item">Pelaksanaan Audit</li>
-                <li class="breadcrumb-item active">Program Kerja Audit</li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('perencanaan_audit')}}">Perencanaan Audit</a></li>
+                <li class="breadcrumb-item"><a href="{{route('program_kerja_audit',['id' => $audit->id])}}">Program Kerja Audit</a></li>
                 <li class="breadcrumb-item active">Dokumen</li>
 
             </ol>
@@ -32,7 +32,7 @@
 
 
         <div class="row">
-            <div class="col-lg-10">
+            <div class="col-lg-12">
 
                 <div class="card">
                     <div class="card-body">
@@ -42,19 +42,20 @@
                         <div class="row mb-3">
                             <label for="inputText" class="col-sm-2 col-form-label">Program Audit</label>
                             <div class="col-sm-10">
-                                <!-- <input type="text" disabled class="form-control" value=""> -->
+                              
+                            <input type="text" disabled class="form-control" value="{{$audit->pustakaAudit->judul}}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputText" class="col-sm-2 col-form-label">Objek Audit</label>
                             <div class="col-sm-10">
-                                <!-- <input type="text" disabled class="form-control" value=""> -->
+                                 <input type="text" disabled class="form-control" value="{{$audit->perencanaanAudit->auditee->auditee}}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="inputText" class="col-sm-2 col-form-label">Rencana</label>
                             <div class="col-sm-10">
-                                <!-- <input type="text" disabled class="form-control" value=""> -->
+                                <input type="text" disabled class="form-control" value="{{$audit->perencanaanAudit->kegiatan->kegiatan}}">
                             </div>
                         </div>
 
@@ -62,14 +63,14 @@
                         <div class="row mb-3">
                             <label for="inputText" class="col-sm-2 col-form-label">Tahun Audit</label>
                             <div class="col-sm-10">
-                                <!-- <input type="text" disabled name="periode" class="form-control" value=""> -->
+                                <input type="text" disabled name="periode" class="form-control" value="{{$audit->perencanaanAudit->periode}}">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="inputText" class="col-sm-2 col-form-label">Tanggal Audit</label>
                             <div class="col-sm-10">
-                                <!-- <input type="text" disabled class="form-control" value=""> -->
+                                <input type="text" disabled class="form-control" value="{{$audit->perencanaanAudit->firstdate}} s/d {{$audit->perencanaanAudit->enddate}}">
                             </div>
                         </div>
 
@@ -140,7 +141,7 @@
 
                                     <td><a href="{{$item->tempat}}">Get Link</a></td>
 
-                                    <td><a href="{{$item->link}}">Get Link</a></td>
+                                    <td><a href="{{$item->link}}">{{$item->nama_dokumen}}</a></td>
 
                                     <td>
                                         <div class="dropdown">

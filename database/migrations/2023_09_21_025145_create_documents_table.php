@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('program_kerja_audit_id');
             $table->string('judul_dokumen');
+            $table->string('nama_dokumen')->nullable();
             $table->string('link')->nullable();
             $table->string('tempat')->nullable();
             $table->timestamps();

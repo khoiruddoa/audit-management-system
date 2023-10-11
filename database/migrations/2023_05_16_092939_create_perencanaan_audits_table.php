@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->date('firstdate');
             $table->date('enddate');
-            $table->string('file')->nullable();
+            $table->string('link')->nullable();
+            $table->string('nama_lampiran')->nullable();
             $table->timestamps();
             $table->string('dasar_audit')->nullable(); 
             // $table->string('anggaran')->nullable(); 

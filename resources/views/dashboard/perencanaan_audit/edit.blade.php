@@ -152,10 +152,19 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="inputText" class="col-sm-2 col-form-label">Lampiran</label>
+                                <label for="inputText" class="col-sm-2 col-form-label">Nama link</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="lampiran" class="form-control @error('lampiran') is-invalid @enderror" id="lampiran" value="{{ old('lampiran') }}" autofocus>
-                                    @error('lampiran')
+                                    <input type="text" name="nama_lampiran" class="form-control @error('nama_lampiran') is-invalid @enderror" id="nama_lampiran" value="{{ old('nama_lampiran') }}" autofocus>
+                                    @error('nama_lampiran')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Link Lampiran</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="link" class="form-control @error('link') is-invalid @enderror" id="link" value="{{ old('link') }}" autofocus>
+                                    @error('link')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

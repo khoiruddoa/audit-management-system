@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Auditee;
 use App\Models\Kegiatan;
 use App\Models\PerencanaanAudit;
+use App\Models\ProgramKerjaAudit;
 use App\Models\PustakaAudit;
+use App\Models\SusunanTim;
 use Illuminate\Http\Request;
 
 class PerencanaanAuditController extends Controller
@@ -50,14 +52,13 @@ class PerencanaanAuditController extends Controller
         'jenis_program_audit' => 'required|string|max:255',
         'tingkat_resiko' => 'required|string|max:255',
         'auditee_id' => 'required|exists:auditees,id',
-        'lampiran' => 'nullable|string|max:255',
+        'nama_lampiran' => 'nullable|string|max:255',
         'periode' => 'required|string|max:255',
         'status' => 'nullable|string|max:255',
         'firstdate' => 'required|date',
         'enddate' => 'required|date',
-        'file' => 'nullable|string|max:255',
+        'link' => 'nullable|string',
         'dasar_audit' => 'required',
-        // 'anggaran' =>'required'
     ]);
 
         
@@ -87,12 +88,12 @@ class PerencanaanAuditController extends Controller
         'jenis_program_audit' => 'required|string|max:255',
         'tingkat_resiko' => 'required|string|max:255',
         'auditee_id' => 'required|exists:auditees,id',
-        'lampiran' => 'nullable|string|max:255',
+        'nama_lampiran' => 'nullable|string|max:255',
         'periode' => 'required|string|max:255',
         'status' => 'nullable|string|max:255',
         'firstdate' => 'required|date',
         'enddate' => 'required|date',
-        'file' => 'nullable',
+        'link' => 'nullable',
         'dasar_audit' => 'required',
         'anggaran' =>'required'
     ]);
@@ -109,6 +110,16 @@ class PerencanaanAuditController extends Controller
     public function lanjut($id){
 
         $audit = PerencanaanAudit::find($id);
+        $cek = SusunanTim::where('perencanaan_audit_id', $id)->first();
+        if(!$cek){
+            return back()->with('failed', 'Isi Susunan Tim Terlebih dahulu');
+        }
+
+        $cek = ProgramKerjaAudit::where('perencanaan_audit_id', $id)->first();
+        if(!$cek){
+            return back()->with('failed', 'Isi Program Kerja Terlebih dahulu Terlebih dahulu');
+        }
+        
         $audit->update(['status' => 1]);
 
 
@@ -119,7 +130,10 @@ class PerencanaanAuditController extends Controller
 
     public function destroy($id)
     {
-        
+        $cek = ProgramKerjaAudit::where('perencanaan_audit_id', $id)->first();
+        if($cek){
+            return back()->with('failed', 'Hapus Program Audit terlebih dahulu');
+        }
         $perencanaan = PerencanaanAudit::findOrFail($id);
         $perencanaan->delete();
 

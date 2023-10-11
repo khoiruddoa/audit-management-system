@@ -7,8 +7,8 @@
         <h1>Detail</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item">Perencanaan Audit</li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('perencanaan_audit')}}">Perencanaan Audit</a></li>
                 <li class="breadcrumb-item active">Detail</li>
             </ol>
         </nav>
@@ -62,14 +62,11 @@
                                     <div class="col-lg-3 col-md-4 label">Dasar Audit</div>
                                     <div class="col-lg-9 col-md-8">{!! $audit->dasar_audit !!}</div>
                                 </div>
-                                <!-- <div class="row">
-                                        <div class="col-lg-3 col-md-4 label">Anggaran</div>
-                                        <div class="col-lg-9 col-md-8">{{ $audit->anggaran }}</div>
-                                    </div> -->
-                                @if($audit->file)
+                              
+                                @if($audit->nama_lampiran)
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Lampiran</div>
-                                    <div class="col-lg-9 col-md-8"><a href="{{ $audit->file }}">Download</a> </div>
+                                    <div class="col-lg-9 col-md-8"><a href="{{ $audit->link }}">{{$audit->nama_lampiran}}</a> </div>
                                 </div>
                                 @endif
 
@@ -83,7 +80,7 @@
                                     <div class="col-lg-9 col-md-8">{{ $audit->firstdate }} s/d {{ $audit->enddate }}
                                     </div>
                                 </div>
-
+                                @if(count($audit->susunanTim) > 0)
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Tim Auditor</div>
                                     <div class="col-lg-9 col-md-8">
@@ -93,13 +90,8 @@
                                         </div>
                                         @endforeach
                                     </div>
-
-
-
-
-
-
                                 </div><!-- End Bordered Tabs -->
+                                @endif
 
                             </div>
                         </div>

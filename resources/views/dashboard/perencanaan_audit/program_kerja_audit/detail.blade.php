@@ -8,8 +8,9 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('pelaksanaan_audit') }}">Pelaksanaan Audit</a></li>
-                    <li class="breadcrumb-item active">Program Kerja</li>
+                    <li class="breadcrumb-item"><a href="{{ route('perencanaan_audit') }}">Perencanaan Audit</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('program_kerja_audit',['id' => $program->perencanaanAudit->id]) }}">Program Kerja</a></li>
+                    <li class="breadcrumb-item active">Detail Program Kerja</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->

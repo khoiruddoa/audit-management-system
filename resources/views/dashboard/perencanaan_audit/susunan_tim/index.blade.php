@@ -7,8 +7,8 @@
             <h1>Susunan Tim</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item">Pelaksanaan Audit</li>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('perencanaan_audit')}}">Perencanaan Audit</a></li>
                     <li class="breadcrumb-item active">Susunan Tim</li>
                 </ol>
             </nav>

@@ -52,7 +52,7 @@
                   <th scope="col">Tingkat Resiko</th>
                   <!-- <th scope="col">Rencana Kegiatan</th> -->
                   <th scope="col">Susunan Tim</th>
-                  <th scope="col">Dokumen</th>
+   
                   <th scope="col">Program Kerja</th>
                   <th scope="col">Aksi</th>
                 </tr>
@@ -67,7 +67,6 @@
                   <td>{{$item->tingkat_resiko}}</td>
                   <!-- <td>{{$item->firstdate}} - {{$item->enddate}}</td> -->
                   <td><a href="{{route('susunan_tim',['id' => $item->id])}}" class="btn btn-secondary"><i class="bi bi-collection"></i></a></td>
-                  <td><a href="{{route('program_kerja_audit_document',['id' => $item->id])}}" class="btn btn-secondary"><i class="bi bi-collection"></i></a></td>
                   <td><a href="{{route('program_kerja_audit',['id' => $item->id])}}" class="btn btn-secondary"><i class="bi bi-collection"></i></a></td>
                   <td>
                     <div class="dropdown">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auditee;
+use App\Models\Document;
 use App\Models\KertasKerjaAudit;
 use App\Models\PerencanaanAudit;
 use App\Models\ProgramKerjaAudit;
@@ -92,6 +93,10 @@ class ProgramKerjaAuditController extends Controller
             return back()->with('failed', 'Program sudah ada di Kertas Kerja Audit');
         }
         
+        $cek = Document::where('program_kerja_audit_id', $id)->first();
+        if($cek){
+            return back()->with('failed', 'Program sudah ada di Kertas Kerja Audit');
+        }
         $data = ProgramKerjaAudit::findOrFail($id);
         $data->delete();
 

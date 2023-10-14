@@ -42,6 +42,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[dashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::get('/kegiatan_audit/{id}',[dashboardController::class, 'kegiatan'])->name('dashboard_kegiatan');
 
 
 

@@ -61,6 +61,11 @@ class PerencanaanAuditController extends Controller
         'dasar_audit' => 'required',
     ]);
 
+    $cek = PerencanaanAudit::where('auditee_id', $request->auditee_id)->first();
+    if($cek){
+        return back()->with('failed', 'Auditee Sudah ada di Perencanaan Audit');
+    }
+
         
         PerencanaanAudit::create($validatedData);
 

@@ -61,7 +61,9 @@ class PerencanaanAuditController extends Controller
         'dasar_audit' => 'required',
     ]);
 
-    $cek = PerencanaanAudit::where('auditee_id', $request->auditee_id)->first();
+    $id = $request->kegiatan_id;
+
+    $cek = PerencanaanAudit::where('auditee_id', $request->auditee_id)->where('kegiatan_id', $id)->first();
     if($cek){
         return back()->with('failed', 'Auditee Sudah ada di Perencanaan Audit');
     }
@@ -122,7 +124,7 @@ class PerencanaanAuditController extends Controller
 
         $cek = ProgramKerjaAudit::where('perencanaan_audit_id', $id)->first();
         if(!$cek){
-            return back()->with('failed', 'Isi Program Kerja Terlebih dahulu Terlebih dahulu');
+            return back()->with('failed', 'Isi Program Kerja Terlebih dahulu');
         }
         
         $audit->update(['status' => 1]);

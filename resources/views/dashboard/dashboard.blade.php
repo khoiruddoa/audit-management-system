@@ -87,7 +87,7 @@
                   var tableHTML =
                       '<thead><tr><th scope="col">#</th><th scope="col">Kegiatan</th><th scope="col">Detail</th></tr></thead><tbody>';
                   for (var i = 0; i < dataToDisplay.length; i++) {
-                      var detailUrl = '/kegiatan_audit/'+ dataToDisplay[i].id;
+                      var detailUrl = '/kegiatan_audit_dashboard/'+ dataToDisplay[i].id;
                       tableHTML += '<tr><th scope="row">' + (i + 1) + '</th><td>' + dataToDisplay[i].kegiatan + '</td>' +
                           '<td><a href="' + detailUrl + '">Lihat Detail</a></td></tr>';
                   }

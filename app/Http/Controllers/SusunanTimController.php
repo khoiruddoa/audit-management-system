@@ -35,7 +35,7 @@ class SusunanTimController extends Controller
 
 
         $auditor = $request->auditor_id;
-        $cek = SusunanTim::where('auditor_id', $auditor)->first();
+        $cek = SusunanTim::where('auditor_id', $auditor)->where('perencanaan_audit_id', $id)->first();
 
         if($cek){
             return redirect('/perencanaan_audit/susunan_tim/' . $id)->with('failed', 'Nama Tersebut sudah tersusun di TIM');

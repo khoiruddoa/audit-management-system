@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Document;
 use App\Models\KertasKerjaAudit;
 use App\Models\ProgramKerjaAudit;
 use App\Models\PustakaAudit;
@@ -15,7 +16,8 @@ class KertasKerjaAuditController extends Controller
         return view('dashboard.pelaksanaan_audit.kertas_kerja_audit.index', [
            
             'program_kerja' => ProgramKerjaAudit::find($id),
-            'kertas_kerja' => KertasKerjaAudit::where('program_kerja_audit_id', $id)->get()
+            'kertas_kerja' => KertasKerjaAudit::where('program_kerja_audit_id', $id)->get(),
+            'dokumen' => Document::where('program_kerja_audit_id', $id)->get()
            
         ]);
     }

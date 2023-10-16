@@ -47,7 +47,7 @@ class ProgramKerjaAuditController extends Controller
     public function store(Request $request)
     {
         $id = $request->perencanaan_audit_id;
-
+        $pustaka = $request->pustaka_audit_id;
 
 
         $validatedData = $request->validate([
@@ -58,6 +58,11 @@ class ProgramKerjaAuditController extends Controller
             'tahapan' => 'required|string'
             
         ]);
+
+        $cek = ProgramKerjaAudit::where('perencanaan_audit_id', $id)->where('pustaka_audit_id', $pustaka)->first();
+        if($cek){
+            return back()->with('failed', 'Program Kerja Sudah Ada');
+        }
 
       
         ProgramKerjaAudit::create($validatedData);

@@ -40,38 +40,61 @@ class dashboardController extends Controller
     {
         $results = Kegiatan::find($id);
 
-        $audit = PerencanaanAudit::where('kegiatan_id', $id)->get();
-
-
-        $divisi = [];
-        $temuan = [];
-
-        foreach ($audit as $auditItem) {
-            $divisi[] = $auditItem->auditee->auditee;
-            $total_temuan = 0;
-
-            foreach ($auditItem->programKerjaAudit as $programItem) {
-                foreach ($programItem->kertasKerjaAudit as $temuanItem) {
-                    $jumlahTemuan = $temuanItem->count();
-                    $total_temuan += $jumlahTemuan;
-                }
-            }
-
-            $temuan[] = $total_temuan;
+        $auditList = PerencanaanAudit::with('programKerjaAudit.kertasKerjaAudit')
+        ->get();
+    
+    $auditeeData = [];
+    
+    // Inisialisasi data auditee dengan jumlah temuan 0
+    foreach ($auditList as $audit) {
+        $auditeeId = $audit->auditee_id;
+        $auditeeName = $audit->auditee->auditee;
+    
+        if (!isset($auditeeData[$auditeeId])) {
+            $auditeeData[$auditeeId] = [
+                'nama_auditee' => $auditeeName,
+                'jumlah_temuan' => 0,
+            ];
         }
+    }
+    
+    // Menghitung jumlah temuan
+    foreach ($auditList as $audit) {
+        foreach ($audit->programKerjaAudit as $program) {
+            foreach ($program->kertasKerjaAudit as $temuan) {
+                $auditeeId = $audit->auditee_id;
+                $auditeeData[$auditeeId]['jumlah_temuan']++;
+            }
+        }
+    }
+    
+  
+    $namaAuditee = [];
+    $jumlahTemuan = [];
+    
+    foreach ($auditeeData as $auditeeId => $data) {
+        $namaAuditee[] = $data['nama_auditee'];
+        $jumlahTemuan[] = $data['jumlah_temuan'];
+    }
+
+
 
        
 
 
-        $result = $results->kegiatan;
 
+      $result = 0; 
+if($results){
+
+        $result = $results->kegiatan;
+}
 
         return view(
             'dashboard.dashboard_kegiatan',
             [
                 'result' => $result,
-                'divisi' => $divisi,
-                'temuan' => $temuan
+                'divisi' => $namaAuditee,
+                'temuan' => $jumlahTemuan
 
             ]
         );

@@ -115,6 +115,26 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
+                                    <label for="inputText" class="col-sm-2 col-form-label">Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" name="password"
+                                            class="form-control @error('password') is-invalid @enderror" id="password"
+                                            value="" autofocus>
+                                        @error('password')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-sm-10">
+                                    <select class="form-select" name="role" aria-label="Default select example" required>
+                                        <option selected disabled>=== Pilih Satu ===</option>
+                                        @foreach ($roles as $item)
+                                        <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                   
+                                </div>
+                                <div class="row mb-3">
 
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary">Simpan</button>

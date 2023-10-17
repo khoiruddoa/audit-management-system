@@ -17,6 +17,7 @@ use App\Http\Controllers\ProgramKerjaAuditeeController;
 use App\Http\Controllers\PustakaAuditController;
 use App\Http\Controllers\ReferensiAuditController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SuratTugasController;
 use App\Http\Controllers\SusunanTimController;
 use App\Http\Controllers\TanggapanAuditController;
@@ -40,19 +41,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/login',[LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login',[LoginController::class, 'authenticate'])->name('authenticate')->middleware('guest');
+Route::get('/logout',[LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::middleware(['auth:sanctum'])->group(function () {
 
 Route::get('/',[dashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+
 Route::get('/kegiatan_audit_dashboard/{id}',[dashboardController::class, 'kegiatan'])->name('dashboard_kegiatan');
 
 
 
-Route::get('/login',[LoginController::class, 'index'])->name('login');
-
-Route::post('/login',[LoginController::class, 'authenticate'])->name('authenticate');
 
 
 
-Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
 
 
@@ -82,15 +85,7 @@ Route::get('/tindak_lanjut_auditee', [TindakLanjutAuditeeController::class, 'ind
 Route::post('/tindak_lanjut_auditee/store', [TindakLanjutAuditeeController::class, 'update'])->name('tindak_lanjut_auditee_store');
 Route::get('/tindak_lanjut_auditee/detail/{id}', [TindakLanjutAuditeeController::class, 'detail'])->name('tindak_lanjut_auditee_detail');
 
-// Route::get('/pelaksanaan_audit/susunan_tim', function () {
-//     return view('dashboard.pelaksanaan_audit.susunan_tim.index');
-// });
 
-
-
-// Route::get('/pelaksanaan_audit/surat_tugas/', function () {
-//     return view('dashboard.pelaksanaan_audit.surat_tugas.index');
-// })->name('surat_tugas');
 Route::get('/pelaksanaan_audit/surat_tugas/create/{id}', [SuratTugasController::class,'index'])->name('surat_tugas');
 Route::post('/pelaksanaan_audit/surat_tugas/store', [SuratTugasController::class,'store'])->name('surat_tugas_store');
 
@@ -107,7 +102,6 @@ Route::get('/perencanaan_audit/program_kerja_audit/document/{id}', [DocumentCont
 Route::post('perencanaan_audit/program_kerja_audit/document/store', [DocumentController::class, 'store'])->name('program_kerja_audit_document_store');
 Route::post('perencanaan_audit/program_kerja_audit/document/update/{id}', [DocumentController::class, 'update'])->name('program_kerja_audit_document_update');
 Route::get('/perencanaan_audit/program_kerja_audit/document/delete/{id}', [DocumentController::class, 'delete'])->name('program_kerja_audit_document_delete');
-// Route::post('/pustaka_audit/pustaka_program_audit/document/out_store', [DocumentController::class, 'out_store'])->name('pustaka_program_audit_out_store');
 
 Route::get('/pelaksanaan_audit/program_kerja_audit/{id}', [PelaksanaanProgramKerjaAuditController::class, 'index'])->name('pelaksanaan_program_kerja_audit');
 Route::get('/pelaksanaan_audit/program_kerja_audit/detail/{id}', [PelaksanaanProgramKerjaAuditController::class, 'detail'])->name('pelaksanaan_program_kerja_audit_detail');
@@ -164,9 +158,6 @@ Route::get('/pelaksanaan_audit/tanggapan_auditee', [TanggapanAuditController::cl
 Route::get('/pelaksanaan_audit/tanggapan_auditee/{id}', [TanggapanAuditController::class, 'detail'])->name('tanggapan_auditee_auditor_detail');
 Route::post('/pelaksanaan_audit/tanggapan_auditee/sanggah', [TanggapanAuditController::class, 'sanggah'])->name('sanggah_tanggapan');
 
-// Route::get('/pelaksanaan_audit/tanggapan_auditee/delete/{id}', [SusunanTimController::class, 'destroy'])->name('tanggapan_auditee_delete');
-// Route::get('/pelaksanaan_audit/tanggapan_auditee/create/{id}', [SusunanTimController::class, 'create'])->name('tanggapan_auditee_create');
-// Route::post('/pelaksanaan_audit/tanggapan_auditee/store', [SusunanTimController::class, 'store'])->name('susunan_tim_store');
 
 Route::get('/kegiatan_audit', [KegiatanController::class, 'index'])->name('kegiatan_audit');
 Route::get('/kegiatan_audit/create', [KegiatanController::class, 'create'])->name('kegiatan_audit_create');
@@ -181,6 +172,14 @@ Route::get('/kegiatan_audit/on_progress/{id}', [KegiatanController::class, 'onPr
 Route::get('/kegiatan_audit/cancel/{id}', [KegiatanController::class, 'cancel'])->name('kegiatan_audit_cancel');
 
 
+
+
+Route::get('/manajemen_role', [RoleController::class, 'index'])->name('manajemen_role');
+Route::get('/manajemen_role/create', [RoleController::class, 'create'])->name('manajemen_role_create');
+Route::post('/manajemen_role/store', [RoleController::class, 'store'])->name('manajemen_role_store');
+
+Route::get('/manajemen_role/detail/{id}', [RoleController::class, 'detail'])->name('manajemen_role_detail');
+Route::post('/manajemen_role_permission', [RoleController::class, 'store_permission'])->name('manajemen_role_permission');
 
 
 Route::get('/manajemen_pegawai', [RegisterController::class, 'index'])->name('manajemen_pegawai');
@@ -225,15 +224,5 @@ Route::get('/laporan', [LaporanAuditController::class, 'index'])->name('laporan_
 Route::get('/laporan/cetak/{id}', [LaporanAuditController::class, 'cetak_pdf'])->name('laporan_audit_cetak');
 Route::get('/laporan/detail/{id}', [LaporanAuditController::class, 'detail_pdf'])->name('laporan_audit_detail');
 
-// Route::get('/manajemen_auditee', function () {
-//     return view('dashboard.manajemen_auditee.index');
-// })->name('manajemen_auditee');
-
-// Route::get('/manajemen_auditee/create', function () {
-//     return view('dashboard.manajemen_auditee.create');
-// })->name('manajemen_auditee_create');
-
-
-
-
+});
 

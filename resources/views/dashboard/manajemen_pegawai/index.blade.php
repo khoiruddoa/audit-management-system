@@ -51,7 +51,7 @@
                                         <th scope="col">No</th>
                                         <th scope="col">NIP</th>
                                         <th scope="col">Nama</th>
-                                        <th scope="col">Inisial</th>
+                                        <th scope="col">Role</th>
                                         <th scope="col">Jabatan</th>
                                         <th scope="col">Posisi</th>
                                         <th scope="col">Aksi</th>
@@ -63,32 +63,26 @@
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>{{ $user->nip }}</td>
                                             <td>{{ $user->name }}</td>
-                                            <td>{{ $user->inisial }}</td>
+                                            <td> @foreach ($user->roles as $role)
+                                                {{ $role->name }} 
+                                            @endforeach  </td>
                                             <td>{{ $user->jabatan }}</td>
                                             <td>{{ $user->posisi }}</td>
                                             <td>
-
-                                                <div class="col-sm-10">
-                                                    <select class="form-select" aria-label="Default select example"
-                                                        onchange="redirectToLink(this.value)">
-                                                        <option selected disabled>-- Pilih Satu --</option>
-                                                        <option value="{{ route('manajemen_pegawai_detail',['id' => $user->id])}}">Detail</option>
-                                                        <option
-                                                            value="{{ route('manajemen_pegawai_edit', ['id' => $user->id]) }}">
-                                                            Edit</option>
-                                                        <option
-                                                            value="{{ route('manajemen_pegawai_delete', ['id' => $user->id]) }}" onclick="return confirm('are you sure delete this data?')">
-                                                            Hapus</option>
-                                                    </select>
-                                                </div>
-
-                                                <script>
-                                                    function redirectToLink(value) {
-                                                        if (value) {
-                                                            window.location.href = value;
-                                                        }
-                                                    }
-                                                </script>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        Pilih Satu
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+        
+                                                        
+                                                        <li><a class="dropdown-item" href="{{ route('manajemen_pegawai_detail',['id' => $user->id])}}">Detail</a></li>
+        
+                                                       
+                                                        
+                                                        <li><a class="dropdown-item" href="{{ route('manajemen_pegawai_delete', ['id' => $user->id]) }}"  onclick="return confirm('are you sure delete this data?')">Hapus</a></li>
+                                                        <li><a class="dropdown-item" href="{{ route('manajemen_pegawai_edit', ['id' => $user->id]) }}" >Edit</a></li>
+                                                      
                                             </td>
 
                                         </tr>

@@ -9,7 +9,7 @@
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
-<!-- @if(auth()->user()->role_id == 1 || auth()->user()->role_id == 2) -->
+
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav1" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Menu Auditor</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -49,9 +49,9 @@
          
         </ul>
       </li><!-- End Components Nav -->
-      <!-- @endif
+    
 
-      <!-- @if(auth()->user()->role_id == 1 || auth()->user()->role_id == 2) -->
+     
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Menu Auditee</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -84,15 +84,23 @@
          
         </ul>
       </li><!-- End Components Nav -->
-      <!-- @endif
+    
 
-      @if(auth()->user()->role_id == 1) -->
+     
        <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('manajemen_pegawai')}}">
           <i class="bi bi-person"></i>
           <span>Manajemen Pegawai</span>
         </a>
-      </li><!-- End Profile Page Nav -->
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('manajemen_role')}}">
+          <i class="bi bi-person"></i>
+          <span>Manajemen Role</span>
+        </a>
+      </li>
+      
+      <!-- End Profile Page Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('manajemen_auditor')}}">
           <i class="bi bi-person"></i>
@@ -138,79 +146,10 @@
           
         </ul>
       </li><!-- End Icons Nav -->
-      <!-- @endif
+    
+    
 
       
-      @if(auth()->user()->role_id == 3) -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('temuan_audit')}}">
-          <i class="bi bi-person"></i>
-          <span>Temuan</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('tanggapan_audit')}}">
-          <i class="bi bi-person"></i>
-          <span>Tanggapan</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('tindaklanjut_audit')}}">
-          <i class="bi bi-person"></i>
-          <span>Tindak lanjut</span>
-        </a>
-      </li>
-      <!-- @endif -->
-
-      
-      
-      
-      <!-- End Profile Page Nav -->
-
-     
-
-      {{-- <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
-          <i class="bi bi-question-circle"></i>
-          <span>F.A.Q</span>
-        </a>
-      </li><!-- End F.A.Q Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
-          <i class="bi bi-envelope"></i>
-          <span>Contact</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
-          <i class="bi bi-card-list"></i>
-          <span>Register</span>
-        </a>
-      </li><!-- End Register Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Login</span>
-        </a>
-      </li><!-- End Login Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-error-404.html">
-          <i class="bi bi-dash-circle"></i>
-          <span>Error 404</span>
-        </a>
-      </li><!-- End Error 404 Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link " href="pages-blank.html">
-          <i class="bi bi-file-earmark"></i>
-          <span>Blank</span>
-        </a>
-      </li><!-- End Blank Page Nav --> --}}
 
     </ul>
 

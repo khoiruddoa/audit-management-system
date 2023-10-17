@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -15,7 +16,8 @@ class RegisterController extends Controller
     public function index()
     {
         return view('dashboard.manajemen_pegawai.index', [
-            'users' => User::latest()->get()
+            'users' => User::with('roles')->latest()->get(),
+           
         ]);
     }
 
@@ -27,7 +29,7 @@ class RegisterController extends Controller
     }
     public function create()
     {
-        return view('dashboard.manajemen_pegawai.create');
+        return view('dashboard.manajemen_pegawai.create',['roles' => Role::all()]);
     }
 
     public function edit($id)
@@ -42,17 +44,20 @@ class RegisterController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'required|max:255',
+            'password' => 'required|max:255',
             'email' => ['required', 'unique:users'],
             'nip' => 'required|max:255',
-            'inisial' => 'required|max:255',
             'jabatan' => 'required|max:255',
             'posisi' => 'required|max:255',
             'hp' => ['required', 'unique:users'],
             'alamat' => 'required|max:255',
 
         ]);
+        $validatedData['password'] = Hash::make($request->password);
 
-        User::create($validatedData);
+       $user = User::create($validatedData);
+
+       $user->assignRole($request->role);
 
         return redirect('/manajemen_pegawai')->with('success', 'Pegawai Ditambahkan');
     }
@@ -62,14 +67,15 @@ class RegisterController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => ['required', Rule::unique('users')->ignore($id)],
+            
             'nip' => 'required|max:255',
-            'inisial' => 'required|max:255',
             'jabatan' => 'required|max:255',
             'posisi' => 'required|max:255',
             'hp' => ['required', Rule::unique('users')->ignore($id)],
             'alamat' => 'required|max:255',
         ]);
 
+       
         $user = User::findOrFail($id);
         $user->update($validatedData);
 

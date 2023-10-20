@@ -15,8 +15,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $user = User::create([
-            [
-
+        
                 'name' => 'Doa',
                 'email' => 'khoiruddoa@gmail.com',
                 'password' => Hash::make('password'),
@@ -25,34 +24,31 @@ class UserSeeder extends Seeder
                
                 'jabatan' => 'Admin',
                 'posisi' => 'internal',
-                'alamat' => 'bitung'
-                // 'created_at' => now(),
-                // 'updated_at' => now(),
-            ],
+                'alamat' => 'bitung',
+                'created_at' => now(),
+                'updated_at' => now(),
+            
         ]);
         $user->assignRole('super admin');
 
         $user = User::create([
-            [
-
+            
                 'name' => 'Bambang Suhartono',
                 'email' => 'bambang@gmail.com',
                 'password' => Hash::make('password'),
                 'hp' => '081231',
                 'nip' => '11',
-               
                 'jabatan' => 'CEO',
                 'posisi' => 'internal',
-                'alamat' => 'bitung'
-                // 'created_at' => now(),
-                // 'updated_at' => now(),
-            ],
+                'alamat' => 'bitung',
+                'created_at' => now(),
+                'updated_at' => now(),
+            
         ]);
-        $user->assignRole('user');
+        $user->assignRole('watcher');
 
         $user = User::create([
-            [
-                'role_id' => 1,
+            
                 'name' => 'Novar',
                 'email' => 'novar@gmail.com',
                 'password' => Hash::make('password'),
@@ -61,16 +57,15 @@ class UserSeeder extends Seeder
                 
                 'jabatan' => 'Staff',
                 'posisi' => 'internal',
-                'alamat' => 'bitung'
-                // 'created_at' => now(),
-                // 'updated_at' => now(),
-            ],
+                'alamat' => 'bitung',
+                'created_at' => now(),
+                'updated_at' => now(),
+            
         ]);
-        $user->assignRole('user');
+        $user->assignRole('watcher');
 
         $user = User::create([
-            [
-                'role_id' => 3,
+            
                 'name' => 'Inten',
                 'email' => 'inten@gmail.com',
                 'password' => Hash::make('password'),
@@ -79,16 +74,15 @@ class UserSeeder extends Seeder
                 
                 'jabatan' => 'staff',
                 'posisi' => 'internal',
-                'alamat' => 'bitung'
-                // 'created_at' => now(),
-                // 'updated_at' => now(),
-            ],
+                'alamat' => 'bitung',
+                'created_at' => now(),
+                'updated_at' => now(),
+            
         ]);
-        $user->assignRole('user');
+        $user->assignRole('watcher');
 
         $user = User::create([
-            [
-                'role_id' => 3,
+            
                 'name' => 'Nanda',
                 'email' => 'nanda@gmail.com',
                 'password' => Hash::make('password'),
@@ -97,10 +91,11 @@ class UserSeeder extends Seeder
                
                 'jabatan' => 'staff',
                 'posisi' => 'internal',
-                'alamat' => 'bitung'
-                // 'created_at' => now(),
-                // 'updated_at' => now(),
-            ],
+                'alamat' => 'bitung',
+                'created_at' => now(),
+                'updated_at' => now(),
+            
         ]);
+        $user->assignRole('watcher');
     }
 }

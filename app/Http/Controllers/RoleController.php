@@ -53,7 +53,7 @@ class RoleController extends Controller
 
     public function detail($id) {
         // Dapatkan peran berdasarkan ID
-        $role = Role::findById($id);
+        $role = Role::find($id);
     
         if (!$role) {
             // Handle jika peran tidak ditemukan
@@ -80,15 +80,21 @@ class RoleController extends Controller
     }
 
     public function store_permission(Request $request) {
-        $role = Role::findById($request->role_id);
+
+        $request->validate([
+            'role_id' => 'required|exists:roles,id',
+            'permissions' => 'required|array',
+        ]);
     
+        $role = Role::find($request->role_id);
+   
         // Ambil izin-izin yang dipilih dari formulir
         $selectedPermissions = $request->permissions;
     
         // Berikan izin-izin yang dipilih ke peran
         $role->syncPermissions($selectedPermissions);
     
-        return back()->with('success', 'Izin berhasil diperbarui.');
+        return redirect(route('manajemen_role'))->with('success', 'Izin berhasil diperbarui.');
     }
     
 }

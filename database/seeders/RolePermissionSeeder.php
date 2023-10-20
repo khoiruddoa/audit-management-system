@@ -16,6 +16,122 @@ class RolePermissionSeeder extends Seeder
     {
         Permission::create(['name' =>'tambah user']);
         Permission::create(['name' =>'edit user']);
+        Permission::create(['name' =>'hapus user']);
+        Permission::create(['name' =>'lihat user']);
+        Permission::create(['name' =>'detail user']);
+        Permission::create(['name' =>'lihat dashboard']);
+        Permission::create(['name' =>'lihat dashboard kegiatan']);
+        Permission::create(['name' =>'membuat kegiatan audit']);
+        Permission::create(['name' =>'edit kegiatan audit']);
+        Permission::create(['name' =>'simpan kegiatan audit']);
+        Permission::create(['name' =>'update kegiatan audit']);
+        Permission::create(['name' =>'hapus kegiatan audit']);
+        Permission::create(['name' =>'finish kegiatan audit']);
+        Permission::create(['name' =>'onprogress kegiatan audit']);
+        Permission::create(['name' =>'cancel kegiatan audit']);
+
+
+        Permission::create(['name' =>'lihat perencanaan audit']);
+        Permission::create(['name' =>'detail perencanaan audit']);
+        Permission::create(['name' =>'hapus perencanaan audit']);
+        Permission::create(['name' =>'lanjut perencanaan audit']);
+        Permission::create(['name' =>'membuat perencanaan audit']);
+        Permission::create(['name' =>'edit perencanaan audit']);
+        Permission::create(['name' =>'simpan perencanaan audit']);
+        Permission::create(['name' =>'update perencanaan audit']);
+        Permission::create(['name' =>'jadwal perencanaan audit']);
+
+
+
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+        Permission::create(['name' =>'']);
+
+
+
+
+
+
+
+
 
         Role::create(['name' =>'admin']);
         Role::create(['name' =>'super admin']);

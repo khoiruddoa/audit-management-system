@@ -47,17 +47,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Inisial</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" name="inisial"
-                                            class="form-control  @error('inisial') is-invalid @enderror" id="inisial"
-                                            value="{{ old('inisial') }}" autofocus>
-                                        @error('inisial')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
+
 
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">Jabatan</label>
@@ -125,14 +115,20 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-sm-10">
-                                    <select class="form-select" name="role" aria-label="Default select example" required>
-                                        <option selected disabled>=== Pilih Satu ===</option>
-                                        @foreach ($roles as $item)
-                                        <option value="{{ $item->name }}">{{ $item->name }}</option>
-                                        @endforeach
-                                    </select>
-                                   
+
+
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Role</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-select" name="role" aria-label="Default select example"
+                                            required>
+                                            <option selected disabled>=== Pilih Satu ===</option>
+                                            @foreach ($roles as $item)
+                                                <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="row mb-3">
 

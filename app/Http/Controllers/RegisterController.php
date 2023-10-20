@@ -67,7 +67,6 @@ class RegisterController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => ['required', Rule::unique('users')->ignore($id)],
-            
             'nip' => 'required|max:255',
             'jabatan' => 'required|max:255',
             'posisi' => 'required|max:255',

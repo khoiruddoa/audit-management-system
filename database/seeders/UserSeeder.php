@@ -97,5 +97,39 @@ class UserSeeder extends Seeder
             
         ]);
         $user->assignRole('watcher');
+
+        $user = User::create([
+            
+                'name' => 'auditor',
+                'email' => 'auditor@gmail.com',
+                'password' => Hash::make('password'),
+                'hp' => '08123112311',
+                'nip' => '11332',
+               
+                'jabatan' => 'staff',
+                'posisi' => 'internal',
+                'alamat' => 'bitung',
+                'created_at' => now(),
+                'updated_at' => now(),
+            
+        ]);
+        $user->assignRole('auditor');
+
+        $user = User::create([
+            
+                'name' => 'auditee',
+                'email' => 'auditee@gmail.com',
+                'password' => Hash::make('password'),
+                'hp' => '08123112311',
+                'nip' => '11332',
+               
+                'jabatan' => 'staff',
+                'posisi' => 'internal',
+                'alamat' => 'bitung',
+                'created_at' => now(),
+                'updated_at' => now(),
+            
+        ]);
+        $user->assignRole('auditee');
     }
 }

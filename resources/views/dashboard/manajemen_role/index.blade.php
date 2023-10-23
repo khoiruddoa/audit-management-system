@@ -37,9 +37,13 @@
                                     <h5 class="card-title">Data Role</h5>
                                 </div>
                                 <div>
-                                    <a href="{{route('manajemen_role_create')}}" class="btn btn-outline-primary">Tambah
-                                        Role</a>
+                                    @can('membuat manajemen role')
+                                        <a href="{{ route('manajemen_role_create') }}" class="btn btn-outline-primary">Tambah Role</a>
+                                    @else
+                                        <a href="#" class="btn btn-outline-danger" disabled>Tambah Role</a>
+                                    @endcan
                                 </div>
+                                
 
 
                             </div>

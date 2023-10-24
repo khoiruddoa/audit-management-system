@@ -7,9 +7,11 @@
             <h1>Kertas Kerja Audit</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('pelaksanaan_audit') }}">Program Kerja Audit</a></li>
-                    <li class="breadcrumb-item active">Kertas Kerja Audit</li>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('pelaksanaan_audit')}}">Pelaksanaan Audit</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('pelaksanaan_program_kerja_audit',['id' => $kertas->programKerjaAudit->perencanaanAudit->id])}}">Program Kerja Audit</a> </li>
+                    <li class="breadcrumb-item"><a href="{{route('kertas_kerja_audit',['id' => $kertas->programKerjaAudit->id])}}">Kertas Kerja Audit</a></li>
+                    <li class="breadcrumb-item active">Detail Kertas Kerja</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->

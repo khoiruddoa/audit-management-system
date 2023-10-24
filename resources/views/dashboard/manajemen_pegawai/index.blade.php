@@ -82,7 +82,8 @@
                                                         
                                                         <li><a class="dropdown-item" href="{{ route('manajemen_pegawai_delete', ['id' => $user->id]) }}"  onclick="return confirm('are you sure delete this data?')">Hapus</a></li>
                                                         <li><a class="dropdown-item" href="{{ route('manajemen_pegawai_edit', ['id' => $user->id]) }}" >Edit</a></li>
-                                                      
+                                                    </ul>
+                                                </div>
                                             </td>
 
                                         </tr>

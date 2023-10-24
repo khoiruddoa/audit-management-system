@@ -25,15 +25,15 @@ class PelaksanaanProgramKerjaAuditController extends Controller
     public function create($id)
     {
         $audit = PerencanaanAudit::find($id);
-        
+
 
         $program_kerja = PustakaAudit::where('auditee_id', $audit->auditee_id)->get();
         return view('dashboard.pelaksanaan_audit.program_kerja_audit.create', [
             'audit' => $audit,
             'susunan_tims' => SusunanTim::where('perencanaan_audit_id', $id)->get(),
             'program_kerja' => $program_kerja,
-            
-           
+
+
         ]);
     }
 
@@ -56,20 +56,20 @@ class PelaksanaanProgramKerjaAuditController extends Controller
             'pustaka_audit_id' => 'nullable|string|max:255',
             'waktu' => 'required|date',
             'tahapan' => 'required|string'
-            
+
         ]);
 
-      
+
         ProgramKerjaAudit::create($validatedData);
 
-        return redirect('/perencanaan_audit/program_kerja_audit/'.$id)->with('success', 'Program Kerja Ditambahkan');
-
+        return redirect('/perencanaan_audit/program_kerja_audit/' . $id)->with('success', 'Program Kerja Ditambahkan');
     }
 
 
-    
 
-    public function edit($id){
+
+    public function edit($id)
+    {
 
         $program = ProgramKerjaAudit::find($id);
 
@@ -81,24 +81,22 @@ class PelaksanaanProgramKerjaAuditController extends Controller
             'susunan_tims' => SusunanTim::where('perencanaan_audit_id', $audit->id)->get(),
             'program_kerja' => $program_kerja,
 
-           'program' => $program
+            'program' => $program
         ]);
-
     }
 
     public function delete($id)
     {
         $cek = KertasKerjaAudit::where('program_kerja_audit_id', $id)->first();
-        if($cek){
+        if ($cek) {
             return back()->with('failed', 'Program sudah ada di Kertas Kerja Audit');
         }
-        
+
         $data = ProgramKerjaAudit::findOrFail($id);
         $data->delete();
 
-       
-        return back()->with('success', 'Program kerja dihapus');
 
+        return back()->with('success', 'Program kerja dihapus');
     }
 
     public function update(Request $request, $id)
@@ -114,13 +112,33 @@ class PelaksanaanProgramKerjaAuditController extends Controller
             'pustaka_audit_id' => 'nullable|string|max:255',
             'waktu' => 'required|date',
             'tahapan' => 'required|string'
-            
+
         ]);
 
-       
+
         $data->update($validatedData);
 
-        return redirect('/pelaksanaan_audit/program_kerja_audit/'.$id)->with('success', 'Program Kerja Diupdate');
+        return redirect('/pelaksanaan_audit/program_kerja_audit/' . $id)->with('success', 'Program Kerja Diupdate');
+    }
 
+    public function finish($id)
+    {
+
+        $data = ProgramKerjaAudit::find($id);
+
+       
+        $cari = KertasKerjaAudit::where('program_kerja_audit_id', $data->id)->where('status', null)->first();
+     
+      
+        if ($cari) {
+            return back()->with('failed', 'Masih ada kertas kerja yang belum dikonfirmasi');
+        }
+
+
+
+
+        $data->update(['status' => '1']);
+
+        return back()->with('success', 'Program Kerja Selesai');
     }
 }

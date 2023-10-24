@@ -63,6 +63,7 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'simpan tim audit']);
         Permission::create(['name' => 'update tim audit']);
         Permission::create(['name' => 'hapus tim audit']);
+        Permission::create(['name' => 'lihat tim audit']);
 
 
 
@@ -84,6 +85,7 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'simpan program kerja audit di pelaksanaan']);
         Permission::create(['name' => 'edit program kerja audit di pelaksanaan']);
         Permission::create(['name' => 'update program kerja audit di pelaksanaan']);
+        Permission::create(['name' => 'finish program kerja audit di pelaksanaan']);
 
 
         Permission::create(['name' => 'membuat kertas kerja audit']);
@@ -93,6 +95,10 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'edit kertas kerja audit']);
         Permission::create(['name' => 'update kertas kerja audit']);
         Permission::create(['name' => 'hapus kertas kerja audit']);
+        Permission::create(['name' => 'konfirmasi kertas kerja audit']);
+        Permission::create(['name' => 'batal konfirmasi kertas kerja audit']);
+
+
 
 
 

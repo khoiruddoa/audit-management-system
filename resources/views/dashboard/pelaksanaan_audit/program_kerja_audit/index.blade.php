@@ -7,8 +7,8 @@
         <h1>Program Kerja Audit</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item">Pelaksanaan Audit</li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('pelaksanaan_audit')}}">Pelaksanaan Audit</a></li>
                 <li class="breadcrumb-item active">Program Kerja Audit</li>
             </ol>
         </nav>
@@ -182,6 +182,8 @@
                                                 <li><a class="dropdown-item" href="{{route('program_kerja_audit_edit', ['id' => $item->id])}}">Edit</a></li>
 
                                                 <li><a class="dropdown-item" href="{{route('program_kerja_audit_delete', ['id' => $item->id])}}">Hapus</a></li>
+                                                <li><a class="dropdown-item" href="{{route('pelaksanaan_program_kerja_audit_finish', ['id' => $item->id])}}">Selesai</a></li>
+
 
                                             </ul>
 

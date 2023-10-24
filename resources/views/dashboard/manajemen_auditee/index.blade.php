@@ -22,22 +22,23 @@
                 </div>
             @endif
             @if (session()->has('failed'))
-            <div class="alert alert-danger alert-dismissible fade show col-lg-8" role="alert">
-                {{ session('failed') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
+                <div class="alert alert-danger alert-dismissible fade show col-lg-8" role="alert">
+                    {{ session('failed') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-lg-12">
 
                     <div class="card">
                         <div class="card-body">
-                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
                                 <div>
                                     <h5 class="card-title">Data Auditee</h5>
                                 </div>
                                 <div>
-                                    <a href="{{route('manajemen_auditee_create')}}" class="btn btn-outline-primary">Tambah Data</a>
+                                    <a href="{{ route('manajemen_auditee_create') }}" class="btn btn-outline-primary">Tambah
+                                        Data</a>
                                 </div>
 
                             </div>
@@ -56,39 +57,43 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        @foreach($auditees as $auditee)
-                                        <th scope="row">{{$loop->iteration}}</th>
-                                        <td>{{$auditee->kode}}</td>
-                                        <td>{{$auditee->auditee}}</td>
-                                        <td>{{$auditee->user->name}}</td>
-                                        <td>{{$auditee->user->jabatan}}</td>
-                                        <td>
+                                        @foreach ($auditees as $auditee)
+                                            <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>{{ $auditee->kode }}</td>
+                                            <td>{{ $auditee->auditee }}</td>
+                                            <td>{{ $auditee->user->name }}</td>
+                                            <td>{{ $auditee->user->jabatan }}</td>
+                                            <td>
 
 
-                                                <div class="col-sm-10">
-                                                    <select class="form-select" aria-label="Default select example"
-                                                        onchange="redirectToLink(this.value)">
-                                                        <option selected disabled>-- Pilih Satu --</option>
-                                                        <option value="{{ route('manajemen_auditee_detail',['id' => $auditee->id])}}">Detail</option>
-                                                        <option
-                                                            value="{{ route('manajemen_auditee_edit', ['id' => $auditee->id]) }}">
-                                                            Edit</option>
-                                                        <option
-                                                            value="{{ route('manajemen_auditee_delete', ['id' => $auditee->id]) }}">
-                                                            Hapus</option>
-                                                    </select>
+
+
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                        Pilih Satu
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+
+
+                                                        <li><a class="dropdown-item"
+                                                                href="{{ route('manajemen_auditee_detail', ['id' => $auditee->id]) }}">Detail</a>
+                                                        </li>
+
+
+
+                                                        <li><a class="dropdown-item"
+                                                                href="{{ route('manajemen_auditee_delete', ['id' => $auditee->id]) }}"
+                                                                onclick="return confirm('are you sure delete this data?')">Hapus</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item"
+                                                                href="{{ route('manajemen_auditee_edit', ['id' => $auditee->id]) }}">Edit</a>
+                                                        </li>
+                                                    </ul>
                                                 </div>
-
-                                                <script>
-                                                    function redirectToLink(value) {
-                                                        if (value) {
-                                                            window.location.href = value;
-                                                        }
-                                                    }
-                                                </script>
-                                        </td>
+                                            </td>
                                     </tr>
-                                        @endforeach
+                                    @endforeach
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->

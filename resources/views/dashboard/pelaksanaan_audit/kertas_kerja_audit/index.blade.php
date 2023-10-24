@@ -7,8 +7,9 @@
             <h1>Kertas Kerja Audit</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item">Pelaksanaan Audit</li>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('pelaksanaan_audit')}}">Pelaksanaan Audit</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('pelaksanaan_program_kerja_audit',['id' => $program_kerja->perencanaanAudit->id])}}">Program Kerja Audit</a> </li>
                     <li class="breadcrumb-item active">Kertas Kerja Audit</li>
                 </ol>
             </nav>
@@ -91,7 +92,7 @@
                                                                     <h5 class="card-title text-center">List Pemenuhan Data
                                                                         Audit</h5>
                                                                 </div>
-                                                               
+
                                                             </div>
                                                             <!-- Table with stripped rows -->
                                                             <table class="table datatable">
@@ -180,7 +181,7 @@
                                                 <th scope="row">{{ $loop->iteration }}</th>
 
                                                 <td>{{ $item->temuan }}</td>
-                                                <td>test</td>
+                                                <td>@if($item->status == '1') Sudah dikonfirmasi @else Belum dikkonfirmasi @endif</td>
                                                 <td>
 
                                                     <div class="dropdown">
@@ -201,6 +202,16 @@
                                                             <li><a class="dropdown-item"
                                                                     href="{{ route('kertas_kerja_audit_delete', ['id' => $item->id]) }}">Hapus</a>
                                                             </li>
+                                                            <li>@if($item->status == '1')
+                                                                <a class="dropdown-item"
+                                                                href="{{ route('kertas_kerja_audit_batal_konfirmasi', ['id' => $item->id]) }}">Batal konfirmasi</a>
+                                        
+                                                                @else
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('kertas_kerja_audit_konfirmasi', ['id' => $item->id]) }}">Konfirmasi</a>
+                                                            
+                                                                   @endif
+                                                                </li>
 
                                                         </ul>
 

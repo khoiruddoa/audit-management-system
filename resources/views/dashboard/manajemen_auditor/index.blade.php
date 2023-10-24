@@ -66,7 +66,7 @@
                                             <td>
 
                                                 <a href="{{ route('manajemen_auditor_delete', ['id' => $auditor->id]) }}"
-                                                    class="btn btn-primary">Hapus</a>
+                                                    class="btn btn-primary"  onclick="return confirm('are you sure delete this data?')">Hapus</a>
                                             </td>
 
                                         </tr>

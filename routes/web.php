@@ -130,6 +130,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('pelaksanaan_audit/program_kerja_audit/update/{id}', [PelaksanaanProgramKerjaAuditController::class, 'update'])->name('pelaksanaan_program_kerja_audit_update')->middleware('permission:update program kerja audit di pelaksanaan');
     Route::get('/pelaksanaan_audit/program_kerja_audit/edit/{id}', [PelaksanaanProgramKerjaAuditController::class, 'edit'])->name('pelaksanaan_program_kerja_audit_edit')->middleware('permission:edit program kerja audit di pelaksanaan');
     Route::get('/pelaksanaan_audit/program_kerja_audit/delete/{id}', [PelaksanaanProgramKerjaAuditController::class, 'delete'])->name('pelaksanaan_program_kerja_audit_delete')->middleware('permission:hapus program kerja audit di pelaksanaan');
+    Route::get('/pelaksanaan_audit/program_kerja_audit/finish/{id}', [PelaksanaanProgramKerjaAuditController::class, 'finish'])->name('pelaksanaan_program_kerja_audit_finish')->middleware('permission:hapus program kerja audit di pelaksanaan');
 
 
     //kertas kerja audit
@@ -140,6 +141,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('pelaksanaan_audit/kertas_kerja_audit/update/{id}', [KertasKerjaAuditController::class, 'update'])->name('kertas_kerja_audit_update')->middleware('permission:update kertas kerja audit');
     Route::get('/pelaksanaan_audit/kertas_kerja_audit/edit/{id}', [KertasKerjaAuditController::class, 'edit'])->name('kertas_kerja_audit_edit')->middleware('permission:edit kertas kerja audit');
     Route::get('/pelaksanaan_audit/kertas_kerja_audit/delete/{id}', [KertasKerjaAuditController::class, 'delete'])->name('kertas_kerja_audit_delete')->middleware('permission:hapus kertas kerja audit');
+    Route::get('/pelaksanaan_audit/kertas_kerja_audit/konfirmasi/{id}', [KertasKerjaAuditController::class, 'konfirmasi'])->name('kertas_kerja_audit_konfirmasi')->middleware('permission:konfirmasi kertas kerja audit');
+    Route::get('/pelaksanaan_audit/kertas_kerja_audit/batal-konfirmasi/{id}', [KertasKerjaAuditController::class, 'batalKonfirmasi'])->name('kertas_kerja_audit_batal_konfirmasi')->middleware('permission:batal konfirmasi kertas kerja audit');
 
 
 //tindak lanjut dari sisi auditor

@@ -99,6 +99,37 @@ class KertasKerjaAuditController extends Controller
 
     }
 
+
+    public function konfirmasi($id)
+    {
+        $data = KertasKerjaAudit::find($id);
+
+     
+
+      
+
+        $data->update(["status" => "1"]);
+
+        return back()->with('success', 'Kertas Kerja Dikonfirmasi');
+
+    }
+
+
+    public function batalKonfirmasi($id)
+    {
+        $data = KertasKerjaAudit::find($id);
+
+     
+
+      
+
+        $data->update(["status" => Null]);
+
+        return back()->with('success', 'Kertas Kerja batal Dikonfirmasi');
+
+    }
+
+
     public function delete($id)
     {
        

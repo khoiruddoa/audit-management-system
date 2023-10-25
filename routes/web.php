@@ -131,6 +131,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/pelaksanaan_audit/program_kerja_audit/edit/{id}', [PelaksanaanProgramKerjaAuditController::class, 'edit'])->name('pelaksanaan_program_kerja_audit_edit')->middleware('permission:edit program kerja audit di pelaksanaan');
     Route::get('/pelaksanaan_audit/program_kerja_audit/delete/{id}', [PelaksanaanProgramKerjaAuditController::class, 'delete'])->name('pelaksanaan_program_kerja_audit_delete')->middleware('permission:hapus program kerja audit di pelaksanaan');
     Route::get('/pelaksanaan_audit/program_kerja_audit/finish/{id}', [PelaksanaanProgramKerjaAuditController::class, 'finish'])->name('pelaksanaan_program_kerja_audit_finish')->middleware('permission:hapus program kerja audit di pelaksanaan');
+    Route::get('/pelaksanaan_audit/program_kerja_audit/cancel/{id}', [PelaksanaanProgramKerjaAuditController::class, 'cancel'])->name('pelaksanaan_program_kerja_audit_cancel')->middleware('permission:hapus program kerja audit di pelaksanaan');
 
 
     //kertas kerja audit

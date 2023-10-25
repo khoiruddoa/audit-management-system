@@ -6,6 +6,7 @@ use App\Models\Auditee;
 use App\Models\Kegiatan;
 use App\Models\PelaksanaanAudit;
 use App\Models\PerencanaanAudit;
+use App\Models\ProgramKerjaAudit;
 use App\Models\PustakaAudit;
 use Illuminate\Http\Request;
 
@@ -57,14 +58,7 @@ class PelaksanaanAuditController extends Controller
         'anggaran' =>'required'
     ]);
     
-    if ($request->hasFile('file')) {
-        $file = $request->file('file');
-        $filename = time() . '_' . $file->getClientOriginalName();
-        $file->move(public_path('file'), $filename);
-
-        $validatedData['file'] = url('/') . '/file/' . $filename;
-    }
-
+  
         
         $data->update($validatedData);
 
@@ -84,6 +78,14 @@ class PelaksanaanAuditController extends Controller
     public function selesai($id){
 
         $audit = PerencanaanAudit::find($id);
+
+
+        $program = ProgramKerjaAudit::where('perencanaan_audit_id', $audit->id)->where('status', null)->first();
+
+        if($program){
+            return back()->with('failed', 'Masih ada Program kerja yang belum selesai');
+
+        }
         $audit->update(['status' => 2]);
 
 

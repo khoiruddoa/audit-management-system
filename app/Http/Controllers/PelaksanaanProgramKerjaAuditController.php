@@ -10,15 +10,37 @@ use App\Models\ProgramKerjaAudit;
 use App\Models\PustakaAudit;
 use App\Models\SusunanTim;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PelaksanaanProgramKerjaAuditController extends Controller
 {
     public function index($id)
     {
+
+        $program = ProgramKerjaAudit::where('perencanaan_audit_id', $id)->get();
+
+
+        $user = Auth::user();
+
+        // Check if the user has the admin, super admin, or lead auditor role
+        if ($user->hasRole('admin') || $user->hasRole('super admin') || $user->hasRole('lead auditor')) {
+            // Get all program audit data
+            $programKerjaAudit = ProgramKerjaAudit::where('perencanaan_audit_id', $id)->get();
+        } else {
+            $userId = auth()->user()->id;
+
+            $programKerjaAudit = ProgramKerjaAudit::where('perencanaan_audit_id', $id)->whereHas('susunanTim.auditor.user', function ($query) use ($userId) {
+                $query->where('id', $userId);
+            })->get();
+        }
+
+        $audit = PerencanaanAudit::find($id);
+        $tim = SusunanTim::where('perencanaan_audit_id', $id)->get();
+
         return view('dashboard.pelaksanaan_audit.program_kerja_audit.index', [
-            'audit' => PerencanaanAudit::find($id),
-            'susunan_tims' => SusunanTim::where('perencanaan_audit_id', $id)->get(),
-            'program_kerja' => ProgramKerjaAudit::where('perencanaan_audit_id', $id)->get()
+            'audit' => $audit,
+            'susunan_tims' => $tim,
+            'program_kerja' => $programKerjaAudit
         ]);
     }
 
@@ -126,10 +148,10 @@ class PelaksanaanProgramKerjaAuditController extends Controller
 
         $data = ProgramKerjaAudit::find($id);
 
-       
+
         $cari = KertasKerjaAudit::where('program_kerja_audit_id', $data->id)->where('status', null)->first();
-     
-      
+
+
         if ($cari) {
             return back()->with('failed', 'Masih ada kertas kerja yang belum dikonfirmasi');
         }
@@ -140,5 +162,21 @@ class PelaksanaanProgramKerjaAuditController extends Controller
         $data->update(['status' => '1']);
 
         return back()->with('success', 'Program Kerja Selesai');
+    }
+
+    public function cancel($id)
+    {
+
+        $data = ProgramKerjaAudit::find($id);
+
+
+
+
+
+
+
+        $data->update(['status' => null]);
+
+        return back()->with('success', 'Program Kerja batal');
     }
 }

@@ -86,6 +86,7 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'edit program kerja audit di pelaksanaan']);
         Permission::create(['name' => 'update program kerja audit di pelaksanaan']);
         Permission::create(['name' => 'finish program kerja audit di pelaksanaan']);
+        Permission::create(['name' => 'batal program kerja audit di pelaksanaan']);
 
 
         Permission::create(['name' => 'membuat kertas kerja audit']);

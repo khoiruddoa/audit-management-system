@@ -30,9 +30,16 @@ class KertasKerjaAuditController extends Controller
 
     public function create($id)
     {
+
+        $program = ProgramKerjaAudit::find($id);
+
+        if($program->status == 1){
+            return back()->with('failed', 'Tidak dapat menambah kertas kerja, karena program kerja sudah selesai');
+
+        }
         return view('dashboard.pelaksanaan_audit.kertas_kerja_audit.create', [
             
-            'program_kerja' => ProgramKerjaAudit::find($id),
+            'program_kerja' => $program,
             'referensi' => ReferensiAudit::all()
            
         ]);
@@ -55,6 +62,14 @@ class KertasKerjaAuditController extends Controller
     public function store(Request $request)
     {
         $id = $request->program_kerja_audit_id;
+
+
+        $program = ProgramKerjaAudit::find($id);
+
+        if($program->status == 1){
+            return back()->with('failed', 'Tidak dapat menambah kertas kerja, karena program kerja sudah selesai');
+
+        }
 
         $validatedData = $request->validate([
             'program_kerja_audit_id' => 'required',

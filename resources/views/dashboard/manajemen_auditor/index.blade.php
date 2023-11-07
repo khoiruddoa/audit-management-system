@@ -8,9 +8,9 @@
             <h1>Manajemen Auditor</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
                     <li class="breadcrumb-item">Data Auditor</li>
-                    <li class="breadcrumb-item active">Tabel</li>
+                   
                 </ol>
             </nav>
         </div><!-- End Page Title -->

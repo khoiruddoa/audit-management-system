@@ -204,5 +204,6 @@ class RolePermissionSeeder extends Seeder
 
         // Assign seluruh permission ke role super admin
         Role::findByName('super admin')->syncPermissions(Permission::all());
+        Role::findByName('admin')->syncPermissions(Permission::all());
     }
 }

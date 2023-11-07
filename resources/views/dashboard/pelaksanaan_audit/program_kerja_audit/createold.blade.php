@@ -14,6 +14,7 @@
             </ol>
         </nav>
     </div><!-- End Page Title -->
+
     <section class="section">
         @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show col-lg-8" role="alert">
@@ -35,7 +36,7 @@
                         <h5 class="card-title">Tambah Program Kerja</h5>
 
                         <!-- General Form Elements -->
-                        <form method="post" action="{{ route('pelaksanaan_program_kerja_audit_store') }}">
+                        <form method="post" action="{{ route('program_kerja_audit_store') }}">
                             @csrf
                             <input type="hidden" name="perencanaan_audit_id" value="{{$audit->id}}">
 

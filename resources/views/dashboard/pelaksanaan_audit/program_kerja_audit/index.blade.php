@@ -143,7 +143,7 @@
                                     <h5 class="card-title text-center">Program Kerja Audit</h5>
                                 </div>
                                 <div>
-                                    <a href="{{ route('program_kerja_audit_create', ['id' => $audit->id]) }}"
+                                    <a href="{{ route('pelaksanaan_program_kerja_audit_create', ['id' => $audit->id]) }}"
                                         class="btn btn-outline-primary">Tambah Data</a>
                                 </div>
 

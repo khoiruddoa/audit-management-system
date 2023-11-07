@@ -226,7 +226,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/manajemen_auditor', [AuditorController::class, 'index'])->name('manajemen_auditor')->middleware('permission:lihat manajemen auditor');
     Route::get('/manajemen_auditor/create', [AuditorController::class, 'create'])->name('manajemen_auditor_create')->middleware('permission:membuat manajemen auditor');
     Route::post('/manajemen_auditor/store', [AuditorController::class, 'store'])->name('manajemen_auditor_store')->middleware('permission:simpan manajemen auditor');
-    Route::get('/manajemen_auditor/delete/{id}', [AuditorController::class, 'destroy'])->name('manajemen_auditor_delete')->middleware('permission: hapus manajemen auditor');
+    Route::get('/manajemen_auditor/delete/{id}', [AuditorController::class, 'destroy'])->name('manajemen_auditor_delete')->middleware('permission:hapus manajemen auditor');
 
 
 

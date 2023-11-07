@@ -49,7 +49,6 @@ class ProgramKerjaAuditController extends Controller
         $id = $request->perencanaan_audit_id;
         $pustaka = $request->pustaka_audit_id;
 
-
         $validatedData = $request->validate([
             'perencanaan_audit_id' => 'required|string|max:255',
             'susunan_tim_id' => 'required|string|max:255',

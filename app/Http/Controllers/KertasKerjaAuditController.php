@@ -8,6 +8,7 @@ use App\Models\ProgramKerjaAudit;
 use App\Models\PustakaAudit;
 use App\Models\ReferensiAudit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KertasKerjaAuditController extends Controller
 {
@@ -65,6 +66,16 @@ class KertasKerjaAuditController extends Controller
 
 
         $program = ProgramKerjaAudit::find($id);
+
+        $auditor = $request->auditor;
+        $auth = Auth()->user()->id;
+
+      
+        if($auditor !== $auth){
+            return back()->with('failed', 'Anda tidak ditugaskan dalam program kerja ini');
+
+        }
+
 
         if($program->status == 1){
             return back()->with('failed', 'Tidak dapat menambah kertas kerja, karena program kerja sudah selesai');

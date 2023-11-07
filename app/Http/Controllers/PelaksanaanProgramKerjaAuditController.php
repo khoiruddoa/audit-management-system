@@ -69,8 +69,7 @@ class PelaksanaanProgramKerjaAuditController extends Controller
     public function store(Request $request)
     {
         $id = $request->perencanaan_audit_id;
-
-
+        $pustaka = $request->pustaka_audit_id;
 
         $validatedData = $request->validate([
             'perencanaan_audit_id' => 'required|string|max:255',
@@ -78,14 +77,21 @@ class PelaksanaanProgramKerjaAuditController extends Controller
             'pustaka_audit_id' => 'nullable|string|max:255',
             'waktu' => 'required|date',
             'tahapan' => 'required|string'
-
+            
         ]);
 
+        $cek = ProgramKerjaAudit::where('perencanaan_audit_id', $id)->where('pustaka_audit_id', $pustaka)->first();
+        if($cek){
+            return back()->with('failed', 'Program Kerja Sudah Ada');
+        }
 
+      
         ProgramKerjaAudit::create($validatedData);
 
-        return redirect('/perencanaan_audit/program_kerja_audit/' . $id)->with('success', 'Program Kerja Ditambahkan');
+        return redirect('/pelaksanaan_audit/program_kerja_audit/'.$id)->with('success', 'Program Kerja Ditambahkan');
+
     }
+
 
 
 

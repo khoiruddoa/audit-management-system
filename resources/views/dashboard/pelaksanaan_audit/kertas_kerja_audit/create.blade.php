@@ -2,6 +2,18 @@
 
 @section('container')
     <main id="main" class="main">
+        @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show col-lg-8" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+        @if (session()->has('failed'))
+        <div class="alert alert-danger alert-dismissible fade show col-lg-8" role="alert">
+            {{ session('failed') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
 
         <div class="pagetitle">
             <h1>Tambah Kertas Kerja Audit</h1>
@@ -44,6 +56,7 @@
                             <!-- General Form Elements -->
                             <form method="post" action="{{ route('kertas_kerja_audit_store') }}">
                                 @csrf
+                                <input type="hidden" name="auditor" value="{{ $program_kerja->susunanTim->auditor->user->id }}">
                                 <input type="hidden" name="program_kerja_audit_id" value="{{ $program_kerja->id }}">
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">Judul Temuan</label>

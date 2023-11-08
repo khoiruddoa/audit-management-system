@@ -99,7 +99,7 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'konfirmasi kertas kerja audit']);
         Permission::create(['name' => 'batal konfirmasi kertas kerja audit']);
 
-
+        //
 
 
 
@@ -121,7 +121,7 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'konfirmasi tindak lanjut auditor']);
 
 
-
+        //
 
 
         Permission::create(['name' => 'lihat tindak lanjut auditee']);
@@ -205,5 +205,188 @@ class RolePermissionSeeder extends Seeder
         // Assign seluruh permission ke role super admin
         Role::findByName('super admin')->syncPermissions(Permission::all());
         Role::findByName('admin')->syncPermissions(Permission::all());
+
+        Role::findByName('lead auditor')->syncPermissions([
+            'lihat dashboard',
+            'lihat dashboard kegiatan',
+            'lihat kegiatan audit',
+
+            'lihat perencanaan audit',
+            'detail perencanaan audit',
+
+            'lihat program kerja audit',
+            'detail program kerja audit',
+            'hapus program kerja audit',
+            'membuat program kerja audit',
+            'simpan program kerja audit',
+            'edit program kerja audit',
+            'update program kerja audit',
+            'tambah pustaka audit-program audit',
+
+
+
+            'lihat dokumen program kerja audit',
+            'simpan dokumen program kerja audit',
+            'update dokumen program kerja audit',
+            'hapus dokumen program kerja audit',
+
+
+            'membuat tim audit',
+            'simpan tim audit',
+            'update tim audit',
+            'hapus tim audit',
+            'lihat tim audit',
+
+
+
+            'lihat pelaksanaan audit',
+            'membuat pelaksanaan audit',
+            'edit pelaksanaan audit',
+            'update pelaksanaan audit',
+            'delete pelaksanaan audit',
+            'detail pelaksanaan audit',
+            'selesai pelaksanaan audit',
+
+
+
+            'lihat program kerja audit di pelaksanaan',
+            'detail program kerja audit di pelaksanaan',
+            'hapus program kerja audit di pelaksanaan',
+            'membuat program kerja audit di pelaksanaan',
+            'simpan program kerja audit di pelaksanaan',
+            'edit program kerja audit di pelaksanaan',
+            'update program kerja audit di pelaksanaan',
+            'finish program kerja audit di pelaksanaan',
+            'batal program kerja audit di pelaksanaan',
+
+
+            'membuat kertas kerja audit',
+            'lihat kertas kerja audit',
+            'detail kertas kerja audit',
+            'simpan kertas kerja audit',
+            'edit kertas kerja audit',
+            'update kertas kerja audit',
+            'hapus kertas kerja audit',
+            'konfirmasi kertas kerja audit',
+            'batal konfirmasi kertas kerja audit',
+
+            'lihat tindak lanjut auditor',
+            'detail tindak lanjut auditor',
+            'simpan tindak lanjut auditor',
+            'konfirmasi tindak lanjut auditor',
+
+
+            'lihat laporan',
+            'cetak laporan',
+            'detail laporan',
+
+
+
+
+
+        ]);
+
+
+        Role::findByName('auditor')->syncPermissions([
+            'lihat dashboard',
+            'lihat dashboard kegiatan',
+            'lihat kegiatan audit',
+
+            'lihat perencanaan audit',
+            'detail perencanaan audit',
+
+            'lihat program kerja audit',
+            'detail program kerja audit',
+
+           
+
+
+
+            'lihat dokumen program kerja audit',
+           
+            'lihat tim audit',
+
+
+
+            'lihat pelaksanaan audit',
+         
+            'detail pelaksanaan audit',
+          
+
+
+            'lihat program kerja audit di pelaksanaan',
+            'detail program kerja audit di pelaksanaan',
+           
+
+
+            'membuat kertas kerja audit',
+            'lihat kertas kerja audit',
+            'detail kertas kerja audit',
+            'simpan kertas kerja audit',
+            'edit kertas kerja audit',
+            'update kertas kerja audit',
+            'hapus kertas kerja audit',
+           
+            'lihat tindak lanjut auditor',
+            'detail tindak lanjut auditor',
+            
+
+
+            'lihat laporan',
+            'cetak laporan',
+            'detail laporan',
+
+
+
+
+
+        ]);
+
+
+
+        Role::findByName('auditee')->syncPermissions([
+
+            'lihat dashboard',
+            'lihat dashboard kegiatan',
+            'lihat kegiatan audit',
+
+
+
+            'lihat program temuan',
+            'detail program temuan',
+            'lihat program temuan ditanggapi',
+            'lihat program temuan tinjau ulang',
+            'lihat program temuan tindak lanjut',
+            'detail temuan',
+            'simpan tanggapan',
+            'simpan tanggapan ulang',
+            'lihat tanggapan',
+
+
+
+
+            'lihat tindak lanjut auditee',
+            'update tindak lanjut auditee',
+            'detail tindak lanjut auditee',
+
+
+
+            'lihat program kerja auditee',
+
+
+            'lihat dokumen auditee',
+            'update dokumen auditee',
+
+            'lihat tanggapan auditee',
+            'detail tanggapan auditee',
+            'sanggah tanggapan auditee',
+
+
+
+            'lihat laporan',
+            'cetak laporan',
+            'detail laporan',
+
+        ]);
     }
 }

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auditee;
 use App\Models\KertasKerjaAudit;
 use App\Models\PerencanaanAudit;
 use App\Models\ProgramKerjaAudit;
 use App\Models\TanggapanAudit;
 use App\Models\TindakLanjutAudit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class TemuanAuditController extends Controller
@@ -15,8 +17,31 @@ class TemuanAuditController extends Controller
     public function index()
     {
 
+
+        $user = Auth::user();
+
+        // Check if the user has the admin, super admin, or lead auditor role
+        if ($user->hasRole('admin') || $user->hasRole('super admin')) {
+            // Get all program audit data
+            $audit = ProgramKerjaAudit::where('status', 1)->get();
+        } else {
+
+
+            $userId = auth()->user()->id;
+
+            // Mengambil hanya kolom 'id' dari Auditee yang memenuhi kondisi
+            $auditeeIds = Auditee::where('user_id', $userId)->pluck('id');
+
+            dd($auditeeIds);
+
+            $audit = ProgramKerjaAudit::where('status', 1)->whereHas('perencanaanAudit.auditee', function ($query) use ($auditeeIds) {
+                $query->whereIn('id', $auditeeIds); // Menggunakan whereIn untuk mencocokkan dengan beberapa nilai
+            })->get();
+        }
+
+        $audit = ProgramKerjaAudit::where('status', 1)->get();
         return view('dashboard.temuan.index', [
-            'audits' => ProgramKerjaAudit::all()
+            'audits' => $audit
         ]);
     }
 
@@ -37,7 +62,7 @@ class TemuanAuditController extends Controller
         ]);
     }
 
-   
+
     public function tinjauUlang($id)
     {
 
@@ -96,12 +121,12 @@ class TemuanAuditController extends Controller
 
     public function restore(Request $request)
     {
-    
+
         if ($request->option == '1') {
 
             $tanggapan = TanggapanAudit::find($request->id);
 
-           
+
             $validatedData['status'] = '1';
             $validatedData['tanggapan'] = 'Setuju dengan pendapat auditor';
             $validatedData['komentar_auditee'] = $tanggapan->tanggapan;
@@ -109,7 +134,7 @@ class TemuanAuditController extends Controller
             $tanggapan->update($validatedData);
 
             return back()->with('success', 'Sukses');
-        } 
+        }
     }
 
 

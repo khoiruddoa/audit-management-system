@@ -70,8 +70,10 @@ class KertasKerjaAuditController extends Controller
         $auditor = $request->auditor;
         $auth = Auth()->user()->id;
 
+    
+
       
-        if($auditor !== $auth){
+        if($auditor != $auth){
             return back()->with('failed', 'Anda tidak ditugaskan dalam program kerja ini');
 
         }

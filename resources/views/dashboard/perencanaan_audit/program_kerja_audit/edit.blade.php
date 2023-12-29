@@ -51,10 +51,10 @@
 
 
                                             @foreach ($susunan_tims as $item)
-                                               
+
 
                                                 <option value="{{ $item->id }}" {{ $item->id == $program->susunan_tim_id ? 'selected' : '' }}>{{ $item->auditor->user->name }}</option>
-                                     
+
                                             @endforeach
 
                                         </select>
@@ -75,20 +75,20 @@
                                         <label class="col-sm-2 col-form-label">Aktivitas Audit</label>
                                         <div class="col-sm-10">
 
-                                           
+
 
                                             <select x-model="selectedOption"
                                                 @change="tahapan = $event.target.selectedOptions[0].getAttribute('data-tahapan')"
                                                 class="form-select" name="pustaka_audit_id" aria-label="Default select example">
                                                 <option disabled>=== Pilih Satu ===</option>
                                                 @foreach ($program_kerja as $item)
-                                                   
+
                                                         <option value="{{ $item->id }}" data-tahapan="{{ $item->tahapan }}" {{ $item->id == $program->pustaka_audit_id ? 'selected' : '' }}>{{ $item->judul }}</option>
-                                     
-                                                        
 
 
-                                                        
+
+
+
                                                 @endforeach
                                             </select>
                                         </div>
@@ -98,7 +98,7 @@
                                         <label for="inputText" class="col-sm-2 col-form-label">Langkah Audit</label>
                                         <div class="col-sm-10">
                                             <input id="x" type="hidden" name="tahapan">
-                                            <trix-editor input="x" x-html="tahapan"></trix-editor>
+                                            <trix-editor input="x" x-html="tahapan">{!!$item->tahapan!!}</trix-editor>
                                         </div>
                                     </div>
                                 </div>

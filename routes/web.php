@@ -44,7 +44,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate')->middleware('guest');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
-
+Route::get('/test1', [dashboardController::class, 'test'])->middleware('permission:lihat dashboard');
 Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/', [dashboardController::class, 'index'])->middleware('auth')->name('dashboard')->middleware('permission:lihat dashboard');

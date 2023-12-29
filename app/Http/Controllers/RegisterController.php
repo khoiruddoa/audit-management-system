@@ -17,14 +17,20 @@ class RegisterController extends Controller
     {
         return view('dashboard.manajemen_pegawai.index', [
             'users' => User::with('roles')->latest()->get(),
-           
+
         ]);
     }
 
     public function detail($id)
     {
+        $user = User::find($id);
+
+        // Mendapatkan peran pengguna menggunakan Spatie
+        $roles = $user->getRoleNames();
+
         return view('dashboard.manajemen_pegawai.detail', [
-            'user' => User::find($id)
+            'user' => $user,
+            'roles' => $roles,
         ]);
     }
     public function create()
@@ -34,7 +40,7 @@ class RegisterController extends Controller
 
     public function edit($id)
     {
-        return view('dashboard.manajemen_pegawai.edit', ['user' => User::find($id)]);
+        return view('dashboard.manajemen_pegawai.edit', ['user' => User::find($id), 'roles' => Role::all()]);
     }
 
 
@@ -49,8 +55,7 @@ class RegisterController extends Controller
             'nip' => 'required|max:255',
             'jabatan' => 'required|max:255',
             'posisi' => 'required|max:255',
-            'hp' => ['required', 'unique:users'],
-            'alamat' => 'required|max:255',
+            'hp' => ['required', 'unique:users']
 
         ]);
         $validatedData['password'] = Hash::make($request->password);
@@ -70,13 +75,16 @@ class RegisterController extends Controller
             'nip' => 'required|max:255',
             'jabatan' => 'required|max:255',
             'posisi' => 'required|max:255',
-            'hp' => ['required', Rule::unique('users')->ignore($id)],
-            'alamat' => 'required|max:255',
+            'hp' => ['required', Rule::unique('users')->ignore($id)]
         ]);
 
-       
+
         $user = User::findOrFail($id);
         $user->update($validatedData);
+        if($request->role !==  null){
+        $user->syncRoles($request->role);
+        }
+
 
         return redirect('/manajemen_pegawai')->with('success', 'Pegawai Diperbarui');
     }

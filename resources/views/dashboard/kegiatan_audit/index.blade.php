@@ -9,7 +9,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item"><a href="{{route('kegiatan_audit')}}">Kegiatan Audit</a></li>
-                
+
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -60,7 +60,7 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $item->kegiatan }}</td>
                                     <td>@currency($item->anggaran)</td>
-                                    <td>@if($item->status == '0')<div class="p-3 mb-2 bg-warning text-black">Open</div> @elseif($item->status == '1')<div class="p-3 mb-2 bg-primary text-black">On Progres</div> @else <div class="p-3 mb-2 bg-success text-black">Finish</div> @endif</td>
+                                    <td>@if($item->status == '0')<div class="p-3 mb-2 bg-danger text-black">Open</div> @elseif($item->status == '1')<div class="p-3 mb-2 bg-warning text-black">On Progres</div> @else <div class="p-3 mb-2 bg-primary text-black">Finish</div> @endif</td>
                                     <td>
 
                                         <div class="dropdown">
@@ -69,10 +69,10 @@
                                             </button>
                                             <ul class="dropdown-menu">
 
-                                                
+
                                                 <li><a class="dropdown-item" href="{{ route('kegiatan_audit_edit', ['id' => $item->id]) }}">Edit</a></li>
 
-                                               
+
                                                 @if($item->status == '0')
                                                 <li><a class="dropdown-item" href="{{ route('kegiatan_audit_delete', ['id' => $item->id]) }}">Hapus</a></li>
                                                 <li><a class="dropdown-item" href="{{ route('kegiatan_audit_onProgress', ['id' => $item->id]) }}">On Progress</a></li>@endif

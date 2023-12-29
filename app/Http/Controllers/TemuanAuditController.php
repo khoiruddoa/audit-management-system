@@ -32,7 +32,7 @@ class TemuanAuditController extends Controller
             // Mengambil hanya kolom 'id' dari Auditee yang memenuhi kondisi
             $auditeeIds = Auditee::where('user_id', $userId)->pluck('id');
 
-            dd($auditeeIds);
+
 
             $audit = ProgramKerjaAudit::where('status', 1)->whereHas('perencanaanAudit.auditee', function ($query) use ($auditeeIds) {
                 $query->whereIn('id', $auditeeIds); // Menggunakan whereIn untuk mencocokkan dengan beberapa nilai

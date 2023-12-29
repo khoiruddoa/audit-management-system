@@ -63,18 +63,14 @@
                                             <div class="col-lg-3 col-md-4 label">Kategori</div>
                                             <div class="col-lg-9 col-md-8">{{ $user->posisi }}</div>
                                         </div>
-
-                                        <div class="row">
-                                            <div class="col-lg-3 col-md-4 label">Alamat</div>
-                                            <div class="col-lg-9 col-md-8">{{ $user->alamat }}</div>
-                                        </div>
-
                                         <div class="row">
                                             <div class="col-lg-3 col-md-4 label">No. HP</div>
                                             <div class="col-lg-9 col-md-8">{{ $user->hp }}</div>
                                         </div>
-
-
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Role</div>
+                                            <div class="col-lg-9 col-md-8">@foreach($roles as $role) {{ $role }} @endforeach</div>
+                                        </div>
                                     </div>
 
 

@@ -23,13 +23,12 @@ return new class extends Migration
             $table->string('nip');
             $table->string('jabatan');
             $table->string('posisi');
-            $table->string('alamat');
             $table->string('hp')->nullable();
             $table->timestamps();
         });
 
-        
-        
+
+
     }
 
     /**

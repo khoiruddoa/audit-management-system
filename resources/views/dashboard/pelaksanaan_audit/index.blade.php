@@ -36,9 +36,7 @@
               <div>
                 <h5 class="card-title">Data Pelaksanaan Audit</h5>
               </div>
-              <div>
-                <a href="{{route('perencanaan_audit_create')}}" class="btn btn-outline-primary">Tambah Data</a>
-              </div>
+
 
             </div>
 

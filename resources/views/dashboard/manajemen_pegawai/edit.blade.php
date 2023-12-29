@@ -48,7 +48,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                               
+
 
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">Jabatan</label>
@@ -73,16 +73,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <label for="inputPassword" class="col-sm-2 col-form-label">Alamat</label>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control  @error('alamat') is-invalid @enderror" id="alamat" name="alamat"
-                                            style="height: 100px">{{ old('alamat', $user->alamat) }}</textarea>
-                                        @error('alamat')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
+
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">No Telephone</label>
                                     <div class="col-sm-10">
@@ -105,7 +96,17 @@
                                         @enderror
                                     </div>
                                 </div>
-                                
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Role</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-select" name="role" aria-label="Default select example">
+                                            <option selected disabled>=== Pilih Satu ===</option>
+                                            @foreach ($roles as $item)
+                                                <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="row mb-3">
 
                                     <div class="col-sm-10">

@@ -7,8 +7,8 @@
             <h1>Manajemen Pegawai</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item">Manajemen Pegawai</li>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('manajemen_pegawai')}}">Manajemen Pegawai</a></li>
                     <li class="breadcrumb-item active">Data Baru</li>
                 </ol>
             </nav>
@@ -72,16 +72,6 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <label for="inputPassword" class="col-sm-2 col-form-label">Alamat</label>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control  @error('alamat') is-invalid @enderror" id="alamat" name="alamat"
-                                            style="height: 100px">{{ old('alamat') }}</textarea>
-                                        @error('alamat')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">No Telephone</label>
                                     <div class="col-sm-10">

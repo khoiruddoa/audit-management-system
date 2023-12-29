@@ -57,37 +57,29 @@
                                 <tbody>
                                     @foreach ($programs as $item)
                                     <tr>
-                                        
+
                                         <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{ $item->auditee->auditee }}</td>
                                         <td>{{ $item->judul }}</td>
                                         <td>{!! $item->tahapan !!}</td>
                                         <td><a href="{{ $item->lampiran}}">download</a></td>
                                         <td>
-                                            <div class="col-sm-10">
-                                                <select class="form-select" aria-label="Default select example"
-                                                    onchange="redirectToLink(this.value)">
-                                                    <option selected disabled>-- Pilih Satu --</option>
-                                                    <option value="{{route('pustaka_program_audit_edit', ['id' => $item->id])}}">Edit</option>
-                                                    {{-- <option
-                                                        value="">
-                                                        Edit</option> --}}
-                                                    <option
-                                                        value="{{route('pustaka_program_audit_delete', ['id' => $item->id])}}">
-                                                        Hapus</option>
-                                                </select>
-                                            </div>
-                        
-                                            <script>
-                                                function redirectToLink(value) {
-                                                    if (value) {
-                                                        window.location.href = value;
-                                                    }
-                                                }
-                                            </script>
-                                            
+                                            <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Pilih Satu
+                                            </button>
+                                            <ul class="dropdown-menu">
+
+
+                                                <li><a class="dropdown-item" href="{{route('pustaka_program_audit_edit', ['id' => $item->id])}}">Edit</a></li>
+                                                <li><a class="dropdown-item" href="{{route('pustaka_program_audit_delete', ['id' => $item->id])}}">Hapus</a></li>
+
+
+                                             </ul>
+
+                                        </div>
                                         </td>
-                                       
+
 
                                     </tr>
                                     @endforeach

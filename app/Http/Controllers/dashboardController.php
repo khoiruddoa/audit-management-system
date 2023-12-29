@@ -36,6 +36,11 @@ class dashboardController extends Controller
             ]
         );
     }
+
+    public function test()
+    {
+        return response()->json(['status' => 'success', 'message' => 'Test successful']);
+    }
     public function kegiatan($id)
     {
         $results = Kegiatan::find($id);

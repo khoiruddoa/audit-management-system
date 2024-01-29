@@ -27,19 +27,19 @@ class TemuanAuditController extends Controller
         } else {
 
 
-            $userId = auth()->user()->id;
+            $auditeeIds = auth()->user()->auditees->pluck('id')->toArray();
+
 
             // Mengambil hanya kolom 'id' dari Auditee yang memenuhi kondisi
-            $auditeeIds = Auditee::where('user_id', $userId)->pluck('id');
 
 
 
-            $audit = ProgramKerjaAudit::where('status', 1)->whereHas('perencanaanAudit.auditee', function ($query) use ($auditeeIds) {
-                $query->whereIn('id', $auditeeIds); // Menggunakan whereIn untuk mencocokkan dengan beberapa nilai
+            $audit = ProgramKerjaAudit::where('status', 1)->whereHas('perencanaanAudit', function ($query) use ($auditeeIds) {
+                $query->whereIn('auditee_id', $auditeeIds);
             })->get();
+
         }
 
-        $audit = ProgramKerjaAudit::where('status', 1)->get();
         return view('dashboard.temuan.index', [
             'audits' => $audit
         ]);

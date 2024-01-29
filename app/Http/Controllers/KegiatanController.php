@@ -11,17 +11,17 @@ class KegiatanController extends Controller
 {
     public function index()
     { $kegiatan =  Kegiatan::latest()->get();
- 
+
         return view('dashboard.kegiatan_audit.index', [
             'kegiatan' => $kegiatan     ]);
 
     }
 
-   
+
 
     public function create()
     {
-        
+
         return view('dashboard.kegiatan_audit.create');
     }
     public function edit($id)
@@ -29,20 +29,20 @@ class KegiatanController extends Controller
         $kegiatan = Kegiatan::find($id);
         if(!$kegiatan){
             return back()->with('failed', 'Data tidak ada');
-        
+
         }
-    
+
         return view('dashboard.kegiatan_audit.edit', ['kegiatan' => $kegiatan]);
     }
 
 
     public function store(Request $request)
     {
-     
+
         $validatedData = $request->validate([
-          
+
             'kegiatan' => 'required|string',
-            
+
             'anggaran' => 'required|string'
         ]);
         $anggaran = str_replace('.', '', $validatedData['anggaran']);
@@ -58,7 +58,7 @@ class KegiatanController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            
+
             'kegiatan' => 'required|string',
             'anggaran' => 'required|string'
         ]);
@@ -67,7 +67,7 @@ class KegiatanController extends Controller
 
         if(!$data){
             return back()->with('failed', 'Kegiatan Audit tidak bisa diupdate');
-        
+
         }
 
         $anggaran = str_replace('.', '', $validatedData['anggaran']);
@@ -84,7 +84,7 @@ class KegiatanController extends Controller
         if($cek){
             return redirect('/kegiatan_audit')->with('failed', 'Kegiatan sudah ada di perencanaan');
         }
-       
+
         $data = Kegiatan::findOrFail($id);
         $data->delete();
 
@@ -93,7 +93,7 @@ class KegiatanController extends Controller
 
     public function finish(Request $request, $id)
     {
-       
+
         $cek = PerencanaanAudit::where('kegiatan_id', $id)->first();
         if(!$cek){
             return back()->with('failed', 'Gagal');        }
@@ -102,37 +102,37 @@ class KegiatanController extends Controller
             return back()->with('failed', 'Gagal');
         }
         $data->status = 2;
-        $data->save(); 
-    
+        $data->save();
+
 
         return redirect(route('kegiatan_audit'))->with('success', 'Kegiatan Audit selesai');
     }
 
     public function onProgress(Request $request, $id)
     {
-       
+
 
         $data = Kegiatan::findOrFail($id);
-       
-        $data->status = 1;
-        $data->save(); 
-    
 
-        return redirect(route('kegiatan_audit'))->with('success', 'Kegiatan Audit selesai');
+        $data->status = 1;
+        $data->save();
+
+
+        return redirect(route('kegiatan_audit'))->with('success', 'Kegiatan Audit OnProgress');
     }
 
     public function cancel(Request $request, $id)
     {
-       
+
 
         $data = Kegiatan::findOrFail($id);
-       
+
         $cek = PerencanaanAudit::where('kegiatan_id', $id)->first();
         if($cek){
             return back()->with('failed', 'Gagal');        }
         $data->status = 0;
-        $data->save(); 
-    
+        $data->save();
+
 
         return redirect(route('kegiatan_audit'))->with('success', 'Kegiatan Audit selesai');
     }

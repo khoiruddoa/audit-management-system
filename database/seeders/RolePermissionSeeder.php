@@ -125,6 +125,8 @@ class RolePermissionSeeder extends Seeder
 
 
         Permission::create(['name' => 'lihat tindak lanjut auditee']);
+
+        Permission::create(['name' => 'simpan tindak lanjut auditee']);
         Permission::create(['name' => 'update tindak lanjut auditee']);
         Permission::create(['name' => 'detail tindak lanjut auditee']);
 
@@ -298,25 +300,28 @@ class RolePermissionSeeder extends Seeder
             'lihat program kerja audit',
             'detail program kerja audit',
 
-           
 
 
+
+            'lihat tanggapan auditee',
+            'detail tanggapan auditee',
+            'sanggah tanggapan auditee',
 
             'lihat dokumen program kerja audit',
-           
+
             'lihat tim audit',
 
 
 
             'lihat pelaksanaan audit',
-         
+
             'detail pelaksanaan audit',
-          
+
 
 
             'lihat program kerja audit di pelaksanaan',
             'detail program kerja audit di pelaksanaan',
-           
+
 
 
             'membuat kertas kerja audit',
@@ -326,10 +331,10 @@ class RolePermissionSeeder extends Seeder
             'edit kertas kerja audit',
             'update kertas kerja audit',
             'hapus kertas kerja audit',
-           
+
             'lihat tindak lanjut auditor',
             'detail tindak lanjut auditor',
-            
+
 
 
             'lihat laporan',
@@ -365,6 +370,7 @@ class RolePermissionSeeder extends Seeder
 
 
 
+            'simpan tindak lanjut auditee',
             'lihat tindak lanjut auditee',
             'update tindak lanjut auditee',
             'detail tindak lanjut auditee',
@@ -377,7 +383,7 @@ class RolePermissionSeeder extends Seeder
             'lihat dokumen auditee',
             'update dokumen auditee',
 
-            'lihat tanggapan auditee',
+
             'detail tanggapan auditee',
             'sanggah tanggapan auditee',
 

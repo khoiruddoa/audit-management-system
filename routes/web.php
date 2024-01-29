@@ -168,11 +168,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 
 
-   
+
 //tindak lanjut dari sisi auditee
 
     Route::get('/tindak_lanjut_auditee', [TindakLanjutAuditeeController::class, 'index'])->name('tindaklanjut_auditee')->middleware('permission:lihat tindak lanjut auditee');
-    Route::post('/tindak_lanjut_auditee/store', [TindakLanjutAuditeeController::class, 'update'])->name('tindak_lanjut_auditee_store')->middleware('permission:simpan tindak lanjut auditee');
+   // Route::post('/tindak_lanjut_auditee/store', [TindakLanjutAuditeeController::class, 'update'])->name('tindak_lanjut_auditee_store')->middleware('permission:simpan tindak lanjut auditee');
+    Route::post('/tindak_lanjut_auditee/store', [TindakLanjutAuditeeController::class, 'update'])->name('tindak_lanjut_auditee_store');
+
     Route::get('/tindak_lanjut_auditee/detail/{id}', [TindakLanjutAuditeeController::class, 'detail'])->name('tindak_lanjut_auditee_detail')->middleware('permission:detail tindak lanjut auditee');
 
 

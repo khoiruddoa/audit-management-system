@@ -45,16 +45,16 @@ class dashboardController extends Controller
     {
         $results = Kegiatan::find($id);
 
-        $auditList = PerencanaanAudit::with('programKerjaAudit.kertasKerjaAudit')
+        $auditList = PerencanaanAudit::where('kegiatan_id', $id)->with('programKerjaAudit.kertasKerjaAudit')
         ->get();
-    
+
     $auditeeData = [];
-    
+
     // Inisialisasi data auditee dengan jumlah temuan 0
     foreach ($auditList as $audit) {
         $auditeeId = $audit->auditee_id;
         $auditeeName = $audit->auditee->auditee;
-    
+
         if (!isset($auditeeData[$auditeeId])) {
             $auditeeData[$auditeeId] = [
                 'nama_auditee' => $auditeeName,
@@ -62,7 +62,7 @@ class dashboardController extends Controller
             ];
         }
     }
-    
+
     // Menghitung jumlah temuan
     foreach ($auditList as $audit) {
         foreach ($audit->programKerjaAudit as $program) {
@@ -72,11 +72,11 @@ class dashboardController extends Controller
             }
         }
     }
-    
-  
+
+
     $namaAuditee = [];
     $jumlahTemuan = [];
-    
+
     foreach ($auditeeData as $auditeeId => $data) {
         $namaAuditee[] = $data['nama_auditee'];
         $jumlahTemuan[] = $data['jumlah_temuan'];
@@ -84,11 +84,11 @@ class dashboardController extends Controller
 
 
 
-       
 
 
 
-      $result = 0; 
+
+      $result = 0;
 if($results){
 
         $result = $results->kegiatan;

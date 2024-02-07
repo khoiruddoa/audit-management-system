@@ -12,17 +12,17 @@ class PerencanaanAudit extends Model
     protected $guarded = ['id'];
 
 
-   
 
-    public function getFirstdateAttribute(){
 
-        return Carbon::parse($this->attributes['firstdate'])->translatedFormat('l, j F Y');    }
+    // public function getFirstdateAttribute(){
 
-    public function getEnddateAttribute()
-    {
-        return Carbon::parse($this->attributes['enddate'])->translatedFormat('l, j F Y');
-    }
-    
+    //     return Carbon::parse($this->attributes['firstdate'])->translatedFormat('l, j F Y');    }
+
+    // public function getEnddateAttribute()
+    // {
+    //     return Carbon::parse($this->attributes['enddate'])->translatedFormat('l, j F Y');
+    // }
+
     public function auditee()
     {
         return $this->belongsTo(Auditee::class);

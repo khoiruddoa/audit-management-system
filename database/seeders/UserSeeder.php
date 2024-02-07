@@ -16,118 +16,135 @@ class UserSeeder extends Seeder
     {
         $user = User::create([
 
-                'name' => 'Doa',
-                'email' => 'khoiruddoa@gmail.com',
-                'password' => Hash::make('password'),
-                'hp' => '08123',
-                'nip' => '1',
+            'name' => 'Doa',
+            'email' => 'khoiruddoa@gmail.com',
+            'password' => Hash::make('password'),
+            'hp' => '08123',
+            'nip' => '1',
 
-                'jabatan' => 'Admin',
-                'posisi' => 'internal',
+            'jabatan' => 'Admin',
+            'posisi' => 'internal',
 
-                'created_at' => now(),
-                'updated_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
+
+        ]);
+        $user->assignRole('super admin');
+        $user = User::create([
+
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('password'),
+            'hp' => '08123',
+            'nip' => '1',
+
+            'jabatan' => 'Admin',
+            'posisi' => 'internal',
+
+            'created_at' => now(),
+            'updated_at' => now(),
 
         ]);
         $user->assignRole('super admin');
 
+
         $user = User::create([
 
-                'name' => 'Bambang Suhartono',
-                'email' => 'bambang@gmail.com',
-                'password' => Hash::make('password'),
-                'hp' => '081231',
-                'nip' => '11',
-                'jabatan' => 'CEO',
-                'posisi' => 'internal',
+            'name' => 'Bambang Suhartono',
+            'email' => 'bambang@gmail.com',
+            'password' => Hash::make('password'),
+            'hp' => '081231',
+            'nip' => '11',
+            'jabatan' => 'CEO',
+            'posisi' => 'internal',
 
-                'created_at' => now(),
-                'updated_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
 
         ]);
         $user->assignRole('watcher');
 
         $user = User::create([
 
-                'name' => 'Novar',
-                'email' => 'novar@gmail.com',
-                'password' => Hash::make('password'),
-                'hp' => '0812312',
-                'nip' => '111',
+            'name' => 'Novar',
+            'email' => 'novar@gmail.com',
+            'password' => Hash::make('password'),
+            'hp' => '0812312',
+            'nip' => '111',
 
-                'jabatan' => 'Staff',
-                'posisi' => 'internal',
+            'jabatan' => 'Staff',
+            'posisi' => 'internal',
 
-                'created_at' => now(),
-                'updated_at' => now(),
-
-        ]);
-        $user->assignRole('watcher');
-
-        $user = User::create([
-
-                'name' => 'Inten',
-                'email' => 'inten@gmail.com',
-                'password' => Hash::make('password'),
-                'hp' => '081231123',
-                'nip' => '1133',
-
-                'jabatan' => 'staff',
-                'posisi' => 'internal',
-
-                'created_at' => now(),
-                'updated_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
 
         ]);
         $user->assignRole('watcher');
 
         $user = User::create([
 
-                'name' => 'Nanda',
-                'email' => 'nanda@gmail.com',
-                'password' => Hash::make('password'),
-                'hp' => '08123112311',
-                'nip' => '11332',
+            'name' => 'Inten',
+            'email' => 'inten@gmail.com',
+            'password' => Hash::make('password'),
+            'hp' => '081231123',
+            'nip' => '1133',
 
-                'jabatan' => 'staff',
-                'posisi' => 'internal',
+            'jabatan' => 'staff',
+            'posisi' => 'internal',
 
-                'created_at' => now(),
-                'updated_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
 
         ]);
         $user->assignRole('watcher');
 
         $user = User::create([
 
-                'name' => 'auditor',
-                'email' => 'auditor@gmail.com',
-                'password' => Hash::make('password'),
-                'hp' => '08123112311',
-                'nip' => '11332',
+            'name' => 'Nanda',
+            'email' => 'nanda@gmail.com',
+            'password' => Hash::make('password'),
+            'hp' => '08123112311',
+            'nip' => '11332',
 
-                'jabatan' => 'staff',
-                'posisi' => 'internal',
+            'jabatan' => 'staff',
+            'posisi' => 'internal',
 
-                'created_at' => now(),
-                'updated_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
+
+        ]);
+        $user->assignRole('watcher');
+
+        $user = User::create([
+
+            'name' => 'auditor',
+            'email' => 'auditor@gmail.com',
+            'password' => Hash::make('password'),
+            'hp' => '08123112311',
+            'nip' => '11332',
+
+            'jabatan' => 'staff',
+            'posisi' => 'internal',
+
+            'created_at' => now(),
+            'updated_at' => now(),
 
         ]);
         $user->assignRole('auditor');
 
         $user = User::create([
 
-                'name' => 'auditee',
-                'email' => 'auditee@gmail.com',
-                'password' => Hash::make('password'),
-                'hp' => '08123112311',
-                'nip' => '11332',
+            'name' => 'auditee',
+            'email' => 'auditee@gmail.com',
+            'password' => Hash::make('password'),
+            'hp' => '08123112311',
+            'nip' => '11332',
 
-                'jabatan' => 'staff',
-                'posisi' => 'internal',
+            'jabatan' => 'staff',
+            'posisi' => 'internal',
 
-                'created_at' => now(),
-                'updated_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
 
         ]);
         $user->assignRole('auditee');

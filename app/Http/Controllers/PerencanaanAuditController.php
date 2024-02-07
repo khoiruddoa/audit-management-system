@@ -41,7 +41,7 @@ class PerencanaanAuditController extends Controller
     }
 
 
-   
+
 
 
     public function store(Request $request)
@@ -68,7 +68,7 @@ class PerencanaanAuditController extends Controller
         return back()->with('failed', 'Auditee Sudah ada di Perencanaan Audit');
     }
 
-        
+
         PerencanaanAudit::create($validatedData);
 
         return redirect('/perencanaan_audit')->with('success', 'Perencanaan Ditambahkan');
@@ -89,6 +89,7 @@ class PerencanaanAuditController extends Controller
     {
 
         $data = PerencanaanAudit::find($id);
+
         $validatedData = $request->validate([
         'kegiatan_id' => 'required|string|max:255',
         'jenis_audit' => 'required|string|max:255',
@@ -101,13 +102,10 @@ class PerencanaanAuditController extends Controller
         'firstdate' => 'required|date',
         'enddate' => 'required|date',
         'link' => 'nullable',
-        'dasar_audit' => 'required',
-        'anggaran' =>'required'
-    ]);
-    
-    
+        'dasar_audit' => 'required'    ]);
 
-        
+
+
         $data->update($validatedData);
 
         return redirect('/perencanaan_audit')->with('success', 'Perencanaan Diubah');
@@ -126,7 +124,7 @@ class PerencanaanAuditController extends Controller
         if(!$cek){
             return back()->with('failed', 'Isi Program Kerja Terlebih dahulu');
         }
-        
+
         $audit->update(['status' => 1]);
 
 

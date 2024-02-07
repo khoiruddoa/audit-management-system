@@ -7,7 +7,7 @@
         <h1>Perencanaan Audit</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item">Perencanaan Audit</li>
                 <li class="breadcrumb-item active">Edit Data</li>
             </ol>
@@ -154,7 +154,7 @@
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Nama link</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nama_lampiran" class="form-control @error('nama_lampiran') is-invalid @enderror" id="nama_lampiran" value="{{ old('nama_lampiran') }}" autofocus>
+                                    <input type="text" name="nama_lampiran" class="form-control @error('nama_lampiran') is-invalid @enderror" id="nama_lampiran" value="{{ old('nama_lampiran', $perencanaan->nama_lampiran) }}" autofocus>
                                     @error('nama_lampiran')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -163,7 +163,7 @@
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Link Lampiran</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="link" class="form-control @error('link') is-invalid @enderror" id="link" value="{{ old('link') }}" autofocus>
+                                    <input type="text" name="link" class="form-control @error('link') is-invalid @enderror" id="link" value="{{ old('link', $perencanaan->link) }}" autofocus>
                                     @error('link')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror

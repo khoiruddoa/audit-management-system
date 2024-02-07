@@ -83,7 +83,7 @@
                 {{ chr($loop->iteration + 64) }}. {{$temuan->temuan}}
                 </p>
                 <p>Temuan<br>
-                  
+
                     {!! $temuan->kondisi !!}
                 </p>
                 <p>
@@ -105,7 +105,7 @@
                 <p>
                     Tanggapan Auditee<br>
                     {!! $temuan->tanggapanAudit()->latest()->first()->tanggapan ?? '' !!}
-                   
+
                 </p>
                 <p>
                     Tanggal Penyelesaian<br>
@@ -115,31 +115,6 @@
             </p>
             @endforeach
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Tanggal Perencanaan</th>
-                    <th>Tanggal Penilaian</th>
-                    <th>Nama Auditor</th>
-                    <th>Hasil Audit</th>
-                    <th>Temuan Audit</th>
-                    <th>Tanggapan</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>2023-09-15</td>
-                    <td>2023-09-25</td>
-                    <td>John Doe</td>
-                    <td>Lulus</td>
-                    <td>Temuan 1: Temuan pertama dari audit.</td>
-                    <td>Tanggapan 1: Tanggapan terhadap temuan pertama.</td>
-                </tr>
-                <!-- Tambahkan baris data audit lainnya sesuai kebutuhan -->
-            </tbody>
-        </table>
     </div>
 </body>
 

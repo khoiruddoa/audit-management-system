@@ -7,9 +7,9 @@
       <h1>Manajemen Auditee</h1>
       <nav>
           <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-              <li class="breadcrumb-item">Manajemen Auditee</li>
-              <li class="breadcrumb-item active">Data Baru</li>
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/manajemen_auditee">Manajemen Auditee</a></li>
+              <li class="breadcrumb-item active">Update Data</li>
           </ol>
       </nav>
   </div>
@@ -19,7 +19,7 @@
               <div class="card">
                   <div class="card-body">
                       <h5 class="card-title">Edit Data Auditee</h5>
-                      
+
                       <form action="{{ route('manajemen_auditee_update', ['id' => $auditee->id]) }}" method="post">
                           @csrf
                           <div class="row mb-3">
@@ -69,4 +69,3 @@
 
   @endsection
 
-  

@@ -7,8 +7,8 @@
             <h1>Manajemen Role</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item">Manajemen Role</li>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/manajemen_role">Manajemen Role</a></li>
                     <li class="breadcrumb-item active">Data Baru</li>
                 </ol>
             </nav>
@@ -36,7 +36,7 @@
                             <!-- General Form Elements -->
                             <form action="{{ route('manajemen_role_store') }}" method="post">
                                 @csrf
-                               
+
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">Nama Role</label>
                                     <div class="col-sm-10">
@@ -48,7 +48,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                               
+
                                 <div class="row mb-3">
 
                                     <div class="col-sm-10">

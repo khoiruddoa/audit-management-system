@@ -8,8 +8,8 @@
       <h1>Manajemen Auditee</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Manajemen Auditee</li>
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/manajemen_auditee">Manajemen Auditee</a></li>
           <li class="breadcrumb-item active">Data Baru</li>
         </ol>
       </nav>
@@ -18,11 +18,11 @@
     <section class="section">
         <div class="row">
           <div class="col-lg-10">
-  
+
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Input Data Auditee</h5>
-  
+
                 <!-- General Form Elements -->
                 <form action="{{route('manajemen_auditee_store')}}" method="post">
                   @csrf
@@ -46,8 +46,8 @@
                   @enderror
                     </div>
                   </div>
-                  
-                    
+
+
                   <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">PIC</label>
                     <div class="col-sm-10">
@@ -61,27 +61,27 @@
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                   </div>
-                  
+
                   </div>
-                 
-                  
-                  
-                
+
+
+
+
                   <div class="row mb-3">
-                    
+
                     <div class="col-sm-10">
                       <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                   </div>
-  
+
                 </form><!-- End General Form Elements -->
-  
+
               </div>
             </div>
-  
+
           </div>
-  
-          
+
+
         </div>
       </section>
 
@@ -89,4 +89,3 @@
   </main><!-- End #main -->
   @endsection
 
-  

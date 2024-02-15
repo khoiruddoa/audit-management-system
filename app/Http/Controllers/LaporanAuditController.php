@@ -12,7 +12,8 @@ class LaporanAuditController extends Controller
     public function index()
     {
         return view('dashboard.laporan.index', [
-            'audits' => PerencanaanAudit::where('status', 1)->latest()->get()
+            'audits' => PerencanaanAudit::whereIn('status', [1, 2])->latest()->get()
+
         ]);
     }
 

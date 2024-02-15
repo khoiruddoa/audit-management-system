@@ -7,7 +7,7 @@
     <h1>Daftar Laporan Audit</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
         <li class="breadcrumb-item">Laporan Audit</li>
       </ol>
     </nav>
@@ -34,7 +34,7 @@
               <div>
                 <h5 class="card-title">Data Laporan Audit</h5>
               </div>
-             
+
 
             </div>
 
@@ -46,9 +46,9 @@
                   <th scope="col">Nama Kegiatan</th>
                   <th scope="col">Objek</th>
                   <th scope="col">Periode</th>
-                 
+
                   <th scope="col">Tingkat Resiko</th>
-                 
+
                   <th scope="col">Aksi</th>
                 </tr>
               </thead>

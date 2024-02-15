@@ -94,13 +94,11 @@ class KegiatanController extends Controller
     public function finish(Request $request, $id)
     {
 
-        $cek = PerencanaanAudit::where('kegiatan_id', $id)->first();
+        $cek = PerencanaanAudit::where('kegiatan_id', $id)->where('status', 2)->first();
         if(!$cek){
-            return back()->with('failed', 'Gagal');        }
+            return back()->with('failed', 'Gagal!!! Pelaksanaan Audit Belum Selesai');        }
         $data = Kegiatan::findOrFail($id);
-        if($data){
-            return back()->with('failed', 'Gagal');
-        }
+
         $data->status = 2;
         $data->save();
 
@@ -129,11 +127,11 @@ class KegiatanController extends Controller
 
         $cek = PerencanaanAudit::where('kegiatan_id', $id)->first();
         if($cek){
-            return back()->with('failed', 'Gagal');        }
+            return back()->with('failed', 'Gagal!!! Kegiatan sudah dalam Perencanaan/Pelaksanaan Audit');        }
         $data->status = 0;
         $data->save();
 
 
-        return redirect(route('kegiatan_audit'))->with('success', 'Kegiatan Audit selesai');
+        return redirect(route('kegiatan_audit'))->with('success', 'Kegiatan Audit Dibatalkan');
     }
 }

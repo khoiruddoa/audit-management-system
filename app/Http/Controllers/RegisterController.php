@@ -52,11 +52,15 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'password' => 'required|max:255',
             'email' => ['required', 'unique:users'],
-            'nip' => 'required|max:255',
+            'nip' => 'required|numeric|max:255',
             'jabatan' => 'required|max:255',
             'posisi' => 'required|max:255',
             'hp' => ['required', 'unique:users']
 
+        ]);
+
+        $request->validate([
+            'role' => 'required'
         ]);
         $validatedData['password'] = Hash::make($request->password);
 

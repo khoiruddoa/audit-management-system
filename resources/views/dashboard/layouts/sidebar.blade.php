@@ -46,7 +46,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ route('laporan_audit') }}">
                             <i class="bi bi-circle"></i><span>Pelaporan Audit</span>
                         </a>
                     </li>

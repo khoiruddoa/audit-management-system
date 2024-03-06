@@ -15,11 +15,11 @@ class KertasKerjaAuditController extends Controller
     public function index($id)
     {
         return view('dashboard.pelaksanaan_audit.kertas_kerja_audit.index', [
-           
+
             'program_kerja' => ProgramKerjaAudit::find($id),
             'kertas_kerja' => KertasKerjaAudit::where('program_kerja_audit_id', $id)->get(),
             'dokumen' => Document::where('program_kerja_audit_id', $id)->get()
-           
+
         ]);
     }
     public function detail($id)
@@ -39,10 +39,10 @@ class KertasKerjaAuditController extends Controller
 
         }
         return view('dashboard.pelaksanaan_audit.kertas_kerja_audit.create', [
-            
+
             'program_kerja' => $program,
             'referensi' => ReferensiAudit::all()
-           
+
         ]);
     }
 
@@ -56,7 +56,7 @@ class KertasKerjaAuditController extends Controller
             'kertas' => $kertas,
             'program_kerja' => $program_kerja,
             'referensi' => ReferensiAudit::all()
-           
+
         ]);
     }
 
@@ -70,9 +70,9 @@ class KertasKerjaAuditController extends Controller
         $auditor = $request->auditor;
         $auth = Auth()->user()->id;
 
-    
 
-      
+
+
         if($auditor != $auth){
             return back()->with('failed', 'Anda tidak ditugaskan dalam program kerja ini');
 
@@ -132,9 +132,9 @@ class KertasKerjaAuditController extends Controller
     {
         $data = KertasKerjaAudit::find($id);
 
-     
 
-      
+
+
 
         $data->update(["status" => "1"]);
 
@@ -147,9 +147,9 @@ class KertasKerjaAuditController extends Controller
     {
         $data = KertasKerjaAudit::find($id);
 
-     
 
-      
+
+
 
         $data->update(["status" => Null]);
 
@@ -160,11 +160,11 @@ class KertasKerjaAuditController extends Controller
 
     public function delete($id)
     {
-       
+
         $data = KertasKerjaAudit::findOrFail($id);
         $data->delete();
 
-       
+
         return back()->with('success', 'Kertas kerja dihapus');
 
     }

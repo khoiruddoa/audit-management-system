@@ -181,7 +181,7 @@
                                                 <th scope="row">{{ $loop->iteration }}</th>
 
                                                 <td>{{ $item->temuan }}</td>
-                                                <td>@if($item->status == '1') Sudah dikonfirmasi @else Belum dikkonfirmasi @endif</td>
+                                                <td>@if($item->status == '1') Sudah dikonfirmasi @else Belum dikonfirmasi @endif</td>
                                                 <td>
 
                                                     <div class="dropdown">
@@ -205,11 +205,11 @@
                                                             <li>@if($item->status == '1')
                                                                 <a class="dropdown-item"
                                                                 href="{{ route('kertas_kerja_audit_batal_konfirmasi', ['id' => $item->id]) }}">Batal konfirmasi</a>
-                                        
+
                                                                 @else
                                                                 <a class="dropdown-item"
                                                                     href="{{ route('kertas_kerja_audit_konfirmasi', ['id' => $item->id]) }}">Konfirmasi</a>
-                                                            
+
                                                                    @endif
                                                                 </li>
 

@@ -112,7 +112,6 @@ class KertasKerjaAuditController extends Controller
             'program_kerja_audit_id' => 'required',
             'temuan' => 'required',
             'tanggal' => 'required',
-            'data_umum' => 'required',
             'kondisi' => 'required',
             'kriteria' => 'required',
             'sebab' => 'required',

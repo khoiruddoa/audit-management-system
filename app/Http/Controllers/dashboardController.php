@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kegiatan;
+use App\Models\KertasKerjaAudit;
 use App\Models\PerencanaanAudit;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class dashboardController extends Controller
         $open_data = Kegiatan::where('status', '0')->latest()->get();
         $onProgress_data = Kegiatan::where('status', '1')->latest()->get();
         $finish_data =  Kegiatan::where('status', '2')->latest()->get();
-
+        $temuan = KertasKerjaAudit::where('status', 1)->count();
 
 
         return view(
@@ -31,7 +32,8 @@ class dashboardController extends Controller
                 'finish' => $finish,
                 'open_data' => $open_data,
                 'onProgress_data' => $onProgress_data,
-                'finish_data' => $finish_data
+                'finish_data' => $finish_data,
+                'temuan' => $temuan
 
             ]
         );

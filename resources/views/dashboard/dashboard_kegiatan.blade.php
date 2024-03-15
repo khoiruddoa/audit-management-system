@@ -15,18 +15,31 @@
 
         <section class="section">
             <div class="d-flex flex-row flex-wrap gap-2">
-            
+
 
 
 
 
                 <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-                
+
 
 
         </section>
+        <!-- Tambahkan elemen tabel dengan id unik -->
+<table id="detail-table" style="display: none;">
+    <thead>
+        <tr>
+            <th>Nama Temuan</th>
+            <th>Rekomendasi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Tempat untuk menampilkan detail temuan dan rekomendasi -->
+    </tbody>
+</table>
 
-      
+
+
 
         <script>
         var xValues =   @json($divisi);
@@ -50,10 +63,43 @@
             }
           }
         });
+
+        document.getElementById("myChart").onclick = function(event) {
+    var activePoints = chart.getElementsAtEventForMode(event, 'point', chart.options);
+    if (activePoints.length > 0) {
+        // Mendapatkan indeks elemen yang diklik
+        var clickedIndex = activePoints[0]._index;
+        var selectedDivisi = xValues[clickedIndex];
+
+        // Menampilkan data yang sesuai berdasarkan pilihan
+        var table = document.getElementById("detail-table");
+        var dataToDisplay = @json($detailData); // Misalkan ini adalah data detail temuan dan rekomendasi
+
+        // Filter data berdasarkan divisi yang dipilih
+        var filteredData = dataToDisplay.filter(function(item) {
+            return item.divisi === selectedDivisi;
+        });
+
+        // Membuat HTML untuk tabel data
+        var tableHTML = '';
+        for (var i = 0; i < filteredData.length; i++) {
+            tableHTML += '<tr><td>' + filteredData[i].nama_temuan + '</td><td>' + filteredData[i].rekomendasi + '</td></tr>';
+        }
+
+        // Mengupdate isi tabel dengan HTML yang baru
+        table.getElementsByTagName('tbody')[0].innerHTML = tableHTML;
+
+        // Menampilkan tabel
+        table.style.display = 'table';
+
+    } else {
+        // Sembunyikan tabel jika tidak ada bar yang diklik
+        var table = document.getElementById("detail-table");
+        table.style.display = 'none';
+    }
+};
+
         </script>
-
-
-
 
 
 

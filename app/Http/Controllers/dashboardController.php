@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kegiatan;
 use App\Models\KertasKerjaAudit;
 use App\Models\PerencanaanAudit;
+use App\Models\TindakLanjutAudit;
 use Illuminate\Http\Request;
 
 class dashboardController extends Controller
@@ -22,6 +23,12 @@ class dashboardController extends Controller
         $onProgress_data = Kegiatan::where('status', '1')->latest()->get();
         $finish_data =  Kegiatan::where('status', '2')->latest()->get();
         $temuan = KertasKerjaAudit::where('status', 1)->count();
+        $tindakLanjut = TindakLanjutAudit::where('status', 2)->count();
+
+        $persen = $tindakLanjut / $temuan * 100;
+        $persen = number_format($persen, 2, '.', '');
+        $rencanaAudit = PerencanaanAudit::orderBy('firstdate')->get();
+
 
 
         return view(
@@ -33,16 +40,16 @@ class dashboardController extends Controller
                 'open_data' => $open_data,
                 'onProgress_data' => $onProgress_data,
                 'finish_data' => $finish_data,
-                'temuan' => $temuan
+                'temuan' => $temuan,
+                'tindak' => $tindakLanjut,
+                'persen' => $persen,
+                'rencanaAudit' => $rencanaAudit
 
             ]
         );
     }
 
-    public function test()
-    {
-        return response()->json(['status' => 'success', 'message' => 'Test successful']);
-    }
+
     public function kegiatan($id)
     {
         $results = Kegiatan::find($id);
@@ -106,4 +113,5 @@ if($results){
             ]
         );
     }
+
 }
